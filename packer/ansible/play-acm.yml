@@ -1,0 +1,9 @@
+- hosts: acm
+  become: yes
+  collections:
+    - nginxinc.nginx_core
+
+  roles:
+    - nginx
+    - ansible-role-nginx-management-suite
+

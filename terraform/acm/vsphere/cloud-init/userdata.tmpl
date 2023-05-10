@@ -1,0 +1,20 @@
+#cloud-config
+
+fqdn: ${host_name}.${domain}
+manage_etc_hosts: true
+
+system_info:
+  default_user:
+    name: ${default_user}
+    lock_passwd: true
+    
+
+ssh_authorized_keys:
+  - ${public_key}
+
+write_files:
+   - path: /etc/nms/nginx/.htpasswd
+     owner: nms:nms
+     permissions: 0o660
+     defer: true
+     content: ${htpasswd_data}

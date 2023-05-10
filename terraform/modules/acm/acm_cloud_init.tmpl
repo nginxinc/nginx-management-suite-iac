@@ -1,0 +1,20 @@
+#cloud-config
+
+system_info:
+  default_user:
+    name: ${default_user}
+
+ssh_authorized_keys:
+  - ${public_key}
+
+write_files:
+  - content: ${htpasswd_file}
+    owner: nms:nms
+    path: /etc/nms/nginx/.htpasswd
+    permissions: '0660'
+
+bootcmd:
+  - |
+    if [ -n "${devportal_ip}" ] && [ -n "${devportal_zone}" ]; then
+      echo "\n${devportal_ip} acm.${devportal_zone}\n" >> /etc/hosts
+    fi
