@@ -35,7 +35,7 @@ bootcmd:
     fi
   - |
     if [ -n "${ip_address}" ] && [ -n "${zone}" ]; then
-      echo "\n${ip_address} ${zone}\n" >> /etc/hosts
+      echo "\n${ip_address} acm.${zone}\n" >> /etc/hosts
     fi
 
 runcmd:
