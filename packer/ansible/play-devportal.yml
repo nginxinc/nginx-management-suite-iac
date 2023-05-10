@@ -1,0 +1,29 @@
+- hosts: devportal
+  become: yes
+  collections:
+    - nginxinc.nginx_core
+  tasks:
+    - name: 'Install Debian pre-requisite packages'
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        update_cache: true
+        state: present
+      when: ansible_os_family == "Debian"
+      loop:
+        - gpg
+    - name: Install psycopg2 python package
+      ansible.builtin.pip:
+        name: psycopg2-binary
+      when: ansible_distribution == "Amazon"
+    - name: Include the nginx role
+      include_role:
+        name: nginx
+    - name: Include the geerlingguy.postgresql role
+      include_role:
+        name: geerlingguy.postgresql
+      when: 
+        - devportal_db_type == "psql"
+        - devportal_embedded_pg | bool
+    - name: Include the devportal role
+      include_role:
+        name: nginx_devportal

@@ -1,0 +1,15 @@
+resource_group_name  = "my_resource_group"
+image_name           = "myimagename"
+
+#db_type  = "sqlite" 
+#db_type = "psql"
+#db_user = "nginxdm"
+#db_password = "complexPassword1*"
+#db_host = "my-db-host"
+#db_ca_cert_file  = "~/ssl/ca.crt" 
+#db_client_cert_file  = "~/ssl/client.crt" 
+#db_client_key_file  = "~/ssl/client.key" 
+
+#icoming_cidr_blocks  = ["x.x.x.x/32"]
+#ssh_user     = "ssh_user"
+#ssh_pub_key  = "~/.ssh/custum_key.pub" 

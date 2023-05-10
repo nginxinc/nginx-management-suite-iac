@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo ${base64} | base64 -d > /etc/nms/nginx/.htpasswd
+chown nms:nms /etc/nms/nginx/.htpasswd
+chmod 0660 /etc/nms/nginx/.htpasswd

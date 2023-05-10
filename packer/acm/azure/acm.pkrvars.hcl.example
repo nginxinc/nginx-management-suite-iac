@@ -1,0 +1,10 @@
+base_image_offer = "0001-com-ubuntu-server-jammy"
+base_image_publisher = "Canonical"
+base_image_sku = "22_04-lts-gen2"
+build_instance_type = "Standard_B1s"
+nms_api_connectivity_manager_version = "1.4.1"
+nginx_repo_cert = "~/nginx-repo.crt"
+nginx_repo_key = "~/nginx-repo.key"
+
+#image_name          = "my_image_name" # if not provided, defaults to acm-ubuntu-20-04-<nms_api_connectivity_manager_version>
+#resource_group_name = "my-resource_group_name"

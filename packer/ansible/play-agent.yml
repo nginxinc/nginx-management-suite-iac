@@ -1,0 +1,16 @@
+- hosts: agent
+  become: yes
+  collections:
+    - nginxinc.nginx_core
+  tasks:
+    - name: 'Install Debian pre-requisite packages'
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        update_cache: true
+        state: present
+      when: ansible_os_family == "Debian"
+      loop:
+        - gpg
+    - name: Include the nginx role
+      include_role:
+        name: nginx

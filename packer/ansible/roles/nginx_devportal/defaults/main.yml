@@ -1,0 +1,41 @@
+---
+devportal_start: true
+devportal_enable: true
+devportal_repo_name: "nms"
+devportal_repo_url: "pkgs.nginx.com"
+devportal_user: nginx-devportal
+devportal_group: nginx-devportal
+devportal_package: nginx-devportal
+#devportal_package: files/nginx-devportal.deb
+devportal_disable_gpg_check: no
+devportal_service_name: "nginx-devportal"
+
+devportal_config_path: /etc/nginx-devportal
+devportal_log_path: /var/log/nginx-devportal
+
+devportal_log_level: info
+devportal_bind_ip: 127.0.0.1
+devportal_bind_port: 8080
+
+devportal_db_type: psql
+devportal_data_path: /var/lib/nginx-devportal
+devportal_pg_host: /var/run/postgresql # path to socket on local postgresql server or hostname
+devportal_pg_port: 5432
+devportal_pg_ssl: "disable"
+devportal_pg_client_ssl: false
+devportal_pg_client_ssl_key_file: pg-client.key
+devportal_pg_client_ssl_cert_file: pg-client.crt
+devportal_pg_client_ssl_ca_file: ca.crt
+devportal_pg_db: devportal
+devportal_pg_user: nginx-devportal
+devportal_pg_pass: nginx-devportal
+
+with_devportal_ui: true
+devportal_ui_package: nginx-devportal-ui
+
+devportal_selinux_apply: false
+
+nginx_license: 
+  certificate: ""
+  key: ""
+devportal_version: ""

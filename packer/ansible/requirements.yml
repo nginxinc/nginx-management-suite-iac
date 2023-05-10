@@ -1,0 +1,8 @@
+collections:
+  - name: nginxinc.nginx_core
+roles:
+  - name: geerlingguy.postgresql
+    version: 3.4.2
+  - name: ansible-role-nginx-management-suite
+    src: https://github.com/nginxinc/ansible-role-nginx-management-suite
+    version: main

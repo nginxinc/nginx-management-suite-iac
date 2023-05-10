@@ -1,0 +1,15 @@
+---
+
+- name: restart devportal
+  service:
+    name: "{{ devportal_service_name }}"
+    state: restarted
+  when:
+    - devportal_start | bool
+
+- name: restart nginx
+  service:
+    name: "nginx"
+    state: restarted
+  when:
+    - nginx_start | bool

@@ -1,0 +1,11 @@
+project_id = "myprojectid"
+base_image_name = "ubuntu-2204-jammy-v20230114"
+build_zone = "europe-west4-a"
+build_instance_type = "e2-micro"
+nginx_repo_cert = "~/nginx-repo.crt"
+nginx_repo_key = "~/nginx-repo.key"
+
+
+#nginx_devportal_version = "1.4.1"
+#image_name = "target_image_name" # if not provided, defaults to nginx-devportal-ubuntu-20-04-<nginx_devportal_version>
+#embedded_pg = true # defaults to false, set to true if you would like to embed postgres in the image

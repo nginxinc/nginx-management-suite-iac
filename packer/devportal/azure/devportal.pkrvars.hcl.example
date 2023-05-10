@@ -1,0 +1,12 @@
+base_image_offer = "0001-com-ubuntu-server-jammy"
+base_image_publisher = "Canonical"
+base_image_sku = "22_04-lts-gen2"
+build_instance_type = "Standard_B1s"
+nginx_repo_cert = "~/nginx-repo.crt"
+nginx_repo_key = "~/nginx-repo.key"
+nginx_devportal_version = "1.4.1"
+resource_group_name = "my_resource_group"
+
+#nginx_devportal_version = "1.4.1"
+#image_name = "target_image_name" # if not provided, defaults to nginx-devportal-ubuntu-20-04-<nginx_devportal_version>
+#embedded_pg = true # defaults to false, set to true if you would like to embed postgres in the image

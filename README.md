@@ -1,36 +1,9 @@
-# NGINX Template Repository
+# NGINX Management Suite API Connectivity Manager Image Creation, Deployment and Configuration
 
-## How do I use this template?
+This repo contains the templates and scripts that can be used to generate, deploy and configure an API Connectivity Manager cloud image.
 
-**DO NOT FORK** -- this template is meant to be used from the **[`Use this template`](https://github.com/nginxinc/template-repository/generate)** feature.
-
-1. Click on **[`Use this template`](https://github.com/nginxinc/template-repository/generate)**
-2. Give a name to your project
-3. Wait until the first run of CI finishes (Github Actions will process the template and commit to your new repo)
-4. Clone your new project and happy coding!
-
-**NOTE**: **WAIT** until the first CI run on GitHub Actions before cloning your new project.
-
-## What is included on this template?
-
-This template includes all the scaffolding you need to get started on a standards compliant NGINX repository:
-
-- Standard license for NGINX OSS projects
-- Standard `.gitignore` with minimal defaults
-- Issue and PR templates
-- Contributing guidelines
-- Support guidelines
-- Security guidelines for reporting major vulnerabilities
-- NGINX Code of Conduct
-- README placeholder
-- Changelog placeholder
-- Codeowners placeholder
-
----
-
-<!--  DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -- PLACEHOLDER SECTIONS HAVE BEEN INCLUDED FOR YOUR CONVENIENCE -->
-
-# nms_iac
+- [Image generation using packer](packer/README.md)
+- [Full Architecture Deployments using terraform](terraform/README.md)
 
 ## Requirements
 

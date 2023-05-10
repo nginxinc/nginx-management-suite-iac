@@ -14,3 +14,16 @@ Thumbs.db
 # Logs #
 ########
 *.log
+
+
+**.env
+.terraform.lock.hcl
+public_ip
+terraform.tfstate*
+.terraform*
+*.tfvars
+.acm_htpasswd
+*.pkrvars.hcl
+packer-manifest.json
+**/user-data
+packer/ansible/roles/geerlingguy.postgresql
