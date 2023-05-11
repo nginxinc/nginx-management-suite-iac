@@ -5,6 +5,7 @@ This repo contains the templates and scripts that can be used to deploy an API C
 ## Requirements
 
 - Linux build environment, e.g. ubuntu-22.04
+- You must have generated the appropriate cloud image/machine using our [packer guide](../packer/README.md).
 - An NGINX Mangement Suite license. This can be downloaded from [my.f5.com](my.f5.com).
 
 ## Getting Started
