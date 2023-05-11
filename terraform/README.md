@@ -2,9 +2,14 @@
 
 This repo contains the templates and scripts that can be used to deploy an API Connectivity Manager image.
 
-## Basic Usage
+## Requirements
 
-Prerequisties
+- Linux build environment, e.g. ubuntu-22.04
+- An NGINX Mangement Suite license. This can be downloaded from [my.f5.com](my.f5.com).
+
+## Getting Started
+
+Install the following software.
 
 - [terraform >= 1.2](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
@@ -30,6 +35,7 @@ sudo apt-get install curl
 ```
 
 - sshpass for verifying connections
+
 ```
 sudo apt-get install sshpass
 ```
@@ -48,7 +54,9 @@ sudo apt-get install jq
 sudo apt-get install apache2-utils
 ```
 
-Then follow the README in the relevant directory
+## How to Use
+
+Follow the README in the relevant directory
 
 - [API Connectify Manager AWS](acm/aws/README.md)
 - [API Connectify Manager GCP](acm/gcp/README.md)
