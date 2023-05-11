@@ -2,9 +2,14 @@
 
 This directory contains templates and scripts to deploy an NGINX Devportal Ubuntu image to GCP
 
-1. Follow the generic README, situated [here](../../README.md)
+## Requirements
 
-2. For deploying to GCP with terraform, you will need to login to gcloud:
+- You have followed the generic README, situated [here](../../README.md)
+- Access to a GCP cloud.
+
+## Getting Started
+
+- For deploying to GCP with terraform, you will need to login to gcloud:
 
 Download and install the cli using these instructions: https://cloud.google.com/sdk/docs/install before signing in:
 
@@ -12,22 +17,24 @@ Download and install the cli using these instructions: https://cloud.google.com/
 gcloud auth application-default login
 ```
 
-3. Set terraform parameters in an optional `.tfvars` file
+- Set terraform parameters in an optional `.tfvars` file
 
 ```bash
 cp terraform.tfvars.example terraform.tfvars
 ```
 
-4. Initialise Terraform
+- Initialise Terraform
 
-   ```
-       terraform init
-   ```
+  ```
+      terraform init
+  ```
 
-5. Apply Terraform
-   ```
-      terraform apply
-   ```
+- Populate the .tfvars file with vars relative to your environment.
+
+- Apply Terraform
+  ```
+     terraform apply
+  ```
 
 ## Configuration
 

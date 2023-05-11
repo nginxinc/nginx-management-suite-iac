@@ -2,9 +2,12 @@
 
 This directory contains templates and scripts to deploy an API Connectivity Manager Ubuntu image to Azure
 
-1. Follow the generic README, situated [here](../../README.md)
+## Requirements
 
-2. You will need to authenticate to Azure to deploy this infrastructure. For this example we will create and use a service principal. Feel free to change this to suit your needs:
+- You have followed the generic README, situated [here](../../README.md)
+- You will need to authenticate to Azure to deploy this infrastructure. For this example we will create and use a service principal. Feel free to change this to suit your needs:
+
+## Creating a service principal.
 
 [Terraform Azure Docs](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
 [Terraform Azure Service Principal](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret)
@@ -13,7 +16,9 @@ This directory contains templates and scripts to deploy an API Connectivity Mana
 az ad sp create-for-rbac --name terraform --role contributor --scopes /subscriptions/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/my-resource-group-name --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
 ```
 
-4. Add the following environment variables from the output of the service principal.
+## Getting Started
+
+- Add the following environment variables from the output of the service principal.
 
 ```
 export ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000"
@@ -22,25 +27,29 @@ export ARM_SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000"
 export ARM_TENANT_ID="00000000-0000-0000-0000-000000000000"
 ```
 
-4. Set terraform parameters in an optional `.tfvars` file
+- Set terraform parameters in an optional `.tfvars` file
 
 ```bash
 cp terraform.tfvars.example terraform.tfvars
 ```
 
-5. Initialise Terraform
+- Populate the .tfvars file with vars relative to your environment.
 
-   ```
-       terraform init
-   ```
+- Initialise Terraform
 
-6. Apply Terraform
+  ```
+      terraform init
+  ```
 
-   ```
-      terraform apply
-   ```
+- Populate the .tfvars file with vars relative to your environment.
 
-7. Navigate to the url in the terraform. Go to the settings. Upload your API-Connectivity-Manager license.
+- Apply Terraform
+
+  ```
+     terraform apply
+  ```
+
+- Navigate to the url in the terraform. Go to the settings. Upload your API-Connectivity-Manager license.
 
 ## Configuration
 
