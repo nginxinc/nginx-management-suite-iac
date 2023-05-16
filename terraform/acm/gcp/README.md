@@ -5,7 +5,7 @@ This directory contains templates and scripts to deploy an API Connectivity Mana
 ## Requirements
 
 - You have followed the generic README, situated [here](../../README.md)
-- Access to a GCP cloud.
+- Access to a GCP.
 
 ## Getting Started
 

@@ -2,15 +2,19 @@
 
 This directory contains templates and scripts to create an API Connectivity Manager Ubuntu image to be deployable to Azure
 
-1. Follow the generic README, situated [here](../../README.md)
+## Requirements
 
-2. For Azure builds, you will need to install the Azure CLI :
+- You have followed the generic README, situated [here](../../README.md)
+- You have access to a service principal or the permissions to create one.
+- For Azure builds, you will need to install the Azure CLI :
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
-3. You will need to authenticate to build and save images on Azure. For this example we will create and use a service principal. Feel free to change this to suit your needs:
+## Creating a service principal.
+
+- You will need to authenticate to build and save images on Azure. For this example we will create and use a service principal. Feel free to change this to suit your needs:
 
 [Packer Azure Docs](https://developer.hashicorp.com/packer/plugins/builders/azure/arm)
 [Packer Azure Service Principal](https://developer.hashicorp.com/packer/plugins/builders/azure#azure-active-directory-service-principal)
@@ -19,7 +23,9 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 az ad sp create-for-rbac --name packer --role contributor --scopes /subscriptions/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/my-resource-group-name --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
 ```
 
-4. Add the following environment variables from the output of the service principal.
+## Getting Started
+
+- Add the following environment variables from the output of the service principal.
 
 ```
 export ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000"
@@ -28,15 +34,15 @@ export ARM_SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000"
 export ARM_TENANT_ID="00000000-0000-0000-0000-000000000000"
 ```
 
-5. Set packer build parameters in an optional `pkrvars.hcl` file
+- Set packer build parameters in an optional `pkrvars.hcl` file
 
 ```bash
 cp acm.pkrvars.hcl.example acm.pkrvars.hcl
 ```
 
-6. Customise your packer hcl files to suit your environment.
+- Customise your packer hcl files to suit your environment.
 
-7. Run packer build
+- Run packer build
 
 ```shell
    packer build -var-file="acm.pkrvars.hcl" ubuntu-azure-acm.pkr.hcl

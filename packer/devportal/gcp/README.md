@@ -2,9 +2,14 @@
 
 This directory contains templates and scripts to create an API Connectivity Manager Ubuntu image to be deployable to GCP
 
-1. Follow the generic README, situated [here](../../README.md)
+## Requirements
 
-2. For GCP compute image builds, you will need to login:
+- You have followed the generic README, situated [here](../../README.md)
+- Access to a GCP.
+
+## Getting Started
+
+- For GCP compute image builds, you will need to login:
 
 Download and install the cli using these instructions: https://cloud.google.com/sdk/docs/install before signing in:
 
@@ -12,13 +17,13 @@ Download and install the cli using these instructions: https://cloud.google.com/
 gcloud auth application-default login
 ```
 
-3. Set packer build parameters in an optional `pkrvars.hcl` file
+- Set packer build parameters in an optional `pkrvars.hcl` file
 
 ```bash
 cp devportal.pkrvars.hcl.example devportal.pkrvars.hcl
 ```
 
-4. Run packer build
+- Run packer build
 
 ```shell
    packer build -var-file="devportal.pkrvars.hcl" ubuntu-gcp-devportal.pkr.hcl

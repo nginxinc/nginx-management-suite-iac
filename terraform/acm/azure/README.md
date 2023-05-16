@@ -5,7 +5,7 @@ This directory contains templates and scripts to deploy an API Connectivity Mana
 ## Requirements
 
 - You have followed the generic README, situated [here](../../README.md)
-- You will need to authenticate to Azure to deploy this infrastructure. For this example we will create and use a service principal. Feel free to change this to suit your needs:
+- You have access to a service principal or the permissions to create one.
 
 ## Creating a service principal.
 

@@ -2,9 +2,14 @@
 
 This directory contains templates and scripts to create an API Connectivity Manager Ubuntu template to be deployable to VSphere
 
-1. Follow the generic README, situated [here](../../README.md)
+## Requirements
 
-2. For VSphere Template builds, you will need to set the following environment variables:
+- You have followed the generic README, situated [here](../../README.md)
+- Access to VSphere environment variables.
+
+## Getting Started
+
+- For VSphere Template builds, you will need to set the following environment variables:
 
 ```
 export VSPHERE_URL="my-vcenter-url.com"
@@ -18,19 +23,19 @@ If you would like the overwrite the console password for the ubuntu user in the 
 export CONSOLE_PASSWORD="my-password"
 ```
 
-3. Install packer compatable ISO tools on the executing machine
+- Install packer compatable ISO tools on the executing machine
 
 ```
 sudo apt-get install mkisofs
 ```
 
-4. Set packer build parameters in an optional `pkrvars.hcl` file
+- Set packer build parameters in an optional `pkrvars.hcl` file
 
 ```bash
 cp acm.pkrvars.hcl.example acm.pkrvars.hcl
 ```
 
-5. Run packer build
+- Run packer build
 
 ```shell
    ./packer-build.sh -var-file="acm.pkrvars.hcl"

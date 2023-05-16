@@ -2,9 +2,14 @@
 
 This directory contains templates and scripts to create an API Connectivity Manager Ubuntu image to be deployable to AWS
 
-1. Follow the generic README, situated [here](../../README.md)
+## Requirements
 
-2. For AWS AMI builds, you will need to set:
+- You have followed the generic README, situated [here](../../README.md)
+- You will need programmatic access to your AWS environment
+
+## Getting Started
+
+- For AWS AMI builds, you will need to set:
 
 ```
 AWS_ACCESS_KEY_ID
@@ -12,13 +17,15 @@ AWS_SECRET_ACCESS_KEY
 AWS_SECURITY_TOKEN
 ```
 
-3. Set packer build parameters in an optional `pkrvars.hcl` file
+- Set packer build parameters in an optional `pkrvars.hcl` file
 
 ```bash
 cp acm.pkrvars.hcl.example acm.pkrvars.hcl
 ```
 
-4. Run packer build
+- Update the packer vars file.
+
+- Run packer build
 
 ```shell
    packer build -var-file="acm.pkrvars.hcl" ubuntu-aws-acm.pkr.hcl
