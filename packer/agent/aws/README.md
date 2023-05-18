@@ -3,9 +3,14 @@
 This directory contains templates and scripts to create a Ubuntu agent image to be deployable to AWS.
 The image is just a fresh install of NGINX with an njs module installed. The agent should be installed from the controller instance after it is deployed.
 
-1. Follow the generic README, situated [here](../../README.md)
+## Requirements
 
-2. For AWS AMI builds, you will need to set:
+- You have followed the generic README, situated [here](../../README.md)
+- You will need programmatic access to your AWS environment
+
+## Getting Started
+
+- For AWS AMI builds, you will need to set:
 
 ```
 AWS_ACCESS_KEY_ID
@@ -13,13 +18,13 @@ AWS_SECRET_ACCESS_KEY
 AWS_SECURITY_TOKEN
 ```
 
-3. Set packer build parameters in an optional `pkrvars.hcl` file
+- Set packer build parameters in an optional `pkrvars.hcl` file
 
 ```bash
 cp agent.pkrvars.hcl.example agent.pkrvars.hcl
 ```
 
-4. Run packer build
+- Run packer build
 
 ```shell
    packer build -var-file="agent.pkrvars.hcl" ubuntu-aws-agent.pkr.hcl

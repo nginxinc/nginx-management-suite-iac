@@ -2,9 +2,14 @@
 
 This directory contains templates and scripts to deploy an API Connectivity Manager Ubuntu Virtual Machine to vSphere.
 
-1. Follow the generic README, situated [here](../../README.md)
+## Requirements
 
-2. For deploying to vSphere with terraform, you will need to set your vSphere environment credentials:
+- You have followed the generic README, situated [here](../../README.md)
+- Access to vSphere environment variables.
+
+## Getting Started
+
+- For deploying to vSphere with terraform, you will need to set your vSphere environment credentials:
 
 ```
 export TF_VAR_vsphere_url="my-vcenter-url.com"
@@ -12,22 +17,22 @@ export TF_VAR_vsphere_password="my-password"
 export TF_VAR_vsphere_user="my-username"
 ```
 
-3. Set terraform parameters in an optional `.tfvars` file
+- Set terraform parameters in an optional `.tfvars` file
 
 ```bash
 cp terraform.tfvars.example terraform.tfvars
 ```
 
-4. Initialise Terraform
+- Initialise Terraform
 
-   ```
-       terraform init
-   ```
+  ```
+      terraform init
+  ```
 
-5. Apply Terraform
-   ```
-      terraform apply
-   ```
+- Apply Terraform
+  ```
+     terraform apply
+  ```
 
 ## Configuration
 

@@ -2,9 +2,14 @@
 
 This directory contains templates and scripts to deploy an API Connectivity Manager Ubuntu image to AWS
 
-1. Follow the generic README, situated [here](../../README.md)
+## Requirements
 
-2. For deploying to AWS with terraform, you will need to setup your AWS credentials:
+- You have followed the generic README, situated [here](../../README.md)
+- You will need programmatic access to your AWS environment
+
+## Getting Started
+
+- For deploying to AWS with terraform, you will need to setup your AWS credentials:
 
 ```
 AWS_ACCESS_KEY_ID
@@ -12,22 +17,24 @@ AWS_SECRET_ACCESS_KEY
 AWS_SECURITY_TOKEN
 ```
 
-3. Set terraform parameters in an optional `.tfvars` file
+- Set terraform parameters in an optional `.tfvars` file
 
 ```bash
 cp terraform.tfvars.example terraform.tfvars
 ```
 
-4. Initialise Terraform
+- Populate the .tfvars file with vars relative to your environment.
 
-   ```
-       terraform init
-   ```
+- Initialise Terraform
 
-5. Apply Terraform
-   ```
-      terraform apply
-   ```
+  ```
+      terraform init
+  ```
+
+- Apply Terraform
+  ```
+     terraform apply
+  ```
 
 ## Configuration
 

@@ -2,11 +2,15 @@
 
 This repo contains the templates and scripts that can be used to generate a API Connectivity Manager image.
 
-## Basic Usage
-
-Prerequisties
+## Requirements
 
 - Linux build environment, e.g. ubuntu-22.04
+- An NGINX Mangement Suite repo cert and key. This can be downloaded from [my.f5.com](my.f5.com).
+
+## Getting Started
+
+Install the following software.
+
 - [ansible >= 6.7.0](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 ```
@@ -32,9 +36,9 @@ And install the required ansible collections
     ansible-galaxy install -r requirements.yaml
 ```
 
-Aquire a NMS repo cert and key
+## How to Use
 
-Then follow the README in the relevant directory
+Follow the README in the relevant directory to create images/machines.
 
 - [API Connectity Manager AWS](acm/aws/README.md)
 - [API Connectity Manager GCP](acm/gcp/README.md)
@@ -44,3 +48,4 @@ Then follow the README in the relevant directory
 - [NGINX Devportal GCP](devportal/gcp/README.md)
 - [NGINX Devportal Azure](devportal/azure/README.md)
 - [NGINX Devportal vSphere](devportal/vsphere/README.md)
+- [NGINX Agent AWS](agent/aws/README.md)
