@@ -1,6 +1,6 @@
-# NGINX Management Suite API Connectivity Manager Image Creation, Deployment and Configuration
+# NGINX Management Suite Infrastructure
 
-This repo contains the templates and scripts that can be used to generate, deploy and configure an API Connectivity Manager cloud image.
+This repo contains the instructions that can be used to generate images and provides best practice example infrastructure of NGINX Management Suite API Connectivity Manager environments including NGINX-Devportal and NGINX-Agents.
 
 - [Image generation using packer](packer/README.md)
 - [Full Architecture Deployments using terraform](terraform/README.md)
