@@ -1,4 +1,4 @@
-# NGINX Management Suite Infrastructure
+# NGINX Management Suite API Connectivity Manager Infrastructure
 
 This repo contains the instructions that can be used to generate images and provides best practice example infrastructure of NGINX Management Suite API Connectivity Manager environments including NGINX-Devportal and NGINX-Agents.
 
