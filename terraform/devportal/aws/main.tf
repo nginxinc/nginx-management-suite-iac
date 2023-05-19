@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) F5, Inc.
+ *
+ * This source code is licensed under the Apache License, Version 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+*/
+
 data "aws_availability_zones" "available_zones" {
   state         = "available"
   exclude_names = ["us-west-2d"]
