@@ -42,7 +42,7 @@ variable "nginx_repo_key" {
 
 variable "nginx_devportal_version" {
   type    = string
-  default = "1.4.1"
+  default = "1.6.0"
 }
 
 variable "embedded_pg" {
