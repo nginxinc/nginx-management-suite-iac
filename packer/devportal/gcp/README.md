@@ -37,7 +37,7 @@ cp devportal.pkrvars.hcl.example devportal.pkrvars.hcl
 | build_zone              | _The GCP zone to build the image in_                                     | `europe-west4-a`                                                      | No       |
 | embedded_pg             | _Specify if you would like to embed a postgres or sqlite onto the image_ | `false`                                                               | No       |
 | image_name              | _The name of the final GCP image_                                        | `nginx-devportal-ubuntu-20-04-<nms_api_connectivity_manager_version>` | No       |
-| nginx_devportal_version | _The version to use for installing NGINX Devportal_                      | `1.4.1`                                                               | No       |
+| nginx_devportal_version | _The version to use for installing NGINX Devportal_                      | `1.6.0`                                                               | No       |
 | nginx_repo_cert         | _Path to cert required to access the yum/deb repo for NMS_               | -                                                                     | Yes      |
 | nginx_repo_key          | _Path to key required to access the yum/deb repo for NMS_                | -                                                                     | Yes      |
 | project_id              | _GCP project id to use_                                                  | -                                                                     | Yes      |
