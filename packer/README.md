@@ -33,7 +33,7 @@ And install the required ansible collections
 
 ```shell
     cd ansible
-    ansible-galaxy install -r requirements.yaml
+    ansible-galaxy install -r requirements.yml
 ```
 
 ## How to Use
