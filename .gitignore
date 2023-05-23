@@ -26,4 +26,5 @@ terraform.tfstate*
 *.pkrvars.hcl
 packer-manifest.json
 **/user-data
-packer/ansible/roles/geerlingguy.postgresql
+packer/ansible/roles/
+!packer/ansible/roles/nginx_devportal
