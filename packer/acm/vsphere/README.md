@@ -11,7 +11,7 @@ This directory contains templates and scripts to create an API Connectivity Mana
 
 - For VSphere Template builds, you will need to set the following environment variables:
 
-```
+```shell
 export VSPHERE_URL="my-vcenter-url.com"
 export VSPHERE_PASSWORD="my-password"
 export VSPHERE_USER="my-username"
@@ -19,19 +19,19 @@ export VSPHERE_USER="my-username"
 
 If you would like the overwrite the console password for the ubuntu user in the VM Template, set the following environment variable.
 
-```
+```shell
 export CONSOLE_PASSWORD="my-password"
 ```
 
-- Install packer compatable ISO tools on the executing machine
+- Install packer compatible ISO tools on the executing machine
 
-```
+```shell
 sudo apt-get install mkisofs
 ```
 
 - Set packer build parameters in an optional `pkrvars.hcl` file
 
-```bash
+```shell
 cp acm.pkrvars.hcl.example acm.pkrvars.hcl
 ```
 

@@ -11,13 +11,13 @@ This directory contains templates and scripts to create an API Connectivity Mana
 
 - For GCP compute image builds, you will need to login:
 
-```bash
+```shell
 gcloud auth application-default login
 ```
 
 - Set packer build parameters in an optional `pkrvars.hcl` file
 
-```bash
+```shell
 cp acm.pkrvars.hcl.example acm.pkrvars.hcl
 ```
 

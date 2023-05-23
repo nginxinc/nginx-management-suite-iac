@@ -46,7 +46,6 @@ variable "subnet_id" {
   default     = null
 }
 
-
 variable "db_type" {
   description = "Type of database. Either psql or sqlite."
   type        = string

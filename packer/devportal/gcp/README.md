@@ -13,13 +13,13 @@ This directory contains templates and scripts to create an API Connectivity Mana
 
 Download and install the cli using these instructions: https://cloud.google.com/sdk/docs/install before signing in:
 
-```bash
+```shell
 gcloud auth application-default login
 ```
 
 - Set packer build parameters in an optional `pkrvars.hcl` file
 
-```bash
+```shell
 cp devportal.pkrvars.hcl.example devportal.pkrvars.hcl
 ```
 

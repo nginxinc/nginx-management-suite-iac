@@ -99,7 +99,6 @@ variable "devportal_instance_group_name"{
   type        = string
 }
 
-
 variable "devportal_db_type" {
   description = "Type of database. Either psql or sqlite."
   type        = string
@@ -129,11 +128,13 @@ variable "devportal_db_host" {
   default = "/var/run/postgresql"
   description = "NGINX db hostname"
 }
+
 variable "devportal_db_ca_cert_file" {
   type = string
   default = null
   description = "CA Cert"
 }
+
 variable "devportal_db_client_cert_file" {
   type = string
   default = null
@@ -146,13 +147,11 @@ variable "devportal_db_client_key_file" {
   description = "Client Key file"
 }
 
-
 variable "devportal_zone" {
   type = string
   default = "devportal.example.com"
   description = "The zone that the devportal will be configured using."
 }
-
 
 variable "agent_count" {
   type = number

@@ -11,26 +11,27 @@ This directory contains templates and scripts to deploy an API Connectivity Mana
 
 - For deploying to GCP with terraform, you will need to login to gcloud:
 
-```bash
+```shell
 gcloud auth application-default login
 ```
 
 - Set terraform parameters in an optional `.tfvars` file
 
-```bash
+```shell
 cp terraform.tfvars.example terraform.tfvars
 ```
 
 - Initialise Terraform
 
-  ```
+  ```shell
       terraform init
   ```
 
 - Populate the .tfvars file with vars relative to your environment.
 
 - Apply Terraform
-  ```
+
+  ```shell
      terraform apply
   ```
 

@@ -11,7 +11,7 @@ This directory contains templates and scripts to deploy an API Connectivity Mana
 
 - For deploying to AWS with terraform, you will need to setup your AWS credentials:
 
-```
+```shell
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_SECURITY_TOKEN
@@ -19,18 +19,19 @@ AWS_SECURITY_TOKEN
 
 - Set terraform parameters in an optional `.tfvars` file
 
-```bash
+```shell
 cp terraform.tfvars.example terraform.tfvars
 ```
 
 - Initialise Terraform
 
-  ```
+  ```shell
       terraform init
   ```
 
 - Apply Terraform
-  ```
+
+  ```shell
      terraform apply
   ```
 

@@ -20,4 +20,3 @@ provider "vsphere" {
     password = var.vsphere_password
     allow_unverified_ssl = true
 }
-

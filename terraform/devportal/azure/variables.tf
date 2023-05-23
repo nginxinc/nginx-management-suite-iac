@@ -67,11 +67,13 @@ variable "db_host" {
   default = "/var/run/postgresql"
   description = "NGINX db hostname"
 }
+
 variable "db_ca_cert_file" {
   type = string
   default = null
   description = "CA Cert"
 }
+
 variable "db_client_cert_file" {
   type = string
   default = null

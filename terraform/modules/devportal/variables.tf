@@ -8,21 +8,25 @@ variable "ssh_pub_key" {
   description = "Path to ssh key for access to host"
   type        = string
 }
+
 variable "db_type" {
   description = "Type of database. Either psql or sqlite."
   type        = string
   default     = "psql"
 }
+
 variable "db_host" {
   description = "Address of devportal database."
   type        = string
   default     = "/var/run/postgresql"
 }
+
 variable "db_user" {
   description = "User for devportal database."
   type        = string
   default     = "nginxdm"
 }
+
 variable "db_password" {
   description = "Password of user for devportal database."
   type        = string
@@ -35,6 +39,7 @@ variable "db_ca_cert_file" {
   default = null
   description = "CA Cert"
 }
+
 variable "db_client_cert_file" {
   type = string
   default = null
@@ -46,7 +51,6 @@ variable "db_client_key_file" {
   default = null
   description = "Client Key file"
 }
-
 
 variable "acm_host_ip" {
   description = "Host IP address of the API connectivity manager to install agent from"

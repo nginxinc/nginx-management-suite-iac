@@ -1,4 +1,4 @@
-# GCP NGINX Devportal Image Deployment.
+# GCP NGINX Devportal Image Deployment
 
 This directory contains templates and scripts to deploy an NGINX Devportal Ubuntu image to GCP
 
@@ -13,26 +13,27 @@ This directory contains templates and scripts to deploy an NGINX Devportal Ubunt
 
 Download and install the cli using these instructions: https://cloud.google.com/sdk/docs/install before signing in:
 
-```bash
+```shell
 gcloud auth application-default login
 ```
 
 - Set terraform parameters in an optional `.tfvars` file
 
-```bash
+```shell
 cp terraform.tfvars.example terraform.tfvars
 ```
 
 - Initialise Terraform
 
-  ```
+  ```shell
       terraform init
   ```
 
 - Populate the .tfvars file with vars relative to your environment.
 
 - Apply Terraform
-  ```
+
+  ```shell
      terraform apply
   ```
 

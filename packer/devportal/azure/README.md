@@ -7,11 +7,11 @@ This directory contains templates and scripts to create an NGINX Devportal Ubunt
 - You have followed the generic README, situated [here](../../README.md)
 - You have access to a service principal or the permissions to create one.
 
-## Creating a service principal.
+## Creating a service principal
 
 - For Azure builds, you will need to install the Azure CLI :
 
-```bash
+```shell
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
@@ -22,13 +22,13 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 ## Getting Started
 
-```bash
+```shell
 az ad sp create-for-rbac --name packer --role contributor --scopes /subscriptions/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/my-resource-group-name --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
 ```
 
 - Add the following environment variables from the output of the service principal.
 
-```
+```shell
 export ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000"
 export ARM_CLIENT_SECRET="00000000-0000-0000-0000-000000000000"
 export ARM_SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000"
@@ -37,7 +37,7 @@ export ARM_TENANT_ID="00000000-0000-0000-0000-000000000000"
 
 - Set packer build parameters in an optional `pkrvars.hcl` file
 
-```bash
+```shell
 cp devportal.pkrvars.hcl.example devportal.pkrvars.hcl
 ```
 

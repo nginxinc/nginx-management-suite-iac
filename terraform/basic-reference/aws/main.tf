@@ -19,6 +19,7 @@ terraform {
 provider "aws" {
   region = var.aws_region
 }
+
 data "aws_availability_zones" "available_zones" {
   state         = "available"
   exclude_names = ["us-west-2d"]
@@ -97,7 +98,6 @@ module "devportal_common" {
   ]
 }
 
-
 resource "null_resource" "get_my_public_ip" {
   provisioner "local-exec" {
     command = "curl -sSf https://checkip.amazonaws.com > ${local.public_ip_file}"
@@ -112,7 +112,6 @@ data "local_file" "my_public_ip" {
 resource "aws_eip" "devportal_eip" {
   vpc      = true
 }
-
 
 resource "aws_eip" "agent_eip" {
   vpc      = true
@@ -129,8 +128,6 @@ resource "aws_eip_association" "devportal_eip_assoc" {
   instance_id   = aws_instance.devportal_example.id
   allocation_id = aws_eip.devportal_eip.id
 }
-
-
 
 resource "aws_instance" "acm_example" {
   ami                                  = var.acm_ami_id
@@ -317,7 +314,6 @@ resource "null_resource" "agent_connection" {
     command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_eip.agent_eip[count.index].public_ip} ${pathexpand(var.ssh_private_key)}"
   }
 }
-
 
 resource "null_resource" "devportal_connection" {
   depends_on = [

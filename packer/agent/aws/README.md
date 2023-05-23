@@ -12,7 +12,7 @@ The image is just a fresh install of NGINX with an njs module installed. The age
 
 - For AWS AMI builds, you will need to set:
 
-```
+```shell
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_SECURITY_TOKEN
@@ -20,7 +20,7 @@ AWS_SECURITY_TOKEN
 
 - Set packer build parameters in an optional `pkrvars.hcl` file
 
-```bash
+```shell
 cp agent.pkrvars.hcl.example agent.pkrvars.hcl
 ```
 

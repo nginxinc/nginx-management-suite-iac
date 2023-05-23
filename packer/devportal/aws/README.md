@@ -11,7 +11,7 @@ This directory contains templates and scripts to create an API Connectivity Mana
 
 - For AWS AMI builds, you will need to set:
 
-```
+```shell
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_SECURITY_TOKEN
@@ -19,7 +19,7 @@ AWS_SECURITY_TOKEN
 
 - Set packer build parameters in an optional `pkrvars.hcl` file
 
-```bash
+```shell
 cp devportal.pkrvars.hcl.example devportal.pkrvars.hcl
 ```
 

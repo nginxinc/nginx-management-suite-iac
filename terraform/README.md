@@ -6,7 +6,7 @@ This repo contains the templates and scripts that can be used to deploy an API C
 
 - Linux build environment, e.g. ubuntu-22.04
 - You must have generated the appropriate cloud image/machine using our [packer guide](../packer/README.md).
-- An NGINX Mangement Suite license. This can be downloaded from [my.f5.com](my.f5.com).
+- An NGINX Management Suite license. This can be downloaded from [my.f5.com](my.f5.com).
 
 ## Getting Started
 
@@ -14,7 +14,7 @@ Install the following software.
 
 - [terraform >= 1.2](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
-```
+```shell
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 wget -O- https://apt.releases.hashicorp.com/gpg | \
     gpg --dearmor | \
@@ -31,13 +31,13 @@ sudo apt-get install terraform
 
 - curl >= 7.68
 
-```
+```shell
 sudo apt-get install curl
 ```
 
 - sshpass for verifying connections
 
-```
+```shell
 sudo apt-get install sshpass
 ```
 
@@ -45,13 +45,13 @@ sudo apt-get install sshpass
 
 - jq >= 1.6
 
-```
+```shell
 sudo apt-get install jq
 ```
 
 - apache2-utils >= 2.4
 
-```
+```shell
 sudo apt-get install apache2-utils
 ```
 
@@ -59,10 +59,10 @@ sudo apt-get install apache2-utils
 
 Follow the README in the relevant directory
 
-- [API Connectify Manager AWS](acm/aws/README.md)
-- [API Connectify Manager GCP](acm/gcp/README.md)
-- [API Connectify Manager Azure](acm/azure/README.md)
-- [API Connectify Manager VSphere](acm/vsphere/README.md)
+- [API Connectivity Manager AWS](acm/aws/README.md)
+- [API Connectivity Manager GCP](acm/gcp/README.md)
+- [API Connectivity Manager Azure](acm/azure/README.md)
+- [API Connectivity Manager VSphere](acm/vsphere/README.md)
 - [NGINX Devportal AWS](devportal/aws/README.md)
 - [NGINX Devportal Azure](devportal/azure/README.md)
 - [NGINX Devportal GCP](devportal/gcp/README.md)
