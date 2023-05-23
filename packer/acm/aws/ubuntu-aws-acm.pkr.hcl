@@ -48,7 +48,7 @@ variable "subnet_id" {
 
 variable "nms_api_connectivity_manager_version" {
   type    = string
-  default = "1.3.1"
+  default = "1.6.0"
 }
 
 locals {
