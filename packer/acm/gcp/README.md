@@ -15,7 +15,7 @@ This directory contains templates and scripts to create an API Connectivity Mana
 gcloud auth application-default login
 ```
 
-- Set packer build parameters in an optional `pkrvars.hcl` file
+- Set packer build parameters in a `pkrvars.hcl` file
 
 ```shell
 cp acm.pkrvars.hcl.example acm.pkrvars.hcl

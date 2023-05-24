@@ -17,7 +17,7 @@ AWS_SECRET_ACCESS_KEY
 AWS_SECURITY_TOKEN
 ```
 
-- Set packer build parameters in an optional `pkrvars.hcl` file
+- Set packer build parameters in a `pkrvars.hcl` file
 
 ```shell
 cp devportal.pkrvars.hcl.example devportal.pkrvars.hcl
