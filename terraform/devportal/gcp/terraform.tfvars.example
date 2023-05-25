@@ -12,5 +12,5 @@ project_id       = "myprojectid"
 #region               = "europe-west4"
 #ssh_user             = "ssh_user"
 #instance_type        = "e2-micro"
-#ssh_pub_key          = "~/.ssh/custum_key.pub" 
-#icoming_cidr_blocks  = ["x.x.x.x/32"]
+#ssh_pub_key          = "~/.ssh/custom_key.pub" 
+#incoming_cidr_blocks  = ["x.x.x.x/32"]

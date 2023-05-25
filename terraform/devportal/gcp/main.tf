@@ -76,8 +76,6 @@ resource "google_compute_firewall" "https_access" {
 }
 
 
-
-
 resource "null_resource" "example" {
   provisioner "remote-exec" {
     connection {

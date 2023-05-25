@@ -13,7 +13,6 @@ module "acm_common" {
   ssh_pub_key       = pathexpand(var.ssh_pub_key)
 }
 
-
 data "vsphere_datacenter" "datacenter" {
   name = var.datacenter
 }

@@ -19,6 +19,7 @@ terraform {
 provider "aws" {
   region = var.aws_region
 }
+
 data "aws_availability_zones" "available_zones" {
   state         = "available"
   exclude_names = ["us-west-2d"]
@@ -77,26 +78,25 @@ module "agent_common" {
 }
 
 module "devportal_common" {
-  source                = "../../modules/devportal"
-  host_default_user     = var.ssh_user
-  acm_host_ip           = aws_instance.acm_example.public_ip
-  instance_group_name   = var.devportal_instance_group_name
-  ssh_pub_key           = pathexpand(var.ssh_pub_key)
-  db_ca_cert_file       = var.devportal_db_ca_cert_file
-  db_client_cert_file   = var.devportal_db_client_cert_file
-  db_client_key_file    = var.devportal_db_client_key_file
-  db_host               = var.devportal_db_host
-  db_user               = var.devportal_db_user
-  db_password           = var.devportal_db_password
-  db_type               = var.devportal_db_type
-  ip_address            = aws_eip.devportal_eip.public_ip
-  zone                  = var.devportal_zone
+  source              = "../../modules/devportal"
+  host_default_user   = var.ssh_user
+  acm_host_ip         = aws_instance.acm_example.public_ip
+  instance_group_name = var.devportal_instance_group_name
+  ssh_pub_key         = pathexpand(var.ssh_pub_key)
+  db_ca_cert_file     = var.devportal_db_ca_cert_file
+  db_client_cert_file = var.devportal_db_client_cert_file
+  db_client_key_file  = var.devportal_db_client_key_file
+  db_host             = var.devportal_db_host
+  db_user             = var.devportal_db_user
+  db_password         = var.devportal_db_password
+  db_type             = var.devportal_db_type
+  ip_address          = aws_eip.devportal_eip.public_ip
+  zone                = var.devportal_zone
 
   depends_on = [
     aws_instance.acm_example
   ]
 }
-
 
 resource "null_resource" "get_my_public_ip" {
   provisioner "local-exec" {
@@ -110,12 +110,11 @@ data "local_file" "my_public_ip" {
 }
 
 resource "aws_eip" "devportal_eip" {
-  vpc      = true
+  vpc = true
 }
 
-
 resource "aws_eip" "agent_eip" {
-  vpc      = true
+  vpc   = true
   count = var.agent_count
 }
 
@@ -129,8 +128,6 @@ resource "aws_eip_association" "devportal_eip_assoc" {
   instance_id   = aws_instance.devportal_example.id
   allocation_id = aws_eip.devportal_eip.id
 }
-
-
 
 resource "aws_instance" "acm_example" {
   ami                                  = var.acm_ami_id
@@ -194,7 +191,7 @@ resource "aws_security_group" "acm_secgroup" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = concat(local.mgmt_cidr_blocks, [for eip in aws_eip.agent_eip : "${eip.public_ip}/32"], [ "${aws_eip.devportal_eip.public_ip}/32"] )
+    cidr_blocks = concat(local.mgmt_cidr_blocks, [for eip in aws_eip.agent_eip : "${eip.public_ip}/32"], ["${aws_eip.devportal_eip.public_ip}/32"])
   }
 
   egress {
@@ -308,16 +305,15 @@ resource "null_resource" "acm_connection" {
 }
 
 resource "null_resource" "agent_connection" {
-    depends_on = [
-      aws_instance.agent_example
-    ]
+  depends_on = [
+    aws_instance.agent_example
+  ]
 
-    count = var.agent_count
-    provisioner "local-exec" {
+  count = var.agent_count
+  provisioner "local-exec" {
     command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_eip.agent_eip[count.index].public_ip} ${pathexpand(var.ssh_private_key)}"
   }
 }
-
 
 resource "null_resource" "devportal_connection" {
   depends_on = [

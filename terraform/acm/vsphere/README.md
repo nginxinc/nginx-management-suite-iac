@@ -11,7 +11,7 @@ This directory contains templates and scripts to deploy an API Connectivity Mana
 
 - For deploying to vSphere with terraform, you will need to set your vSphere environment credentials:
 
-```
+```shell
 export TF_VAR_vsphere_url="my-vcenter-url.com"
 export TF_VAR_vsphere_password="my-password"
 export TF_VAR_vsphere_user="my-username"
@@ -19,18 +19,19 @@ export TF_VAR_vsphere_user="my-username"
 
 - Set terraform parameters in an optional `.tfvars` file
 
-```bash
+```shell
 cp terraform.tfvars.example terraform.tfvars
 ```
 
 - Initialise Terraform
 
-  ```
+  ```shell
       terraform init
   ```
 
 - Apply Terraform
-  ```
+
+  ```shell
      terraform apply
   ```
 

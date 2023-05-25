@@ -63,7 +63,6 @@ variable "ssh_private_key" {
   default     = "~/.ssh/id_rsa"
 }
 
-
 variable "db_user" {
   type = string
   description = "NGINX db user"
@@ -88,6 +87,7 @@ variable "db_ca_cert_file" {
   default = null
   description = "CA Cert"
 }
+
 variable "db_client_cert_file" {
   type = string
   default = null

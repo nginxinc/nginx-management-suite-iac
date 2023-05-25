@@ -34,7 +34,7 @@ variable "nginx_repo_key" {
 
 variable "nms_api_connectivity_manager_version" {
   type    = string
-  default = "1.4.1"
+  default = "1.6.0"
 }
 
 variable "project_id" {

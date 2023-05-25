@@ -11,13 +11,13 @@ This directory contains templates and scripts to create an API Connectivity Mana
 
 - For GCP compute image builds, you will need to login:
 
-```bash
+```shell
 gcloud auth application-default login
 ```
 
-- Set packer build parameters in an optional `pkrvars.hcl` file
+- Set packer build parameters in a `pkrvars.hcl` file
 
-```bash
+```shell
 cp acm.pkrvars.hcl.example acm.pkrvars.hcl
 ```
 
@@ -35,7 +35,7 @@ cp acm.pkrvars.hcl.example acm.pkrvars.hcl
 | build_zone                           | _The GCP zone to build the image in_                             | `europe-west4-a`                                          | No       |
 | build_instance_type                  | _The instance type to use for building the image_                | `e2-micro`                                                | No       |
 | image_name                           | _The name of the final GCP image_                                | `acm-ubuntu-22-04-<nms_api_connectivity_manager_version>` | No       |
-| nms_api_connectivity_manager_version | _The version to use for installing NMS Api Connectivity Manager_ | `1.3.1`                                                   | No       |
+| nms_api_connectivity_manager_version | _The version to use for installing NMS Api Connectivity Manager_ | `1.6.0`                                                   | No       |
 | nginx_repo_cert                      | _Path to cert required to access the yum/deb repo for NMS_       | -                                                         | Yes      |
 | nginx_repo_key                       | _Path to key required to access the yum/deb repo for NMS_        | -                                                         | Yes      |
 | project_id                           | _GCP project id to use_                                          | -                                                         | Yes      |

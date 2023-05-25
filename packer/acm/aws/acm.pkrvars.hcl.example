@@ -3,9 +3,9 @@ base_ami_owner_acct = "099720109477"
 build_instance_type = "t3.micro"
 build_region = "us-west-1"
 destination_regions = ["us-west-1"]
-nms_api_connectivity_manager_version = "1.4.1"
 nginx_repo_cert = "~/nginx-repo.crt"
 nginx_repo_key = "~/nginx-repo.key"
+nms_api_connectivity_manager_version = "1.6.0"
 
 
 #ami_name = "my_ami_name" # if not provided, defaults to acm-ubuntu-20-04-<nms_api_connectivity_manager_version>

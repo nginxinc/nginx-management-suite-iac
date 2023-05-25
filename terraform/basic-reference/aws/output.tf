@@ -40,8 +40,6 @@ output "devportal_host_ip" {
   value       = aws_eip.devportal_eip.public_ip
 }
 
-
 output devportal_ssh_command {
   value = "ssh ${var.ssh_user}@${aws_eip.devportal_eip.public_ip}"
 }
-
