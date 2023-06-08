@@ -82,15 +82,16 @@ source "amazon-ebs" "disk" {
     device_name           = "/dev/sda1"
     volume_size           = 20
   }
-  ami_name                  = local.ami_name
-  ami_regions               = var.destination_regions
-  instance_type             = var.build_instance_type
-  region                    = var.build_region
-  skip_region_validation    = true
-  source_ami                = data.amazon-ami.base_image.id
-  ssh_clear_authorized_keys = true
-  ssh_username              = "ubuntu"
-  subnet_id                 = var.subnet_id
+  ami_name                    = local.ami_name
+  ami_regions                 = var.destination_regions
+  instance_type               = var.build_instance_type
+  region                      = var.build_region
+  skip_region_validation      = true
+  source_ami                  = data.amazon-ami.base_image.id
+  ssh_clear_authorized_keys   = true
+  ssh_username                = "ubuntu"
+  subnet_id                   = var.subnet_id
+  associate_public_ip_address = true
 }
 
 build {

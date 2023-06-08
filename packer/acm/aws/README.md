@@ -25,6 +25,12 @@ cp acm.pkrvars.hcl.example acm.pkrvars.hcl
 
 - Update the packer vars file.
 
+- Run packer init
+
+```shell
+   packer init .
+```
+
 - Run packer build
 
 ```shell

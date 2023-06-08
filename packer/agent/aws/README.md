@@ -24,6 +24,12 @@ AWS_SECURITY_TOKEN
 cp agent.pkrvars.hcl.example agent.pkrvars.hcl
 ```
 
+- Run packer init
+
+```shell
+   packer init .
+```
+
 - Run packer build
 
 ```shell
