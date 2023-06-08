@@ -23,6 +23,12 @@ AWS_SECURITY_TOKEN
 cp devportal.pkrvars.hcl.example devportal.pkrvars.hcl
 ```
 
+- Run packer init
+
+```shell
+   packer init .
+```
+
 - Run packer build
 
 ```shell
