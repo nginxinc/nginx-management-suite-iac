@@ -5,6 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+packer {
+  required_plugins {
+    amazon = {
+      version = "~> 1.2.6"
+      source  = "github.com/hashicorp/amazon"
+    }
+  }
+}
+
 variable "base_ami_name" {
   type    = string
 }
