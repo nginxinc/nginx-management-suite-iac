@@ -1,3 +1,5 @@
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
 # NGINX Management Suite API Connectivity Manager Infrastructure
 
 This repo contains the instructions that can be used to generate images and provides an example infrastructure of NGINX Management Suite API Connectivity Manager environments including NGINX-Devportal and NGINX-Agents using best practice security configuration.
