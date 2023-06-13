@@ -1,7 +1,7 @@
 agent_instance_group_name       = "agent-group-name"
 admin_passwd                    = "complexPassword*1"
 admin_user                      = "admin"
-acm_ami_id                      = "my_acm_ami_name"
+nms_ami_id                      = "my_nms_ami_name"
 agent_ami_id                    = "my_agent_ami_name"
 devportal_ami_id                = "my_devportal_ami_name"
 aws_region                      = "us-west-1"
@@ -10,7 +10,7 @@ license_file_path               = "./nginx-api-connectivity-manager-license.txt"
 ssh_pub_key                     = "~/.ssh/id_rsa.pub"
 ssh_private_key                 = "~/.ssh/id_rsa"
 
-#acm_instance_type              = "t3.micro"
+#nms_instance_type              = "t3.micro"
 #agent_instance_type            = "t3.micro"
 #agent_count                    = 2
 #devportal_instance_type        = "t3.medium" 

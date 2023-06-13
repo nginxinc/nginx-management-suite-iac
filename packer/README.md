@@ -40,10 +40,10 @@ And install the required ansible collections
 
 Follow the README in the relevant directory to create images/machines.
 
-- [API Connectivity Manager AWS](acm/aws/README.md)
-- [API Connectivity Manager GCP](acm/gcp/README.md)
-- [API Connectivity Manager Azure](acm/azure/README.md)
-- [API Connectivity Manager vSphere](acm/vsphere/README.md)
+- [API Connectivity Manager AWS](nms/aws/README.md)
+- [API Connectivity Manager GCP](nms/gcp/README.md)
+- [API Connectivity Manager Azure](nms/azure/README.md)
+- [API Connectivity Manager vSphere](nms/vsphere/README.md)
 - [NGINX Devportal AWS](devportal/aws/README.md)
 - [NGINX Devportal GCP](devportal/gcp/README.md)
 - [NGINX Devportal Azure](devportal/azure/README.md)

@@ -43,7 +43,7 @@ locals {
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "acm_vpc"
+  name = "nms_vpc"
   cidr = "10.0.0.0/16"
 
   azs            = [random_shuffle.random_az.result[0]]
@@ -55,8 +55,8 @@ module "vpc" {
   }
 }
 
-module "acm_common" {
-  source            = "../../modules/acm"
+module "nms_common" {
+  source            = "../../modules/nms"
   admin_user        = var.admin_user
   admin_passwd      = var.admin_passwd
   host_default_user = var.ssh_user
@@ -68,19 +68,19 @@ module "acm_common" {
 module "agent_common" {
   source              = "../../modules/agent"
   host_default_user   = var.ssh_user
-  acm_host_ip         = aws_instance.acm_example.public_ip
+  nms_host_ip         = aws_instance.nms_example.public_ip
   instance_group_name = var.agent_instance_group_name
   ssh_pub_key         = pathexpand(var.ssh_pub_key)
 
   depends_on = [
-    aws_instance.acm_example
+    aws_instance.nms_example
   ]
 }
 
 module "devportal_common" {
   source              = "../../modules/devportal"
   host_default_user   = var.ssh_user
-  acm_host_ip         = aws_instance.acm_example.public_ip
+  nms_host_ip         = aws_instance.nms_example.public_ip
   instance_group_name = var.devportal_instance_group_name
   ssh_pub_key         = pathexpand(var.ssh_pub_key)
   db_ca_cert_file     = var.devportal_db_ca_cert_file
@@ -94,7 +94,7 @@ module "devportal_common" {
   zone                = var.devportal_zone
 
   depends_on = [
-    aws_instance.acm_example
+    aws_instance.nms_example
   ]
 }
 
@@ -129,22 +129,22 @@ resource "aws_eip_association" "devportal_eip_assoc" {
   allocation_id = aws_eip.devportal_eip.id
 }
 
-resource "aws_instance" "acm_example" {
-  ami                                  = var.acm_ami_id
-  instance_type                        = var.acm_instance_type
-  vpc_security_group_ids               = [aws_security_group.acm_secgroup.id]
+resource "aws_instance" "nms_example" {
+  ami                                  = var.nms_ami_id
+  instance_type                        = var.nms_instance_type
+  vpc_security_group_ids               = [aws_security_group.nms_secgroup.id]
   associate_public_ip_address          = "true"
   instance_initiated_shutdown_behavior = "terminate"
   subnet_id                            = local.controlplane_subnet_id
   tags = {
-    Name = "acm_example"
+    Name = "nms_example"
   }
-  user_data = module.acm_common.acm_cloud_init.rendered
+  user_data = module.nms_common.nms_cloud_init.rendered
 }
 
 resource "aws_instance" "agent_example" {
   depends_on = [
-    null_resource.acm_connection
+    null_resource.nms_connection
   ]
   count                                = var.agent_count
   ami                                  = var.agent_ami_id
@@ -160,7 +160,7 @@ resource "aws_instance" "agent_example" {
 
 resource "aws_instance" "devportal_example" {
   depends_on = [
-    null_resource.acm_connection
+    null_resource.nms_connection
   ]
   ami                                  = var.devportal_ami_id
   instance_type                        = var.devportal_instance_type
@@ -173,11 +173,11 @@ resource "aws_instance" "devportal_example" {
   user_data = module.devportal_common.cloud_init.rendered
 }
 
-resource "aws_security_group" "acm_secgroup" {
-  name   = "acm-secgroup"
+resource "aws_security_group" "nms_secgroup" {
+  name   = "nms-secgroup"
   vpc_id = local.vpc_id
   tags = {
-    Name = "acm-secgroup"
+    Name = "nms-secgroup"
   }
 
   ingress {
@@ -271,7 +271,7 @@ resource "aws_security_group" "devportal_secgroup" {
     from_port   = 81
     to_port     = 81
     protocol    = "tcp"
-    cidr_blocks = ["${aws_instance.acm_example.public_ip}/32"]
+    cidr_blocks = ["${aws_instance.nms_example.public_ip}/32"]
   }
 
   ingress {
@@ -295,12 +295,12 @@ resource "aws_security_group" "devportal_secgroup" {
 
 
 
-resource "null_resource" "acm_connection" {
+resource "null_resource" "nms_connection" {
   depends_on = [
-    aws_instance.acm_example
+    aws_instance.nms_example
   ]
   provisioner "local-exec" {
-    command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_instance.acm_example.public_ip} ${pathexpand(var.ssh_private_key)} && bash ../scripts/license_apply.sh https://${aws_instance.acm_example.public_ip} ${var.license_file_path} ${var.admin_user} ${var.admin_passwd}"
+    command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_instance.nms_example.public_ip} ${pathexpand(var.ssh_private_key)} && bash ../scripts/license_apply.sh https://${aws_instance.nms_example.public_ip} ${var.license_file_path} ${var.admin_user} ${var.admin_passwd}"
   }
 }
 

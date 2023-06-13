@@ -52,7 +52,7 @@ variable "db_client_key_file" {
   description = "Client Key file"
 }
 
-variable "acm_host_ip" {
+variable "nms_host_ip" {
   description = "Host IP address of the API connectivity manager to install agent from"
   type        = string
   default    = null

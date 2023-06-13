@@ -18,7 +18,7 @@ variable ssh_pub_key {
 }
 
 variable template_name {
-  description = "Name of the ACM VM Template"
+  description = "Name of the NMS VM Template"
   type        = string
 }
 
