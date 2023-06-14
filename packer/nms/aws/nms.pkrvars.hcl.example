@@ -9,5 +9,5 @@ nms_api_connectivity_manager_version     = "1.6.0"
 nms_security_monitoring_version          = "1.5.0"
 
 
-#ami_name                                = "my_ami_name" # if not provided, defaults to nms-ubuntu-20-04-<nms_api_connectivity_manager_version>
+#ami_name                                = "my_ami_name" # if not provided, defaults to nms-ubuntu-20-04-<DD-MMM-YYYY>
 #subnet_id                               = "my_subnet_id" # if not provided, defaults to in default vpc
