@@ -1,8 +1,8 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-# NGINX Management SuiteInfrastructure
+# NGINX Management Suite Infrastructure
 
-This repo contains the instructions that can be used to generate images and provides an example infrastructure of NGINX Management Suite API Connectivity Manager environments including NGINX-Devportal and NGINX-Agents using best practice security configuration.
+This repo contains the instructions that can be used to generate images and provides example infrastructure of NGINX Management Suite environments including NGINX-Agents and a Devportal using best practice security configuration.
 
 - [Image generation using packer](packer/README.md)
 - [Infrastructure Deployments using terraform](terraform/README.md)
