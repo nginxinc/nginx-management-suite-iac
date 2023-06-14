@@ -1,4 +1,4 @@
-base_ami_name                            = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
+base_ami_name                            = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
 base_ami_owner_acct                      = "099720109477"
 build_instance_type                      = "t3.micro"
 build_region                             = "us-west-1"

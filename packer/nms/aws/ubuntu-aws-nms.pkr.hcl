@@ -66,8 +66,8 @@ variable "nms_security_monitoring_version" {
 }
 
 locals {
-  version = replace(var.nms_api_connectivity_manager_version, ".", "-")
-  ami_name = var.ami_name != null ? var.ami_name : "nms-ubuntu-20-04-${local.version}"
+  timestamp = formatdate("DD-MMM-YY", timestamp())
+  ami_name = var.ami_name != null ? var.ami_name : "nms-ubuntu-20-04-${local.timestamp}"
 }
 
 data "amazon-ami" "base_image" {
