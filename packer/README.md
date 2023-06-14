@@ -1,6 +1,6 @@
-# API Connectivity Manager and NGINX Devportal Image Generation
+# NGINX Management Suite Image Generation
 
-This repo contains the templates and scripts that can be used to generate a API Connectivity Manager image.
+This repo contains the templates and scripts that can be used to generate a NGINX Management Suite Control Host image.
 
 ## Requirements
 
@@ -40,10 +40,10 @@ And install the required ansible collections
 
 Follow the README in the relevant directory to create images/machines.
 
-- [API Connectivity Manager AWS](nms/aws/README.md)
-- [API Connectivity Manager GCP](nms/gcp/README.md)
-- [API Connectivity Manager Azure](nms/azure/README.md)
-- [API Connectivity Manager vSphere](nms/vsphere/README.md)
+- [NGINX Management Suite Control Host AWS](nms/aws/README.md)
+- [NGINX Management Suite Control Host GCP](nms/gcp/README.md)
+- [NGINX Management Suite Control Host Azure](nms/azure/README.md)
+- [NGINX Management Suite Control Host vSphere](nms/vsphere/README.md)
 - [NGINX Devportal AWS](devportal/aws/README.md)
 - [NGINX Devportal GCP](devportal/gcp/README.md)
 - [NGINX Devportal Azure](devportal/azure/README.md)
