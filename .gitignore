@@ -21,6 +21,7 @@ Thumbs.db
 
 
 **.env
+*get-pip.py
 .terraform.lock.hcl
 public_ip
 terraform.tfstate*
