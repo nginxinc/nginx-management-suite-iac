@@ -23,6 +23,11 @@ variable "nms_api_connectivity_manager_version" {
   default = "1.6.0"
 }
 
+variable "nms_security_monitoring_version" {
+  type    = string
+  default = "1.5.0"
+}
+
 variable "cluster_name" {
   type    = string
 }
@@ -118,7 +123,7 @@ build {
   }
 
   provisioner "shell-local" {
-    inline = ["${path.root}/../../scripts/write_nms_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key} ${var.nms_api_connectivity_manager_version}"]
+    inline = ["${path.root}/../../scripts/write_nms_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key} ${var.nms_api_connectivity_manager_version} ${var.nms_security_monitoring_version}"]
   }
 
   provisioner "ansible" {

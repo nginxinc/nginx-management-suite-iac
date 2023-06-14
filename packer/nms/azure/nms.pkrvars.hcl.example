@@ -1,10 +1,11 @@
-base_image_offer = "0001-com-ubuntu-server-jammy"
-base_image_publisher = "Canonical"
-base_image_sku = "22_04-lts-gen2"
-build_instance_type = "Standard_B1s"
-nginx_repo_cert = "~/nginx-repo.crt"
-nginx_repo_key = "~/nginx-repo.key"
+base_image_offer                     = "0001-com-ubuntu-server-jammy"
+base_image_publisher                 = "Canonical"
+base_image_sku                       = "22_04-lts-gen2"
+build_instance_type                  = "Standard_B1s"
+nginx_repo_cert                      = "~/nginx-repo.crt"
+nginx_repo_key                       = "~/nginx-repo.key"
 nms_api_connectivity_manager_version = "1.6.0"
+nms_security_monitoring_version      = "1.5.0"
 
 #image_name          = "my_image_name" # if not provided, defaults to nms-ubuntu-20-04-<nms_api_connectivity_manager_version>
 #resource_group_name = "my-resource_group_name"

@@ -1,15 +1,16 @@
 
 nginx_repo_cert                        = "path_to_nginx_repo_cert"
 nginx_repo_key                         = "path_to_nginx_repo_key"
-nms_api_connectivity_manager_version = "1.6.0"
-iso_path                             = "ISO/ubuntu-22.04-live-server-amd64.iso"
-boot_command                         = "c<wait>linux /casper/vmlinuz --- autoinstall<enter><wait>initrd /casper/initrd <enter><wait>boot<enter>"
-cluster_name                         = "my_cluster_name"
-datacenter                           = "target_datacenter"
-datastore                            = "my_datastore"
-network                              = "my_network"
-
-#vsphere_username                    = "my_username"
-#vsphere_password                    = "my_password"
-#vsphere_url                         = "my_vsphere_url"
-#template_name                       = "target_template_name" # if not provided, defaults to nms-ubuntu-22-04-<nms_api_connectivity_manager_version>
+nms_api_connectivity_manager_version   = "1.6.0"
+nms_security_monitoring_version        = "1.5.0"
+iso_path                               = "ISO/ubuntu-22.04-live-server-amd64.iso"
+boot_command                           = "c<wait>linux /casper/vmlinuz --- autoinstall<enter><wait>initrd /casper/initrd <enter><wait>boot<enter>"
+cluster_name                           = "my_cluster_name"
+datacenter                             = "target_datacenter"
+datastore                              = "my_datastore"
+network                                = "my_network"
+  
+#vsphere_username                      = "my_username"
+#vsphere_password                      = "my_password"
+#vsphere_url                           = "my_vsphere_url"
+#template_name                         = "target_template_name" # if not provided, defaults to nms-ubuntu-22-04-<nms_api_connectivity_manager_version>
