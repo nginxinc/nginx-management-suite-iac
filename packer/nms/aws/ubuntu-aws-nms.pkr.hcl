@@ -87,6 +87,7 @@ source "amazon-ebs" "disk" {
     device_name           = "/dev/sda1"
     volume_size           = 20
   }
+  communicator                = "ssh"
   ami_name                    = local.ami_name
   ami_regions                 = var.destination_regions
   instance_type               = var.build_instance_type

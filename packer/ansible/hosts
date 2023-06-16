@@ -1,0 +1,2 @@
+[nms]
+nms-1  ansible_host=10.146.177.241 ansible_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
