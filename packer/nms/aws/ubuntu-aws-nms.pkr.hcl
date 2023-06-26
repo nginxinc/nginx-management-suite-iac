@@ -15,11 +15,11 @@ packer {
 }
 
 variable "base_ami_name" {
-  type    = string
+  type = string
 }
 
 variable "base_ami_owner_acct" {
-  type    = string
+  type = string
 }
 
 variable "build_region" {
@@ -37,7 +37,7 @@ variable "destination_regions" {
   default = ["us-west-1"]
 }
 
-variable "ami_name"{
+variable "ami_name" {
   type    = string
   default = null
 }
@@ -51,7 +51,7 @@ variable "nginx_repo_key" {
 }
 
 variable "subnet_id" {
-  type = string
+  type    = string
   default = null
 }
 
@@ -67,7 +67,7 @@ variable "nms_security_monitoring_version" {
 
 locals {
   timestamp = formatdate("DD-MMM-YY", timestamp())
-  ami_name = var.ami_name != null ? var.ami_name : "nms-ubuntu-20-04-${local.timestamp}"
+  ami_name  = var.ami_name != null ? var.ami_name : "nms-ubuntu-22-04-${local.timestamp}"
 }
 
 data "amazon-ami" "base_image" {
@@ -116,7 +116,7 @@ build {
   }
 
   provisioner "ansible" {
-    ansible_env_vars = ["ANSIBLE_SSH_ARGS='-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa'", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
+    ansible_env_vars = ["ANSIBLE_SSH_ARGS=-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
     extra_arguments  = ["-e ansible_ssh_pass=ubuntu"]
     groups           = ["nms"]
     playbook_file    = "${path.root}/../../ansible/play-nms.yml"
