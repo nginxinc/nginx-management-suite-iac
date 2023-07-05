@@ -10,8 +10,8 @@ set -exo pipefail
 CERT_PATH=${1}
 KEY_PATH=${2}
 ACM_VERSION=${3}
-ADM_VERSION=${3}
-SM_VERSION=${4}
+ADM_VERSION=${4}
+SM_VERSION=${5}
 
 
 mkdir -p ../../ansible/group_vars
