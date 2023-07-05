@@ -10,4 +10,4 @@ roles:
     version: 3.4.2
   - name: ansible-role-nginx-management-suite
     src: https://github.com/nginxinc/ansible-role-nginx-management-suite
-    version: main
+    version: task/add-support-for-adm
