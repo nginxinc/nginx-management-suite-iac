@@ -37,6 +37,11 @@ variable "nms_api_connectivity_manager_version" {
   default = "1.6.0"
 }
 
+variable "nms_app_delivery_manager_version" {
+  type    = string
+  default = "4.0.0"
+}
+
 variable "nms_security_monitoring_version" {
   type    = string
   default = "1.5.0"
@@ -47,8 +52,8 @@ variable "project_id" {
 }
 
 locals {
-  version = replace(var.nms_api_connectivity_manager_version, ".", "-" )
-  image_name = var.image_name != null ? var.image_name : "nms-ubuntu-22-04-${local.version}"
+  timestamp = formatdate("DD-MMM-YY", timestamp())
+  image_name = var.image_name != null ? var.image_name : "nms-ubuntu-22-04-${local.timestamp}"
 }
 
 source "googlecompute" "gcp_disk" {
@@ -74,7 +79,7 @@ build {
   }
 
   provisioner "shell-local" {
-    inline = ["${path.root}/../../scripts/write_nms_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key} ${var.nms_api_connectivity_manager_version} ${var.nms_security_monitoring_version}"]
+    inline = ["${path.root}/../../scripts/write_nms_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key} ${var.nms_api_connectivity_manager_version} ${var.nms_app_delivery_manager_version} ${var.nms_security_monitoring_version}"]
   }
 
   provisioner "ansible" {
