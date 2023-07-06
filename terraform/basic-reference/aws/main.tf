@@ -304,6 +304,16 @@ resource "null_resource" "nms_connection" {
   }
 }
 
+# Temporary workaround. To be deleted.
+resource "null_resource" "adm_restart" {
+  depends_on = [
+    null_resource.nms_connection
+  ]
+  provisioner "local-exec" {
+    command = "bash ../scripts/restart_adm.sh ${var.ssh_user} ${aws_instance.nms_example.public_ip} ${pathexpand(var.ssh_private_key)}"
+  }
+}
+
 resource "null_resource" "agent_connection" {
   depends_on = [
     aws_instance.agent_example
