@@ -59,11 +59,11 @@ sudo apt-get install apache2-utils
 
 Follow the README in the relevant directory
 
-- [API Connectivity Manager AWS](nms/aws/README.md)
-- [API Connectivity Manager GCP](nms/gcp/README.md)
-- [API Connectivity Manager Azure](nms/azure/README.md)
-- [API Connectivity Manager VSphere](nms/vsphere/README.md)
-- [NGINX Devportal AWS](devportal/aws/README.md)
-- [NGINX Devportal Azure](devportal/azure/README.md)
-- [NGINX Devportal GCP](devportal/gcp/README.md)
 - [Reference Architecture AWS](basic-reference/aws/README.md)
+- [Standalone - Control Plane AWS](standalone/nms/aws/README.md)
+- [Standalone - Control Plane GCP](standalone/nms/gcp/README.md)
+- [Standalone - Control Plane Azure](standalone/nms/azure/README.md)
+- [Standalone - Control Plane VSphere](standalone/nms/vsphere/README.md)
+- [Standalone - NGINX Devportal AWS](standalone/devportal/aws/README.md)
+- [Standalone - NGINX Devportal Azure](standalone/devportal/azure/README.md)
+- [Standalone - NGINX Devportal GCP](standalone/devportal/gcp/README.md)

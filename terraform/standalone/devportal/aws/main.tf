@@ -42,7 +42,7 @@ module "vpc" {
 }
 
 module "common" {
-  source                = "../../modules/devportal"
+  source                = "../../../modules/devportal"
   db_ca_cert_file       = var.db_ca_cert_file
   db_client_cert_file   = var.db_client_cert_file
   db_client_key_file    = var.db_client_key_file

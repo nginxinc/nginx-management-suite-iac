@@ -6,7 +6,7 @@
 */
 
 module "nms_common" {
-  source            = "../../modules/nms"
+  source            = "../../../modules/nms"
   admin_user        = var.admin_user
   admin_passwd      = var.admin_passwd
   host_default_user = var.ssh_user
