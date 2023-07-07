@@ -4,7 +4,7 @@ This directory contains templates and scripts to deploy an API Connectivity Mana
 
 ## Requirements
 
-- You have followed the generic README, situated [here](../../README.md)
+- You have followed the generic README, situated [here](../../../README.md)
 - You will need programmatic access to your AWS environment
 
 ## Getting Started
