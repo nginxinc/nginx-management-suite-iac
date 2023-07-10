@@ -1,0 +1,11 @@
+base_image_name                      = "ubuntu-2204-jammy-v20230114"
+build_zone                           = "europe-west4-a"
+build_instance_type                  = "e2-micro"
+nginx_repo_cert                      = "path_to_nginx_repo_cert"
+nginx_repo_key                       = "path_to_nginx_repo_key"
+nginx_management_suite_version       = "1.7.0"
+nms_app_delivery_manager_version     = "4.0.0"
+nms_security_monitoring_version      = "1.5.0"
+project_id                           = "myprojectid"
+
+#image_name                          = "target_image_name" # if not provided, defaults to nms-ubuntu-22-04-<nginx_management_suite_version>

@@ -34,7 +34,7 @@ variable "nginx_repo_key" {
 
 variable "nginx_devportal_version" {
   type    = string
-  default = "1.6.0"
+  default = "1.7.0"
 }
 
 variable "project_id" {
@@ -78,7 +78,7 @@ build {
   }
 
   provisioner "ansible" {
-    ansible_env_vars = ["ANSIBLE_SSH_ARGS='-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa'", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
+    ansible_env_vars = ["ANSIBLE_SSH_ARGS=-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
     extra_arguments  = ["-e ansible_ssh_pass=ubuntu"]
     groups           = ["devportal"]
     playbook_file    = "../../ansible/play-devportal.yml"

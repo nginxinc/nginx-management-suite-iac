@@ -8,7 +8,7 @@ variable "ssh_pub_key" {
   type        = string
 }
 
-variable "acm_host_ip" {
+variable "nms_host_ip" {
   description = "Name of the instance group to use for the agent"
   type        = string
 }

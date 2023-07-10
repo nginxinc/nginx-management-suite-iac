@@ -5,18 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-output "acm_endpoint" {
-  description = "URL for NMS API Connectivity Manager control host"
-  value       = "https://${aws_instance.acm_example.public_ip}"
+output "nms_endpoint" {
+  description = "URL for NMS control host"
+  value       = "https://${aws_instance.nms_example.public_ip}"
 }
 
-output "acm_host_ip" {
-  description = "IP for NMS API Connectivity Manager control host"
-  value       = aws_instance.acm_example.public_ip
+output "nms_host_ip" {
+  description = "IP for NMS control host"
+  value       = aws_instance.nms_example.public_ip
 }
 
-output acm_ssh_command {
-  value = "ssh ${var.ssh_user}@${aws_instance.acm_example.public_ip}"
+output nms_ssh_command {
+  value = "ssh ${var.ssh_user}@${aws_instance.nms_example.public_ip}"
 }
 
 output "dataplane_agent_info" {

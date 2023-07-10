@@ -1,11 +1,11 @@
-# API Connectivity Manager and NGINX Devportal Image Deployment
+# NGINX Management Suite and NGINX Devportal Image Deployment
 
-This repo contains the templates and scripts that can be used to deploy an API Connectivity Manager image.
+This repo contains the templates and scripts that can be used to deploy an NGINX Management Suite image.
 
 ## Requirements
 
 - Linux build environment, e.g. ubuntu-22.04
-- You must have generated the appropriate cloud image/machine using our [packer guide](../packer/README.md).
+- You must have generated the appropriate cloud images/machines using our [packer guide](../packer/README.md).
 - An NGINX Management Suite license. This can be downloaded from [my.f5.com](my.f5.com).
 
 ## Getting Started
@@ -59,11 +59,11 @@ sudo apt-get install apache2-utils
 
 Follow the README in the relevant directory
 
-- [API Connectivity Manager AWS](acm/aws/README.md)
-- [API Connectivity Manager GCP](acm/gcp/README.md)
-- [API Connectivity Manager Azure](acm/azure/README.md)
-- [API Connectivity Manager VSphere](acm/vsphere/README.md)
-- [NGINX Devportal AWS](devportal/aws/README.md)
-- [NGINX Devportal Azure](devportal/azure/README.md)
-- [NGINX Devportal GCP](devportal/gcp/README.md)
 - [Reference Architecture AWS](basic-reference/aws/README.md)
+- [Standalone - Control Plane AWS](standalone/nms/aws/README.md)
+- [Standalone - Control Plane GCP](standalone/nms/gcp/README.md)
+- [Standalone - Control Plane Azure](standalone/nms/azure/README.md)
+- [Standalone - Control Plane VSphere](standalone/nms/vsphere/README.md)
+- [Standalone - NGINX Devportal AWS](standalone/devportal/aws/README.md)
+- [Standalone - NGINX Devportal Azure](standalone/devportal/azure/README.md)
+- [Standalone - NGINX Devportal GCP](standalone/devportal/gcp/README.md)

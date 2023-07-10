@@ -36,7 +36,7 @@ variable "ssh_private_key" {
 }
 
 variable "license_file_path" {
-  description = "Path to the NGINX API Connectivity Manager license file."
+  description = "Path to the NGINX Management Suite license file."
   type        = string
 }
 
@@ -52,7 +52,7 @@ variable "mgmt_cidr_blocks" {
   default     = null
 }
 
-variable "acm_instance_type" {
+variable "nms_instance_type" {
   type    = string
   default = "t3.medium"
 }
@@ -68,8 +68,8 @@ variable "devportal_instance_type" {
   description = "Size of the devportal instance. A minimum of a t3.medium size instance is required if using an embedded pg instance."
 }
 
-variable "acm_ami_id" {
-  description = "API Connectivity Manager AMI being deployed."
+variable "nms_ami_id" {
+  description = "NGINX Management Suite AMI being deployed."
   type        = string
 }
 

@@ -40,7 +40,7 @@ data "template_cloudinit_config" "cloud_init" {
       db_ca_cert_file         = var.db_ca_cert_file != null ? data.local_file.db_ca_cert_file[0].content_base64 : ""
       db_client_cert_file     = var.db_client_cert_file != null ? data.local_file.db_client_cert_file[0].content_base64 : ""
       db_client_key_file      = var.db_client_key_file != null ? data.local_file.db_client_key_file[0].content_base64 : ""
-      acm_host_ip             = var.acm_host_ip != null ? var.acm_host_ip : ""
+      nms_host_ip             = var.nms_host_ip != null ? var.nms_host_ip : ""
       instance_group_name     = var.instance_group_name != null ? var.instance_group_name : ""
       ip_address              = var.ip_address != null ? var.ip_address: ""
       zone                    = var.zone != null ? var.zone: ""

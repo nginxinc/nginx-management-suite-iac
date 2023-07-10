@@ -19,7 +19,7 @@ data "template_cloudinit_config" "agent_cloud_init" {
     content = templatefile("${path.module}/agent_cloud_init.tmpl", {
       default_user        = var.host_default_user
       public_key          = data.local_file.ssh_pub_file.content
-      acm_host_ip         = var.acm_host_ip
+      nms_host_ip         = var.nms_host_ip
       instance_group_name = var.instance_group_name
     })
   }

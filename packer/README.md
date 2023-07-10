@@ -1,6 +1,6 @@
-# API Connectivity Manager and NGINX Devportal Image Generation
+# NGINX Management Suite Image Generation
 
-This repo contains the templates and scripts that can be used to generate a API Connectivity Manager image.
+This repo contains the templates and scripts that can be used to generate a NGINX Management Suite Control Host image.
 
 ## Requirements
 
@@ -18,15 +18,20 @@ Install the following software.
     python3 get-pip.py --user
     python3 -m pip install --user ansible
     export PATH=~/.local/bin/:$PATH # Optional - add ansible to path if wanted
+```
+
+- Install sshpass
+
+```
     sudo apt-get install sshpass #Required for running of ansible playbook
 ```
 
-- [packer >= 1.8](https://learn.hashicorp.com/tutorials/packer/get-started-install-cli)
+- [packer >= 1.8](https://developer.hashicorp.com/packer/downloads)
 
 ```shell
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-sudo apt-get update && sudo apt-get install packer
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install packer
 ```
 
 And install the required ansible collections
@@ -40,10 +45,10 @@ And install the required ansible collections
 
 Follow the README in the relevant directory to create images/machines.
 
-- [API Connectivity Manager AWS](acm/aws/README.md)
-- [API Connectivity Manager GCP](acm/gcp/README.md)
-- [API Connectivity Manager Azure](acm/azure/README.md)
-- [API Connectivity Manager vSphere](acm/vsphere/README.md)
+- [NGINX Management Suite Control Host AWS](nms/aws/README.md)
+- [NGINX Management Suite Control Host GCP](nms/gcp/README.md)
+- [NGINX Management Suite Control Host Azure](nms/azure/README.md)
+- [NGINX Management Suite Control Host vSphere](nms/vsphere/README.md)
 - [NGINX Devportal AWS](devportal/aws/README.md)
 - [NGINX Devportal GCP](devportal/gcp/README.md)
 - [NGINX Devportal Azure](devportal/azure/README.md)

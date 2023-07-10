@@ -1,0 +1,13 @@
+admin_passwd         = "complexPassword*1"
+admin_user           = "admin"
+cluster_name         = "cluster-name"
+datacenter           = "datacenter-name"
+datastore            = "datastore-name"
+network              = "network-name"
+template_name        = "nms-ubuntu-22-04-1-3-1"
+ssh_pub_key          = "~/.ssh/id_rsa.pub"
+ssh_user             = "ubuntu"
+
+#vsphere_username = "my_username"
+#vsphere_password = "my_password"
+#vsphere_url      = "my_vsphere_url"

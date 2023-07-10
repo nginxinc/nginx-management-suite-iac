@@ -40,6 +40,6 @@ bootcmd:
 
 runcmd:
   - |
-    if [ -n "${acm_host_ip}" ] && [ -n "${instance_group_name}" ]; then
-      curl -k "https://${acm_host_ip}/install/nginx-agent" > install.sh && sudo sh install.sh -g ${instance_group_name} && sudo systemctl start nginx-agent
+    if [ -n "${nms_host_ip}" ] && [ -n "${instance_group_name}" ]; then
+      curl -k "https://${nms_host_ip}/install/nginx-agent" > install.sh && sudo sh install.sh -g ${instance_group_name} && sudo systemctl start nginx-agent
     fi

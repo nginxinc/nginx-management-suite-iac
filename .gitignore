@@ -21,12 +21,13 @@ Thumbs.db
 
 
 **.env
+*get-pip.py
 .terraform.lock.hcl
 public_ip
 terraform.tfstate*
 .terraform*
 *.tfvars
-.acm_htpasswd
+.nms_htpasswd
 *.pkrvars.hcl
 packer-manifest.json
 **/user-data

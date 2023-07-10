@@ -3,7 +3,7 @@ base_ami_owner_acct = "099720109477"
 build_instance_type = "t3.micro"
 build_region = "us-west-1"
 destination_regions = ["us-west-1"]
-nginx_devportal_version = "1.6.0"
+nginx_devportal_version = "1.7.0"
 nginx_repo_cert = "~/nginx-repo.crt"
 nginx_repo_key = "~/nginx-repo.key"
 
