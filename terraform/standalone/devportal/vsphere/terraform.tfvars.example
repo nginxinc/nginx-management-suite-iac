@@ -1,5 +1,5 @@
-cluster_name         = "vSAN Cluster"
-datacenter           = "Blue-Dev"
+cluster_name         = "cluster-name"
+datacenter           = "datacenter-name"
 datastore            = "vsanDatastore"
 network              = "VM Network"
 ssh_pub_key          = "~/.ssh/id_rsa.pub"
