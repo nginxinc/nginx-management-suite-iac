@@ -1,7 +1,7 @@
 cluster_name         = "cluster-name"
 datacenter           = "datacenter-name"
-datastore            = "vsanDatastore"
-network              = "VM Network"
+datastore            = "datastore-name"
+network              = "network-name"
 ssh_pub_key          = "~/.ssh/id_rsa.pub"
 ssh_user             = "ubuntu"
 
