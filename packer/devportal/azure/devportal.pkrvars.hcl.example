@@ -4,7 +4,7 @@ base_image_sku = "22_04-lts-gen2"
 build_instance_type = "Standard_B1s"
 nginx_repo_cert = "~/nginx-repo.crt"
 nginx_repo_key = "~/nginx-repo.key"
-nginx_devportal_version = "1.6.0"
+nginx_devportal_version = "1.7.0"
 resource_group_name = "my_resource_group"
 
 #image_name = "target_image_name" # if not provided, defaults to nginx-devportal-ubuntu-20-04-<nginx_devportal_version>

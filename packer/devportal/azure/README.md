@@ -57,7 +57,7 @@ cp devportal.pkrvars.hcl.example devportal.pkrvars.hcl
 | build_instance_type     | _The instance type to use for building the image_                        | `Standard_B1s`                                           | No       |
 | embedded_pg             | _Specify if you would like to embed a postgres or sqlite onto the image_ | `false`                                                  | No       |
 | image_name              | _The name of the final GCP image_                                        | `nginx-devportal-ubuntu-20-04-<nginx_devportal_version>` | No       |
-| nginx_devportal_version | _The version to use for installing NGINX Devportal_                      | `1.6.0`                                                  | No       |
+| nginx_devportal_version | _The version to use for installing NGINX Devportal_                      | `1.7.0`                                                  | No       |
 | nginx_repo_cert         | _Path to cert required to access the yum/deb repo for NMS_               | -                                                        | Yes      |
 | nginx_repo_key          | _Path to key required to access the yum/deb repo for NMS_                | -                                                        | Yes      |
 | resource_group_name     | _The resource group where the build and final image is located_          | -                                                        | Yes      |

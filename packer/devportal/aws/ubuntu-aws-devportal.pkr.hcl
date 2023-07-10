@@ -57,7 +57,7 @@ variable "subnet_id" {
 
 variable "nginx_devportal_version" {
   type    = string
-  default = "1.6.0"
+  default = "1.7.0"
 }
 
 variable "embedded_pg" {
