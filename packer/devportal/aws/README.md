@@ -1,6 +1,6 @@
 # AWS NGINX Devportal Image Generation
 
-This directory contains templates and scripts to create an API Connectivity Manager Ubuntu image to be deployable to AWS
+This directory contains templates and scripts to create an NGINX Devportal Ubuntu image to be deployable to AWS
 
 ## Requirements
 

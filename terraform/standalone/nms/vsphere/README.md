@@ -1,6 +1,6 @@
-# vSphere API Connectivity Manager Machine Template Deployment
+# vSphere NGINX Management Suite Machine Template Deployment
 
-This directory contains templates and scripts to deploy an API Connectivity Manager Ubuntu Virtual Machine to vSphere.
+This directory contains templates and scripts to deploy an NGINX Management Suite Ubuntu Virtual Machine to vSphere.
 
 ## Requirements
 

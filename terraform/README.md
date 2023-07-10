@@ -1,6 +1,6 @@
-# API Connectivity Manager and NGINX Devportal Image Deployment
+# NGINX Management Suite and NGINX Devportal Image Deployment
 
-This repo contains the templates and scripts that can be used to deploy an API Connectivity Manager image.
+This repo contains the templates and scripts that can be used to deploy an NGINX Management Suite image.
 
 ## Requirements
 

@@ -1,6 +1,6 @@
 # GCP NGINX Devportal Image Generation
 
-This directory contains templates and scripts to create an API Connectivity Manager Ubuntu image to be deployable to GCP
+This directory contains templates and scripts to create an NGINX Devportal Ubuntu image to be deployable to GCP
 
 ## Requirements
 

@@ -9,7 +9,9 @@ This directory contains templates and scripts to create an NGINX Management Suit
 
 ## Getting Started
 
-- For GCP compute image builds, you will need to login:
+- Download and install the cli using these instructions: https://cloud.google.com/sdk/docs/install:
+
+- Authenticate with GCP:
 
 ```shell
 gcloud auth application-default login

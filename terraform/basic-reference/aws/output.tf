@@ -6,12 +6,12 @@
  */
 
 output "nms_endpoint" {
-  description = "URL for NMS API Connectivity Manager control host"
+  description = "URL for NMS control host"
   value       = "https://${aws_instance.nms_example.public_ip}"
 }
 
 output "nms_host_ip" {
-  description = "IP for NMS API Connectivity Manager control host"
+  description = "IP for NMS control host"
   value       = aws_instance.nms_example.public_ip
 }
 

@@ -6,7 +6,7 @@ agent_ami_id                    = "my_agent_ami_name"
 devportal_ami_id                = "my_devportal_ami_name"
 aws_region                      = "us-west-1"
 devportal_instance_group_name   = "devportal-group"
-license_file_path               = "./nginx-api-connectivity-manager-license.txt"
+license_file_path               = "./nginx-management-suite-license.txt"
 ssh_pub_key                     = "~/.ssh/id_rsa.pub"
 ssh_private_key                 = "~/.ssh/id_rsa"
 

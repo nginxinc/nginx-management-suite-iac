@@ -6,7 +6,7 @@
 */
 
 output "devportal_host_ip" {
-  description = "IP for NMS API Connectivity Manager control host"
+  description = "IP for NMS control host"
   value       = google_compute_instance.devportal_example.network_interface[0].access_config[0].nat_ip
 }
 

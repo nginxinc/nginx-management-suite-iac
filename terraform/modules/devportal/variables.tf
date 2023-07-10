@@ -53,7 +53,7 @@ variable "db_client_key_file" {
 }
 
 variable "nms_host_ip" {
-  description = "Host IP address of the API connectivity manager to install agent from"
+  description = "Host IP address of the NGINX Management Suite to install agent from"
   type        = string
   default    = null
 }

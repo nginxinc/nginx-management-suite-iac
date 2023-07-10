@@ -36,7 +36,7 @@ variable "ssh_private_key" {
 }
 
 variable "license_file_path" {
-  description = "Path to the NGINX API Connectivity Manager license file."
+  description = "Path to the NGINX Management Suite license file."
   type        = string
 }
 
@@ -69,7 +69,7 @@ variable "devportal_instance_type" {
 }
 
 variable "nms_ami_id" {
-  description = "API Connectivity Manager AMI being deployed."
+  description = "NGINX Management Suite AMI being deployed."
   type        = string
 }
 

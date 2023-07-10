@@ -6,7 +6,7 @@
 */
 
 output "devportal_host_ip" {
-  description = "IP for NMS API Connectivity Manager control host"
+  description = "IP for Devportal host"
   value       = aws_instance.devportal_example.public_ip
 }
 

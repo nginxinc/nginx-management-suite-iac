@@ -52,7 +52,7 @@ variable "project_id" {
 }
 
 locals {
-  timestamp = formatdate("DD-MMM-YY", timestamp())
+  timestamp = lower(formatdate("DD-MMM-YY", timestamp()))
   image_name = var.image_name != null ? var.image_name : "nms-ubuntu-22-04-${local.timestamp}"
 }
 
@@ -60,7 +60,7 @@ source "googlecompute" "gcp_disk" {
   project_id                = var.project_id
   zone                      = var.build_zone
   image_name                = local.image_name
-  image_family              = "nms-api-connectivity-manager"
+  image_family              = "nginx-management-suite"
   source_image              = var.base_image_name
   machine_type              = var.build_instance_type
   ssh_clear_authorized_keys = true
