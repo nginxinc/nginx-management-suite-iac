@@ -46,20 +46,20 @@ To overwrite a saved template use the `-force` flag.
 
 ## Configuration
 
-| Parameter                            | Description                                                                 | Default                                                   | Required |
-| ------------------------------------ | --------------------------------------------------------------------------- | --------------------------------------------------------- | -------- |
-| boot_command                         | _Boot command to run on machine_                                            |                                                           | No       |
-| cluster_name                         | _The vSphere cluster name_                                                  | -                                                         | Yes      |
-| datacenter                           | _The vSphere datacenter name_                                               | -                                                         | Yes      |
-| datastore                            | _The vSphere datastore name_                                                | -                                                         | Yes      |
-| template_name                        | _The name of the final vSphere template_                                    | `nms-ubuntu-22-04-<nms_api_connectivity_manager_version>` | No       |
-| iso_path                             | _Path to the desired ISO to use eg. ISO/ubuntu-22.04-live-server-amd64.iso_ | -                                                         | Yes      |
-| network                              | _The name of the vSphere network to place the template in_                  | -                                                         | Yes      |
-| nms_api_connectivity_manager_version | _The version to use for installing NMS NGINX Management Suite_              | `1.6.0`                                                   | No       |
-| nms_app_delivery_manager_version     | _The version to use for installing NMS App Delivery Manager_                | `4.0.0`                                                   | No       |
-| nms_security_monitoring_version      | _The version to use for installing NMS Security Module_                     | `1.5.0`                                                   | No       |
-| nginx_repo_cert                      | _Path to cert required to access the yum/deb repo for NMS_                  | -                                                         | Yes      |
-| nginx_repo_key                       | _Path to key required to access the yum/deb repo for NMS_                   | -                                                         | Yes      |
-| vsphere_password                     | _The password of the executing vSphere user. _                              | Environment value                                         | No       |
-| vsphere_url                          | _The url of the vSphere API. _                                              | Environment value                                         | No       |
-| vsphere_username                     | _The name of the executing vSphere user._                                   | Environment value                                         | No       |
+| Parameter                        | Description                                                                 | Default                                             | Required |
+| -------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------- | -------- |
+| boot_command                     | _Boot command to run on machine_                                            |                                                     | No       |
+| cluster_name                     | _The vSphere cluster name_                                                  | -                                                   | Yes      |
+| datacenter                       | _The vSphere datacenter name_                                               | -                                                   | Yes      |
+| datastore                        | _The vSphere datastore name_                                                | -                                                   | Yes      |
+| template_name                    | _The name of the final vSphere template_                                    | `nms-ubuntu-22-04-<nginx_management_suite_version>` | No       |
+| iso_path                         | _Path to the desired ISO to use eg. ISO/ubuntu-22.04-live-server-amd64.iso_ | -                                                   | Yes      |
+| network                          | _The name of the vSphere network to place the template in_                  | -                                                   | Yes      |
+| nginx_management_suite_version   | _The version to use for installing NMS NGINX Management Suite_              | `1.7.0`                                             | No       |
+| nms_app_delivery_manager_version | _The version to use for installing NMS App Delivery Manager_                | `4.0.0`                                             | No       |
+| nms_security_monitoring_version  | _The version to use for installing NMS Security Module_                     | `1.5.0`                                             | No       |
+| nginx_repo_cert                  | _Path to cert required to access the yum/deb repo for NMS_                  | -                                                   | Yes      |
+| nginx_repo_key                   | _Path to key required to access the yum/deb repo for NMS_                   | -                                                   | Yes      |
+| vsphere_password                 | _The password of the executing vSphere user. _                              | Environment value                                   | No       |
+| vsphere_url                      | _The url of the vSphere API. _                                              | Environment value                                   | No       |
+| vsphere_username                 | _The name of the executing vSphere user._                                   | Environment value                                   | No       |

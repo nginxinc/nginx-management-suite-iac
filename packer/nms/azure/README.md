@@ -50,16 +50,16 @@ cp nms.pkrvars.hcl.example nms.pkrvars.hcl
 
 ## Configuration
 
-| Parameter                            | Description                                                      | Default                                                   | Required |
-| ------------------------------------ | ---------------------------------------------------------------- | --------------------------------------------------------- | -------- |
-| base_image_offer                     | _The name of the base compute image_                             | -                                                         | Yes      |
-| base_image_publisher                 | _The owner of the base compute image_                            | -                                                         | Yes      |
-| base_image_sku                       | _The sku of the base compute image_                              | -                                                         | Yes      |
-| build_instance_type                  | _The instance type to use for building the image_                | `Standard_B1s`                                            | No       |
-| image_name                           | _The name of the final compute image_                            | `nms-ubuntu-20-04-<nms_api_connectivity_manager_version>` | No       |
-| nms_api_connectivity_manager_version | _The version to use for installing NMS Api Connectivity Manager_ | `1.6.0`                                                   | No       |
-| nms_app_delivery_manager_version     | _The version to use for installing NMS App Delivery Manager_     | `4.0.0`                                                   | No       |
-| nms_security_monitoring_version      | _The version to use for installing NMS Security Module_          | `1.5.0`                                                   | No       |
-| nginx_repo_cert                      | _Path to cert required to access the yum/deb repo for NMS_       | -                                                         | Yes      |
-| nginx_repo_key                       | _Path to key required to access the yum/deb repo for NMS_        | -                                                         | Yes      |
-| resource_group_name                  | _The resource group where the build and final image is located_  | -                                                         | Yes      |
+| Parameter                        | Description                                                      | Default                                             | Required |
+| -------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------- | -------- |
+| base_image_offer                 | _The name of the base compute image_                             | -                                                   | Yes      |
+| base_image_publisher             | _The owner of the base compute image_                            | -                                                   | Yes      |
+| base_image_sku                   | _The sku of the base compute image_                              | -                                                   | Yes      |
+| build_instance_type              | _The instance type to use for building the image_                | `Standard_B1s`                                      | No       |
+| image_name                       | _The name of the final compute image_                            | `nms-ubuntu-20-04-<nginx_management_suite_version>` | No       |
+| nginx_management_suite_version   | _The version to use for installing NMS Api Connectivity Manager_ | `1.7.0`                                             | No       |
+| nms_app_delivery_manager_version | _The version to use for installing NMS App Delivery Manager_     | `4.0.0`                                             | No       |
+| nms_security_monitoring_version  | _The version to use for installing NMS Security Module_          | `1.5.0`                                             | No       |
+| nginx_repo_cert                  | _Path to cert required to access the yum/deb repo for NMS_       | -                                                   | Yes      |
+| nginx_repo_key                   | _Path to key required to access the yum/deb repo for NMS_        | -                                                   | Yes      |
+| resource_group_name              | _The resource group where the build and final image is located_  | -                                                   | Yes      |

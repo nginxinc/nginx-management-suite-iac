@@ -18,9 +18,9 @@ variable "nginx_repo_key" {
   type = string
 }
 
-variable "nms_api_connectivity_manager_version" {
+variable "nginx_management_suite_version" {
   type    = string
-  default = "1.6.0"
+  default = "1.7.0"
 }
 
 variable "nms_app_delivery_manager_version" {
@@ -127,7 +127,7 @@ build {
   }
 
   provisioner "shell-local" {
-    inline = ["${path.root}/../../scripts/write_nms_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key} ${var.nms_api_connectivity_manager_version} ${var.nms_app_delivery_manager_version} ${var.nms_security_monitoring_version}"]
+    inline = ["${path.root}/../../scripts/write_nms_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key} ${var.nginx_management_suite_version} ${var.nms_app_delivery_manager_version} ${var.nms_security_monitoring_version}"]
   }
 
   provisioner "ansible" {
