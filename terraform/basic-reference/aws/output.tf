@@ -7,7 +7,7 @@
 
 output "nms_endpoint" {
   description = "URL for NMS control host"
-  value       = "https://${aws_instance.nms_example.public_ip}"
+  value       = "https://${aws_eip.nms_eip.public_ip}"
 }
 
 output "nms_host_ip" {
@@ -16,7 +16,7 @@ output "nms_host_ip" {
 }
 
 output nms_ssh_command {
-  value = "ssh ${var.ssh_user}@${aws_instance.nms_example.public_ip}"
+  value = "ssh -J ${var.ssh_user}@${aws_instance.bastion_example.public_ip} ${var.ssh_user}@${aws_eip.nms_eip.public_ip}"
 }
 
 output "dataplane_agent_info" {
