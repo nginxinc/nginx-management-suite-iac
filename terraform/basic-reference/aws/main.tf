@@ -113,6 +113,44 @@ module "nms-nlb" {
   }
 }
 
+module "agents-nlb" {
+  source  = "terraform-aws-modules/alb/aws"
+  version = "~> 8.0"
+
+  name = "agents-nlb"
+
+  load_balancer_type = "network"
+
+  vpc_id  = module.vpc.vpc_id
+
+  subnet_mapping = [
+        for eip in aws_eip.agent_eip : {
+          subnet_id = local.public_subnet_id
+          allocation_id = eip.public_ip
+         }
+        ]
+
+  target_groups = [
+   {
+      backend_protocol = "TCP"
+      backend_port     = 80
+      target_type      = "instance"
+
+      targets = {
+        for idx, target_instance in aws_instance.agent_example :
+           "target-${idx + 1}" => {
+            target_id = target_instance.id
+            port      = 80
+          }
+      }
+   }
+  ]
+
+  tags = {
+    Environment = "Agents"
+  }
+}
+
 module "devportal-nlb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 8.0"
@@ -265,12 +303,6 @@ resource "aws_eip" "agent_eip" {
   count = var.agent_count
 }
 
-resource "aws_eip_association" "agent_eip_assoc" {
-  count         = var.agent_count
-  instance_id   = aws_instance.agent_example[count.index].id
-  allocation_id = aws_eip.agent_eip[count.index].id
-}
-
 resource "aws_instance" "nms_example" {
   ami                                  = var.nms_ami_id
   instance_type                        = var.nms_instance_type
@@ -418,7 +450,7 @@ resource "aws_security_group" "agent_secgroup" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = local.dataplane_cidr_blocks
+    cidr_blocks = concat([module.vpc.vpc_cidr_block],local.dataplane_cidr_blocks)
   }
 
   egress {
@@ -465,7 +497,7 @@ resource "aws_security_group" "devportal_secgroup" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = local.dataplane_cidr_blocks
+    cidr_blocks = concat([module.vpc.vpc_cidr_block],local.dataplane_cidr_blocks)
   }
 
   egress {
