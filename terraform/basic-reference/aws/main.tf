@@ -109,7 +109,54 @@ module "nms-nlb" {
   ]
 
   tags = {
-    Environment = "Test"
+    Environment = "NMS"
+  }
+}
+
+module "devportal-nlb" {
+  source  = "terraform-aws-modules/alb/aws"
+  version = "~> 8.0"
+
+  name = "devportal-nlb"
+
+  load_balancer_type = "network"
+
+  vpc_id  = module.vpc.vpc_id
+
+  subnet_mapping = [{
+    subnet_id = local.public_subnet_id
+    allocation_id = aws_eip.devportal_eip.id
+  }]
+
+  target_groups = [
+   {
+      backend_protocol = "TCP"
+      backend_port     = 80
+      target_type      = "instance"
+
+      targets = {
+        my_target = {
+        target_id = aws_instance.devportal_example.id
+        port = 80
+        }
+      }
+   },
+   {
+      backend_protocol = "TCP"
+      backend_port     = 81
+      target_type      = "instance"
+
+      targets = {
+        my_target = {
+        target_id = aws_instance.devportal_example.id
+        port = 81
+        }
+      }
+   }
+  ]
+
+  tags = {
+    Environment = "Devportal"
   }
 }
 
@@ -222,11 +269,6 @@ resource "aws_eip_association" "agent_eip_assoc" {
   count         = var.agent_count
   instance_id   = aws_instance.agent_example[count.index].id
   allocation_id = aws_eip.agent_eip[count.index].id
-}
-
-resource "aws_eip_association" "devportal_eip_assoc" {
-  instance_id   = aws_instance.devportal_example.id
-  allocation_id = aws_eip.devportal_eip.id
 }
 
 resource "aws_instance" "nms_example" {
@@ -445,6 +487,7 @@ resource "null_resource" "bastion_nms_connection" {
     aws_instance.nms_example,
     aws_instance.bastion_example
   ]
+
   provisioner "local-exec" {
     command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_instance.bastion_example.public_ip} ${aws_instance.nms_example.private_ip} ${pathexpand(var.ssh_private_key)} && bash ../scripts/license_apply.sh https://${aws_eip.nms_eip.public_ip} ${var.license_file_path} ${var.admin_user} ${var.admin_passwd}"
   }
