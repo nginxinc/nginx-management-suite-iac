@@ -123,12 +123,10 @@ module "agents-nlb" {
 
   vpc_id  = module.vpc.vpc_id
 
-  subnet_mapping = [
-        for eip in aws_eip.agent_eip : {
-          subnet_id = local.public_subnet_id
-          allocation_id = eip.public_ip
-         }
-        ]
+  subnet_mapping = [{
+        subnet_id = local.public_subnet_id
+        allocation_id = aws_eip.agent_eip.id
+  }]
 
   target_groups = [
    {
@@ -300,7 +298,6 @@ resource "aws_eip" "devportal_eip" {
 
 resource "aws_eip" "agent_eip" {
   vpc   = true
-  count = var.agent_count
 }
 
 resource "aws_instance" "nms_example" {
@@ -384,7 +381,7 @@ resource "aws_security_group" "nms_secgroup" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = concat(local.mgmt_cidr_blocks, [module.vpc.vpc_cidr_block], [for eip in aws_eip.agent_eip : "${eip.public_ip}/32"], ["${aws_eip.devportal_eip.public_ip}/32"])
+    cidr_blocks = concat(local.mgmt_cidr_blocks, [module.vpc.vpc_cidr_block], ["${aws_eip.agent_eip.public_ip}/32"], ["${aws_eip.devportal_eip.public_ip}/32"])
   }
 
   egress {
