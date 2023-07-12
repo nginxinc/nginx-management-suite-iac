@@ -12,7 +12,7 @@ output "nms_endpoint" {
 
 output "nms_host_ip" {
   description = "IP for NMS control host"
-  value       = aws_instance.nms_example.public_ip
+  value       = aws_instance.nms_example.private_ip
 }
 
 output nms_ssh_command {

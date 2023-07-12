@@ -57,6 +57,12 @@ variable "nms_instance_type" {
   default = "t3.medium"
 }
 
+variable "bastion_instance_type" {
+  type    = string
+  default = "t3.micro"
+}
+
+
 variable "agent_instance_type" {
   type    = string
   default = "t3.micro"
