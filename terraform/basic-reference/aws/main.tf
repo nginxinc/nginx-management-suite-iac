@@ -128,6 +128,12 @@ module "agents-nlb" {
         allocation_id = aws_eip.agent_eip.id
   }]
 
+  http_tcp_listeners = [{
+      port               = 80,
+      protocol           = "TCP"
+    }
+  ]
+
   target_groups = [
    {
       backend_protocol = "TCP"
@@ -163,6 +169,16 @@ module "devportal-nlb" {
     subnet_id = local.public_subnet_id
     allocation_id = aws_eip.devportal_eip.id
   }]
+
+  http_tcp_listeners = [{
+      port               = 80,
+      protocol           = "TCP"
+    },
+    {
+      port               = 81,
+      protocol           = "TCP"
+    }
+  ]
 
   target_groups = [
    {
@@ -251,7 +267,7 @@ module "agent_common" {
   ssh_pub_key         = pathexpand(var.ssh_pub_key)
 
   depends_on = [
-    aws_instance.nms_example
+    null_resource.bastion_nms_connection
   ]
 }
 
@@ -272,7 +288,7 @@ module "devportal_common" {
   zone                = var.devportal_zone
 
   depends_on = [
-    aws_instance.nms_example
+    null_resource.bastion_nms_connection
   ]
 }
 
@@ -440,7 +456,7 @@ resource "aws_security_group" "agent_secgroup" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = local.dataplane_cidr_blocks
+    cidr_blocks = concat([module.vpc.vpc_cidr_block],local.dataplane_cidr_blocks)
   }
 
   ingress {
@@ -480,14 +496,14 @@ resource "aws_security_group" "devportal_secgroup" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = local.dataplane_cidr_blocks
+    cidr_blocks = concat([module.vpc.vpc_cidr_block],local.dataplane_cidr_blocks)
   }
 
   ingress {
     from_port   = 81
     to_port     = 81
     protocol    = "tcp"
-    cidr_blocks = ["${aws_eip.nms_eip.public_ip}/32"]
+    cidr_blocks = concat([module.vpc.vpc_cidr_block],["${aws_eip.nms_eip.public_ip}/32"])
   }
 
   ingress {
@@ -513,7 +529,7 @@ resource "aws_security_group" "devportal_secgroup" {
 
 resource "null_resource" "bastion_nms_connection" {
   depends_on = [
-    aws_instance.nms_example,
+    module.nms-nlb,
     aws_instance.bastion_example
   ]
 
