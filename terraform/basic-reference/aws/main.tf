@@ -397,7 +397,7 @@ resource "aws_security_group" "nms_secgroup" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = concat(local.mgmt_cidr_blocks, [module.vpc.vpc_cidr_block], ["${aws_eip.agent_eip.public_ip}/32"], ["${aws_eip.devportal_eip.public_ip}/32"])
+    cidr_blocks = concat(local.mgmt_cidr_blocks, [module.vpc.vpc_cidr_block], ["${module.vpc.nat_public_ips[0]}/32"])
   }
 
   egress {
