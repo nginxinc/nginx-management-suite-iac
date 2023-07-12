@@ -44,6 +44,75 @@ data "aws_ami" "bastion_base_image" {
   owners      = ["099720109477"]
 }
 
+resource "tls_private_key" "nms" {
+  algorithm = "RSA"
+}
+
+resource "tls_self_signed_cert" "nms" {
+  private_key_pem = tls_private_key.nms.private_key_pem
+
+
+  subject {
+    common_name  = aws_eip.nms_eip.public_ip
+  }
+
+  validity_period_hours = 12
+
+  allowed_uses = [
+    "server_auth",
+  ]
+}
+
+resource "aws_acm_certificate" "nms" {
+  private_key      = tls_private_key.nms.private_key_pem
+  certificate_body = tls_self_signed_cert.nms.cert_pem
+}
+
+
+module "nms-nlb" {
+  source  = "terraform-aws-modules/alb/aws"
+  version = "~> 8.0"
+
+  name = "nms-nlb"
+
+  load_balancer_type = "network"
+
+  vpc_id  = module.vpc.vpc_id
+
+  subnet_mapping = [{
+    subnet_id = local.public_subnet_id
+    allocation_id = aws_eip.nms_eip.id
+  }]
+
+  target_groups = [
+    {
+      backend_protocol = "TLS"
+      backend_port     = 443
+      target_type      = "instance"
+
+      targets = {
+        my_target = {
+        target_id = aws_instance.nms_example.id
+        port = 443
+        }
+      }
+   }
+  ]
+
+  https_listeners = [
+    {
+      port               = 443
+      protocol           = "TLS"
+      certificate_arn    = aws_acm_certificate.nms.arn
+
+    }
+  ]
+
+  tags = {
+    Environment = "Test"
+  }
+}
+
 resource "random_shuffle" "random_az" {
   input = data.aws_availability_zones.available_zones.names
 }
@@ -94,7 +163,7 @@ module "nms_common" {
 module "agent_common" {
   source              = "../../modules/agent"
   host_default_user   = var.ssh_user
-  nms_host_ip         = aws_instance.nms_example.public_ip
+  nms_host_ip         = aws_eip.nms_eip.public_ip
   instance_group_name = var.agent_instance_group_name
   ssh_pub_key         = pathexpand(var.ssh_pub_key)
 
@@ -106,7 +175,7 @@ module "agent_common" {
 module "devportal_common" {
   source              = "../../modules/devportal"
   host_default_user   = var.ssh_user
-  nms_host_ip         = aws_instance.nms_example.public_ip
+  nms_host_ip         = aws_eip.nms_eip.public_ip
   instance_group_name = var.devportal_instance_group_name
   ssh_pub_key         = pathexpand(var.ssh_pub_key)
   db_ca_cert_file     = var.devportal_db_ca_cert_file
@@ -135,6 +204,11 @@ data "local_file" "my_public_ip" {
   filename   = local.public_ip_file
 }
 
+resource "aws_eip" "nms_eip" {
+  vpc = true
+}
+
+
 resource "aws_eip" "devportal_eip" {
   vpc = true
 }
@@ -160,7 +234,6 @@ resource "aws_instance" "nms_example" {
   instance_type                        = var.nms_instance_type
   vpc_security_group_ids               = [aws_security_group.nms_secgroup.id]
   instance_initiated_shutdown_behavior = "terminate"
-  associate_public_ip_address          = true 
   subnet_id                            = local.controlplane_subnet_id
   user_data = module.nms_common.nms_cloud_init.rendered
   user_data_replace_on_change = true
@@ -237,7 +310,7 @@ resource "aws_security_group" "nms_secgroup" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = concat(local.mgmt_cidr_blocks, [for eip in aws_eip.agent_eip : "${eip.public_ip}/32"], ["${aws_eip.devportal_eip.public_ip}/32"])
+    cidr_blocks = concat(local.mgmt_cidr_blocks, [module.vpc.vpc_cidr_block], [for eip in aws_eip.agent_eip : "${eip.public_ip}/32"], ["${aws_eip.devportal_eip.public_ip}/32"])
   }
 
   egress {
@@ -343,7 +416,7 @@ resource "aws_security_group" "devportal_secgroup" {
     from_port   = 81
     to_port     = 81
     protocol    = "tcp"
-    cidr_blocks = ["${aws_instance.nms_example.private_ip}/32"]
+    cidr_blocks = ["${aws_eip.nms_eip.public_ip}/32"]
   }
 
   ingress {
@@ -373,7 +446,7 @@ resource "null_resource" "bastion_nms_connection" {
     aws_instance.bastion_example
   ]
   provisioner "local-exec" {
-    command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_instance.bastion_example.public_ip} ${aws_instance.nms_example.private_ip} ${pathexpand(var.ssh_private_key)}"  # && bash ../scripts/license_apply.sh https://${aws_instance.nms_example.public_ip} ${var.license_file_path} ${var.admin_user} ${var.admin_passwd}"
+    command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_instance.bastion_example.public_ip} ${aws_instance.nms_example.private_ip} ${pathexpand(var.ssh_private_key)} && bash ../scripts/license_apply.sh https://${aws_eip.nms_eip.public_ip} ${var.license_file_path} ${var.admin_user} ${var.admin_passwd}"
   }
 }
 
