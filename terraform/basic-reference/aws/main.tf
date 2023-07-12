@@ -160,6 +160,7 @@ resource "aws_instance" "nms_example" {
   instance_type                        = var.nms_instance_type
   vpc_security_group_ids               = [aws_security_group.nms_secgroup.id]
   instance_initiated_shutdown_behavior = "terminate"
+  associate_public_ip_address          = true 
   subnet_id                            = local.controlplane_subnet_id
   user_data = module.nms_common.nms_cloud_init.rendered
   user_data_replace_on_change = true
@@ -288,7 +289,7 @@ resource "aws_security_group" "agent_secgroup" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = local.mgmt_cidr_blocks
+    cidr_blocks = ["${aws_instance.bastion_example.private_ip}/32"]
   }
 
   ingress {
@@ -328,7 +329,7 @@ resource "aws_security_group" "devportal_secgroup" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = local.mgmt_cidr_blocks
+    cidr_blocks = ["${aws_instance.bastion_example.private_ip}/32"]
   }
 
   ingress {
@@ -386,22 +387,22 @@ resource "null_resource" "adm_restart" {
   }
 }
 
-# resource "null_resource" "agent_connection" {
-#   depends_on = [
-#     aws_instance.agent_example
-#   ]
+resource "null_resource" "agent_connection" {
+  depends_on = [
+    aws_instance.agent_example
+  ]
 
-#   count = var.agent_count
-#   provisioner "local-exec" {
-#     command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_instance.bastion_example.public_ip} ${aws_eip.agent_eip[count.index].public_ip} ${pathexpand(var.ssh_private_key)}"
-#   }
-# }
+  count = var.agent_count
+  provisioner "local-exec" {
+    command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_instance.bastion_example.public_ip} ${aws_instance.agent_example[count.index].private_ip} ${pathexpand(var.ssh_private_key)}"
+  }
+}
 
-# resource "null_resource" "devportal_connection" {
-#   depends_on = [
-#     aws_instance.devportal_example
-#   ]
-#   provisioner "local-exec" {
-#     command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_instance.bastion_example.public_ip} ${aws_eip.devportal_eip.public_ip} ${pathexpand(var.ssh_private_key)}"
-#   }
-# }
+resource "null_resource" "devportal_connection" {
+  depends_on = [
+    aws_instance.devportal_example
+  ]
+  provisioner "local-exec" {
+    command = "bash ../scripts/ssh_check.sh ${var.ssh_user} ${aws_instance.bastion_example.public_ip} ${aws_instance.devportal_example.private_ip} ${pathexpand(var.ssh_private_key)}"
+  }
+}
