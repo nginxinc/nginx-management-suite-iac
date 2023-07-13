@@ -28,18 +28,3 @@ output "dataplane_agent_info" {
     }
   }
 }
-
-output "devportal_endpoint" {
-  description = "IP for Devportal host"
-  value       = "http://${aws_eip.devportal_eip.public_ip}/devportal"
-}
-
-
-output "devportal_host_ip" {
-  description = "IP for Devportal host"
-  value       = aws_eip.devportal_eip.public_ip
-}
-
-output devportal_ssh_command {
-  value = "ssh -J ${var.ssh_user}@${aws_instance.bastion_example.public_ip} ${var.ssh_user}@${aws_instance.devportal_example.private_ip}"
-}
