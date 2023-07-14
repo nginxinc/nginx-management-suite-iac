@@ -106,6 +106,8 @@ module "agents_alb" {
 
   subnets = module.vpc.public_subnets
 
+  security_groups = [ aws_security_group.agent_alb_secgroup.id ]
+
   http_tcp_listeners = [{
       port               = 80,
       protocol           = "HTTP"

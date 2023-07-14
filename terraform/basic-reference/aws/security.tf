@@ -55,6 +55,39 @@ resource "aws_security_group" "nms_alb_secgroup" {
   }
 }
 
+resource "aws_security_group" "agent_alb_secgroup" {
+  name   = "agent-alb-secgroup"
+  vpc_id = local.vpc_id
+  tags = {
+    Name = "agent-alb-secgroup"
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = var.dataplane_cidr_blocks
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = var.dataplane_cidr_blocks
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  timeouts {
+    create = "2m"
+  }
+}
+
 resource "aws_security_group" "nms_secgroup" {
   name   = "nms-secgroup"
   vpc_id = local.vpc_id
