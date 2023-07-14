@@ -4,7 +4,7 @@ variable "admin_user" {
   default     = "admin"
 }
 
-variable "admin_passwd" {
+variable "admin_password" {
   description = "The password associated with the admin user"
   type        = string
   sensitive   = true
@@ -18,16 +18,4 @@ variable "host_default_user" {
 variable "ssh_pub_key" {
   description = "Path to ssh key for access to host"
   type        = string
-}
-
-variable "devportal_ip" {
-  description = "IP address of the devportal."
-  type        = string
-  default    = null
-}
-
-variable "devportal_zone" {
-  description = "Name of the zone that the devportal is on. "
-  type        = string
-  default    = null
 }

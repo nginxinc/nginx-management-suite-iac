@@ -37,7 +37,6 @@ data "aws_subnet" "subnet" {
 locals {
   vpc_id               = var.subnet_id != null ? data.aws_subnet.subnet[0].vpc_id : module.vpc[0].vpc_id
   subnet_id            = var.subnet_id != null ? var.subnet_id : module.vpc[0].public_subnets[0]
-  public_ip_file       = "${path.module}/public_ip"
 }
 
 module "vpc" {
@@ -59,21 +58,11 @@ module "vpc" {
 module "nms_common" {
   source            = "../../../modules/nms"
   admin_user        = var.admin_user
-  admin_passwd      = var.admin_passwd
+  admin_password      = var.admin_password
   host_default_user = var.ssh_user
   ssh_pub_key       = pathexpand(var.ssh_pub_key)
 }
 
-resource "null_resource" "get_my_public_ip" {
-  provisioner "local-exec" {
-    command = "curl -sSf https://checkip.amazonaws.com > ${local.public_ip_file}"
-  }
-}
-
-data "local_file" "my_public_ip" {
-  depends_on = [null_resource.get_my_public_ip]
-  filename   = local.public_ip_file
-}
 
 resource "aws_instance" "nms_example" {
   ami                                  = var.ami_id
@@ -99,14 +88,14 @@ resource "aws_security_group" "nms-secgroup" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = var.incoming_cidr_blocks != null ? concat(var.incoming_cidr_blocks, ["${chomp(data.local_file.my_public_ip.content)}/32"]) : ["${chomp(data.local_file.my_public_ip.content)}/32"]
+    cidr_blocks = var.incoming_cidr_blocks
   }
 
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = var.incoming_cidr_blocks != null ? concat(var.incoming_cidr_blocks, ["${chomp(data.local_file.my_public_ip.content)}/32"]) : ["${chomp(data.local_file.my_public_ip.content)}/32"]
+    cidr_blocks = var.incoming_cidr_blocks
   }
 
 

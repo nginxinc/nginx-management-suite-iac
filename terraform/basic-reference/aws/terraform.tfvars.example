@@ -1,30 +1,17 @@
 agent_instance_group_name       = "agent-group-name"
-admin_passwd                    = "complexPassword*1"
 admin_user                      = "admin"
 nms_ami_id                      = "my_nms_ami_name"
 agent_ami_id                    = "my_agent_ami_name"
-devportal_ami_id                = "my_devportal_ami_name"
 aws_region                      = "us-west-1"
-devportal_instance_group_name   = "devportal-group"
 license_file_path               = "./nginx-management-suite-license.txt"
+dataplane_cidr_blocks          = []
+mgmt_cidr_blocks               = []
 ssh_pub_key                     = "~/.ssh/id_rsa.pub"
 ssh_private_key                 = "~/.ssh/id_rsa"
 
 #nms_instance_type              = "t3.micro"
 #agent_instance_type            = "t3.micro"
 #agent_count                    = 2
-#devportal_instance_type        = "t3.medium" 
 
 #agent_instance_group_name      = "sports-group"
-#devportal_zone                 = "devportal.example.com"
 
-#devportal_db_type              = "psql"
-#devportal_db_user              = "nginx-devportal"
-#devportal_db_password          = "nginx-devportal"
-#devportal_db_host              = "pg.example.com"
-#devportal_db_ca_cert_file      = "~/ssl/ca.crt" 
-#devportal_db_client_cert_file  = "~/ssl/client.crt" 
-#devportal_db_client_key_file   = "~/ssl/client.key" 
-
-#dataplane_cidr_blocks          = []
-#mgmt_cidr_blocks               = []

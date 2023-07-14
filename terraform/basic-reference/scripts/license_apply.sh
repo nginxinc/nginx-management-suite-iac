@@ -7,16 +7,29 @@ PLATFORM_LICENSE_FILE=$2
 PLATFORM_ADMIN_USER=$3
 PLATFORM_ADMIN_PASS=$4
 PLATFORM_CREDENTIALS="${PLATFORM_ADMIN_USER}:${PLATFORM_ADMIN_PASS}"
+RETRIES=0
+MAX_RETRIES=30
 
 
 LICENSE_STATUS=null
-while [ "${LICENSE_STATUS}" == "null" ]; do
+while [[ "${LICENSE_STATUS}" == "null" ]] && [[ "${RETRIES}" -lt "${MAX_RETRIES}" ]]; do
     echo "Checking license status via platform /api/platform/v1/license api"
-    curl -ks -u "${PLATFORM_CREDENTIALS}" "${PLATFORM_URL}/api/platform/v1/license"
-    LICENSE_STATUS=$(curl -ks -u "${PLATFORM_CREDENTIALS}" "${PLATFORM_URL}/api/platform/v1/license" | jq -r .currentStatus.state.currentInstance.status)
+    LICENSE_STATUS=$(curl -ks -u "${PLATFORM_CREDENTIALS}" "${PLATFORM_URL}/api/platform/v1/license" || echo "curl_error")
+    if [ "${LICENSE_STATUS}" != "curl_error" ]; then
+        LICENSE_STATUS=$(echo "${LICENSE_STATUS}" | jq -r .currentStatus.state.currentInstance.status)
+    else
+        echo "curl error occurred, retrying..."
+        LICENSE_STATUS="null"
+        RETRIES=$((RETRIES+1))
+    fi
     echo "LICENSE_STATUS=${LICENSE_STATUS}"
-    sleep 1
+    sleep 20
 done
+
+if [[ "${RETRIES}" -eq "${MAX_RETRIES}" ]]; then
+    echo "Reached max retries for setting license file, exiting..."
+    exit 1
+fi
 
 if [ "${LICENSE_STATUS}" == "NONE" ]; then
     echo "applying license..."

@@ -28,7 +28,7 @@ variable "admin_user" {
   default     = "admin"
 }
 
-variable "admin_passwd" {
+variable "admin_password" {
   description = "The password associated with the admin user"
   type        = string
 }
@@ -36,7 +36,7 @@ variable "admin_passwd" {
 variable "incoming_cidr_blocks" {
   description = "List of cidr blocks (used to allow inbound access in public cloud)."
   type        = list(string)
-  default     = null
+  default     = []
 }
 
 variable "instance_type" {

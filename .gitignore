@@ -23,7 +23,6 @@ Thumbs.db
 **.env
 *get-pip.py
 .terraform.lock.hcl
-public_ip
 terraform.tfstate*
 .terraform*
 *.tfvars
@@ -32,4 +31,3 @@ terraform.tfstate*
 packer-manifest.json
 **/user-data
 packer/ansible/roles/
-!packer/ansible/roles/nginx_devportal

@@ -23,6 +23,12 @@ export TF_VAR_vsphere_user="my-username"
 cp terraform.tfvars.example terraform.tfvars
 ```
 
+- Use an environment variable to store the admin password you would like to use.
+
+```
+export TF_VAR_admin_password=xxxxxxxxxxxxxxx
+```
+
 - Initialise Terraform
 
   ```shell
@@ -39,7 +45,7 @@ cp terraform.tfvars.example terraform.tfvars
 
 | Parameter        | Description                                                          | Default             | Required |
 | ---------------- | -------------------------------------------------------------------- | ------------------- | -------- |
-| admin_passwd     | _The password for the created `admin_user`_                          | -                   | Yes      |
+| admin_password   | _The password for the created `admin_user`_                          | -                   | Yes      |
 | admin_user       | _Name of the admin user_                                             | `admin`             | No       |
 | cluster_name     | _The vSphere cluster name_                                           | -                   | Yes      |
 | datacenter       | _The vSphere datacenter name_                                        | -                   | Yes      |

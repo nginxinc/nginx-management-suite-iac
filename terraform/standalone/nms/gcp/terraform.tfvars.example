@@ -1,7 +1,6 @@
-admin_passwd         = "complexPassword*1"
 admin_user           = "admin"
 image_name           = "myimagename"
-incoming_cidr_blocks = []
+incoming_cidr_blocks = ["x.x.x.x/32"]
 instance_type        = "e2-micro"
 project_id           = "myprojectid"
 ssh_pub_key          = "~/.ssh/id_rsa.pub"

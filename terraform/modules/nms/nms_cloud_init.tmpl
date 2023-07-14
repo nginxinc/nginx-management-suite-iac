@@ -12,9 +12,3 @@ write_files:
     owner: nms:nms
     path: /etc/nms/nginx/.htpasswd
     permissions: '0660'
-
-bootcmd:
-  - |
-    if [ -n "${devportal_ip}" ] && [ -n "${devportal_zone}" ]; then
-      echo "\n${devportal_ip} acm.${devportal_zone}\n" >> /etc/hosts
-    fi
