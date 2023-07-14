@@ -132,15 +132,3 @@ module "agents_alb" {
     Environment = "Agents"
   }
 }
-
-resource "null_resource" "get_my_public_ip" {
-  provisioner "local-exec" {
-    command = "curl -sSf https://checkip.amazonaws.com > ${local.public_ip_file}"
-  }
-}
-
-data "local_file" "my_public_ip" {
-  depends_on = [null_resource.get_my_public_ip]
-  filename   = local.public_ip_file
-}
-

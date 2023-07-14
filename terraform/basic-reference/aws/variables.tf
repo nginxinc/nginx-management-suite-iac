@@ -43,13 +43,13 @@ variable "license_file_path" {
 variable "dataplane_cidr_blocks" {
   description = "List of cidr blocks (used to allow inbound access to Dataplane instances)."
   type        = list(string)
-  default     = null
+  default     = []
 }
 
 variable "mgmt_cidr_blocks" {
   description = "List of cidr blocks used for remote management of instances."
   type        = list(string)
-  default     = null
+  default     = []
 }
 
 variable "nms_instance_type" {

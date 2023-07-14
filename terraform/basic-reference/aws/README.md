@@ -29,6 +29,8 @@ cp terraform.tfvars.example terraform.tfvars
 export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 ```
 
+- Add the required IP ranges to the "mgmt_cidr_blocks" and "dataplane_cidr_blocks" in order to access the NMS and Dataplane services.
+
 - Initialise Terraform
 
   ```shell
@@ -58,4 +60,5 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 | ssh_user                  | _User account name allowed access via ssh._                                                                                                                                                                                                            | `ubuntu`            | No       |
 | ssh_pub_key               | _Path to the ssh pub key that will be used for sshing into the host_                                                                                                                                                                                   | `~/.ssh/id_rsa.pub` | No       |
 | ssh_private_key           | _Path to the ssh private key that will be used for sshing into the host. NOTE: This file's permissions must not be set too open, or ssh will not connect ([see this post](https://stackoverflow.com/questions/9270734/ssh-permissions-are-too-open))._ | `~/.ssh/id_rsa`     | No       |
-| incoming_cidr_blocks      | _List of custom CIDR blocks to allow access to NGINX Management Suite UI. The Terraform source IP Is added by default._                                                                                                                                | -                   | No       |
+| mgmt_cidr_blocks          | _List of CIDR blocks to allow access to NGINX Management Suite UI._                                                                                                                                                                                    | -                   | No       |
+| dataplane_cidr_blocks     | _List of CIDR blocks to allow access to the dataplane instances._                                                                                                                                                                                      | -                   | No       |

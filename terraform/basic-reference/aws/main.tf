@@ -10,8 +10,6 @@ locals {
   controlplane_subnet_cidr_blocks = "10.0.101.0/24"
   dataplane_subnet_cidr_blocks    = "10.0.102.0/24"
   public_subnet_cidr_blocks        = ["10.0.103.0/24", "10.0.104.0/24"]
-  dataplane_cidr_blocks           = var.dataplane_cidr_blocks != null ? concat(var.dataplane_cidr_blocks, ["${chomp(data.local_file.my_public_ip.content)}/32"]) : ["${chomp(data.local_file.my_public_ip.content)}/32"]
-  mgmt_cidr_blocks                = var.mgmt_cidr_blocks != null ? concat(var.mgmt_cidr_blocks, ["${chomp(data.local_file.my_public_ip.content)}/32"]) : ["${chomp(data.local_file.my_public_ip.content)}/32"]
   public_subnet_id                = module.vpc.public_subnets[0]
   controlplane_subnet_id          = module.vpc.private_subnets[0]
   dataplane_subnet_id             = module.vpc.private_subnets[1]

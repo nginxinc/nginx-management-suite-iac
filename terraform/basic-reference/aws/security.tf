@@ -40,7 +40,7 @@ resource "aws_security_group" "nms_alb_secgroup" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = concat(local.mgmt_cidr_blocks, formatlist("%s/32", module.vpc.nat_public_ips))
+    cidr_blocks = concat(var.mgmt_cidr_blocks, formatlist("%s/32", module.vpc.nat_public_ips))
   }
 
   egress {
@@ -73,7 +73,7 @@ resource "aws_security_group" "nms_secgroup" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = concat(local.mgmt_cidr_blocks, [module.vpc.vpc_cidr_block], formatlist("%s/32", module.vpc.nat_public_ips))
+    cidr_blocks = concat(var.mgmt_cidr_blocks, [module.vpc.vpc_cidr_block], formatlist("%s/32", module.vpc.nat_public_ips))
   }
 
   egress {
@@ -99,7 +99,7 @@ resource "aws_security_group" "bastion_secgroup" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = local.mgmt_cidr_blocks
+    cidr_blocks = var.mgmt_cidr_blocks
   }
 
   egress {
@@ -132,14 +132,14 @@ resource "aws_security_group" "agent_secgroup" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = concat([module.vpc.vpc_cidr_block],local.dataplane_cidr_blocks)
+    cidr_blocks = concat([module.vpc.vpc_cidr_block],var.dataplane_cidr_blocks)
   }
 
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = concat([module.vpc.vpc_cidr_block],local.dataplane_cidr_blocks)
+    cidr_blocks = concat([module.vpc.vpc_cidr_block],var.dataplane_cidr_blocks)
   }
 
   egress {
