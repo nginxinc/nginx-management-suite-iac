@@ -59,6 +59,7 @@ resource "aws_instance" "nms_example" {
   subnet_id                            = local.controlplane_subnet_id
   user_data = module.nms_common.nms_cloud_init.rendered
   user_data_replace_on_change = true
+  iam_instance_profile                  = aws_iam_instance_profile.nms_ssm.name
   tags = {
     Name = "nms_example"
   }

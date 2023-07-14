@@ -31,13 +31,4 @@ resource "null_resource" "apply_nms_license" {
     command = "bash ../scripts/license_apply.sh https://${module.nms_alb.lb_dns_name} ${var.license_file_path} ${var.admin_user} ${var.admin_passwd}"
   }
  }
-
-# Temporary workaround. To be deleted.
-resource "null_resource" "adm_restart" {
-  depends_on = [
-    null_resource.apply_nms_license
-  ]
-  provisioner "local-exec" {
-    command = "bash ../scripts/restart_adm.sh ${var.ssh_user} ${aws_instance.bastion_example.public_ip} ${aws_instance.nms_example.private_ip} ${pathexpand(var.ssh_private_key)}"
-  }
-}
+ 
