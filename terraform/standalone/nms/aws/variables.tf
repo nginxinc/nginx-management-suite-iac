@@ -31,7 +31,7 @@ variable "ssh_pub_key" {
 variable "incoming_cidr_blocks" {
   description = "List of cidr blocks (used to allow inbound access in public cloud)."
   type        = list(string)
-  default     = null
+  default     = []
 }
 
 variable "instance_type" {
