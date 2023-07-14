@@ -11,7 +11,7 @@ variable "admin_user" {
   default     = "admin"
 }
 
-variable "admin_passwd" {
+variable "admin_password" {
   description = "The password associated with the admin user"
   type        = string
 }

@@ -23,6 +23,12 @@ gcloud auth application-default login
 cp terraform.tfvars.example terraform.tfvars
 ```
 
+- Use an environment variable to store the admin password you would like to use.
+
+```
+export TF_VAR_admin_password=xxxxxxxxxxxxxxx
+```
+
 - Initialise Terraform
 
   ```shell
@@ -41,7 +47,7 @@ cp terraform.tfvars.example terraform.tfvars
 
 | Parameter            | Description                                                                                                             | Default             | Required |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------- | -------- |
-| admin_passwd         | _The password for the created `admin_user`_                                                                             | -                   | Yes      |
+| admin_password       | _The password for the created `admin_user`_                                                                             | -                   | Yes      |
 | admin_user           | _Name of the admin user_                                                                                                | `admin`             | No       |
 | image_name           | _Image being deployed_                                                                                                  | -                   | Yes      |
 | incoming_cidr_blocks | _List of custom CIDR blocks to allow access to NGINX Management Suite UI. The Terraform source IP Is added by default._ | -                   | No       |

@@ -25,6 +25,12 @@ cp terraform.tfvars.example terraform.tfvars
 
 - Populate the .tfvars file with vars relative to your environment.
 
+- Use an environment variable to store the admin password you would like to use.
+
+```
+export TF_VAR_admin_password=xxxxxxxxxxxxxxx
+```
+
 - Initialise Terraform
 
   ```shell
@@ -41,7 +47,7 @@ cp terraform.tfvars.example terraform.tfvars
 
 | Parameter            | Description                                                                                                             | Default             | Required |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------- | -------- |
-| admin_passwd         | _The password for the created `admin_user`_                                                                             | -                   | Yes      |
+| admin_password       | _The password for the created `admin_user`_                                                                             | -                   | Yes      |
 | admin_user           | _Name of the admin user_                                                                                                | `admin`             | No       |
 | ami_id               | _AMI Id of image to use_                                                                                                | -                   | Yes      |
 | instance_type        | _AWS Instance type for API Connectivity Manager_                                                                        | `t3.micro`          | No       |

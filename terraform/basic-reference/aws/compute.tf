@@ -28,7 +28,7 @@
 module "nms_common" {
   source            = "../../modules/nms"
   admin_user        = var.admin_user
-  admin_passwd      = var.admin_passwd
+  admin_password    = var.admin_password
   host_default_user = var.ssh_user
   ssh_pub_key       = pathexpand(var.ssh_pub_key)
 }

@@ -26,7 +26,7 @@ cp terraform.tfvars.example terraform.tfvars
 - Use an environment variable to store the admin password you would like to use.
 
 ```
-export TF_VAR_admin_passwd=xxxxxxxxxxxxxxx
+export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 ```
 
 - Initialise Terraform
@@ -45,7 +45,7 @@ export TF_VAR_admin_passwd=xxxxxxxxxxxxxxx
 
 | Parameter                 | Description                                                                                                                                                                                                                                            | Default             | Required |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | -------- |
-| admin_passwd              | _The password for the created `admin_user`_                                                                                                                                                                                                            | -                   | Yes      |
+| admin_password            | _The password for the created `admin_user`_                                                                                                                                                                                                            | -                   | Yes      |
 | admin_user                | _Name of the admin user_                                                                                                                                                                                                                               | `admin`             | No       |
 | nms_ami_id                | _AMI Id of the NGINX Management Suite image to use_                                                                                                                                                                                                    | -                   | Yes      |
 | agent_ami_id              | _AMI Id of the NGINX Agent image to use_                                                                                                                                                                                                               | -                   | Yes      |

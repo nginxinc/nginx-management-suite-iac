@@ -24,11 +24,11 @@ locals {
 resource "null_resource" "apply_nms_license" {
   depends_on = [
     module.nms_alb,
-    aws_instance.bastion_example
+    aws_instance.nms_example
   ]
 
   provisioner "local-exec" {
-    command = "bash ../scripts/license_apply.sh https://${module.nms_alb.lb_dns_name} ${var.license_file_path} ${var.admin_user} ${var.admin_passwd}"
+    command = "bash ../scripts/license_apply.sh https://${module.nms_alb.lb_dns_name} ${var.license_file_path} ${var.admin_user} ${var.admin_password}"
   }
  }
  
