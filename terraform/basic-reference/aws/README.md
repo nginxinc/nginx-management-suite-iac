@@ -23,6 +23,12 @@ AWS_SECURITY_TOKEN
 cp terraform.tfvars.example terraform.tfvars
 ```
 
+- Use an environment variable to store the admin password you would like to use.
+
+```
+export TF_VAR_admin_passwd=xxxxxxxxxxxxxxx
+```
+
 - Initialise Terraform
 
   ```shell

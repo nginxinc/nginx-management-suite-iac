@@ -38,8 +38,6 @@ data "template_cloudinit_config" "nms_cloud_init" {
       default_user   = var.host_default_user
       public_key     = data.local_file.ssh_pub_file.content
       htpasswd_file  = data.local_file.htpasswd_file.content
-      devportal_ip   = var.devportal_ip != null ? var.devportal_ip : ""
-      devportal_zone = var.devportal_zone != null ? var.devportal_zone : ""
     })
   }
 }

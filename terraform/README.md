@@ -1,4 +1,4 @@
-# NGINX Management Suite and NGINX Devportal Image Deployment
+# NGINX Management Suite Image Deployment
 
 This repo contains the templates and scripts that can be used to deploy an NGINX Management Suite image.
 
@@ -64,6 +64,3 @@ Follow the README in the relevant directory
 - [Standalone - Control Plane GCP](standalone/nms/gcp/README.md)
 - [Standalone - Control Plane Azure](standalone/nms/azure/README.md)
 - [Standalone - Control Plane VSphere](standalone/nms/vsphere/README.md)
-- [Standalone - NGINX Devportal AWS](standalone/devportal/aws/README.md)
-- [Standalone - NGINX Devportal Azure](standalone/devportal/azure/README.md)
-- [Standalone - NGINX Devportal GCP](standalone/devportal/gcp/README.md)

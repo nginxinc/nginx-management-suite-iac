@@ -1,5 +1,4 @@
 agent_instance_group_name       = "agent-group-name"
-admin_passwd                    = "complexPassword*1"
 admin_user                      = "admin"
 nms_ami_id                      = "my_nms_ami_name"
 agent_ami_id                    = "my_agent_ami_name"

@@ -2,7 +2,7 @@
 
 # NGINX Management Suite Infrastructure
 
-This repo contains the instructions that can be used to generate images and provides example infrastructure of NGINX Management Suite environments including NGINX-Agents and NGINX-Devportal using best practice security configuration.
+This repo contains the instructions that can be used to generate images and provides example infrastructure of NGINX Management Suite environments including NGINX-Agents using best practice security configuration.
 
 - [Image generation using packer](packer/README.md)
 - [Infrastructure Deployments using terraform](terraform/README.md)

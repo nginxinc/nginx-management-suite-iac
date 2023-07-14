@@ -19,15 +19,3 @@ variable "ssh_pub_key" {
   description = "Path to ssh key for access to host"
   type        = string
 }
-
-variable "devportal_ip" {
-  description = "IP address of the devportal."
-  type        = string
-  default    = null
-}
-
-variable "devportal_zone" {
-  description = "Name of the zone that the devportal is on. "
-  type        = string
-  default    = null
-}
