@@ -12,14 +12,10 @@ module "vpc" {
   name = "nms_vpc"
   cidr = "10.0.0.0/16"
 
-  azs             = [random_shuffle.random_az.result[0]]
-  public_subnets  = [local.public_subnet_cidr_block]
+  azs             = [random_shuffle.random_az.result[0], random_shuffle.random_az.result[1]]
+  public_subnets  = local.public_subnet_cidr_blocks
   private_subnets = [local.controlplane_subnet_cidr_blocks, local.dataplane_subnet_cidr_blocks]
-
   enable_nat_gateway = true
-  single_nat_gateway = true
-  one_nat_gateway_per_az = false
-
   tags = {
     Terraform   = "true"
     Environment = "dev"

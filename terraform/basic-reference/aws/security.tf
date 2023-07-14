@@ -14,7 +14,7 @@ resource "tls_self_signed_cert" "nms" {
 
 
   subject {
-    common_name  = aws_eip.nms_eip.public_ip
+    common_name  = module.nms_alb.lb_dns_name
   }
 
   validity_period_hours = 12
@@ -27,6 +27,32 @@ resource "tls_self_signed_cert" "nms" {
 resource "aws_acm_certificate" "nms" {
   private_key      = tls_private_key.nms.private_key_pem
   certificate_body = tls_self_signed_cert.nms.cert_pem
+}
+
+resource "aws_security_group" "nms_alb_secgroup" {
+  name   = "nms-alb-secgroup"
+  vpc_id = local.vpc_id
+  tags = {
+    Name = "nms-alb-secgroup"
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = concat(local.mgmt_cidr_blocks, formatlist("%s/32", module.vpc.nat_public_ips))
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  timeouts {
+    create = "2m"
+  }
 }
 
 resource "aws_security_group" "nms_secgroup" {
@@ -47,7 +73,7 @@ resource "aws_security_group" "nms_secgroup" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = concat(local.mgmt_cidr_blocks, [module.vpc.vpc_cidr_block], ["${module.vpc.nat_public_ips[0]}/32"])
+    cidr_blocks = concat(local.mgmt_cidr_blocks, [module.vpc.vpc_cidr_block], formatlist("%s/32", module.vpc.nat_public_ips))
   }
 
   egress {

@@ -36,12 +36,12 @@ module "nms_common" {
 module "agent_common" {
   source              = "../../modules/agent"
   host_default_user   = var.ssh_user
-  nms_host_ip         = aws_eip.nms_eip.public_ip
+  nms_host_ip         = module.nms_alb.lb_dns_name
   instance_group_name = var.agent_instance_group_name
   ssh_pub_key         = pathexpand(var.ssh_pub_key)
 
   depends_on = [
-    null_resource.bastion_nms_connection
+    null_resource.apply_nms_license
   ]
 }
 
@@ -79,7 +79,7 @@ resource "aws_instance" "bastion_example" {
 
 resource "aws_instance" "agent_example" {
   depends_on = [
-    null_resource.bastion_nms_connection
+    null_resource.apply_nms_license
   ]
   count                                = var.agent_count
   ami                                  = var.agent_ami_id

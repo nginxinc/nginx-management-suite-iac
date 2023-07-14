@@ -6,26 +6,33 @@
  */
 
 
-module "nms-nlb" {
+module "nms_alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 8.0"
 
-  name = "nms-nlb"
+  name = "nms-alb"
 
-  load_balancer_type = "network"
+  load_balancer_type = "application"
 
   vpc_id  = module.vpc.vpc_id
 
-  subnet_mapping = [{
-    subnet_id = local.public_subnet_id
-    allocation_id = aws_eip.nms_eip.id
-  }]
+  subnets = module.vpc.public_subnets
+
+  security_groups = [ aws_security_group.nms_alb_secgroup.id ]
 
   target_groups = [
     {
-      backend_protocol = "TLS"
+      backend_protocol = "HTTPS"
       backend_port     = 443
       target_type      = "instance"
+      protocol_version = "HTTP2"
+
+      health_check    = {
+        healthy_threshold = 2
+        interval          = 10
+        matcher           = "302"
+        protocol          = "HTTPS"
+      }
 
       targets = {
         my_target = {
@@ -33,47 +40,81 @@ module "nms-nlb" {
         port = 443
         }
       }
+   },
+   {
+      backend_protocol = "HTTPS"
+      backend_port     = 443
+      target_type      = "instance"
+      protocol_version = "HTTP1"
+      path             = "/packages-repository"
+
+      health_check    = {
+        healthy_threshold = 2
+        interval          = 10
+        matcher           = "302"
+        protocol          = "HTTPS"
+      }
+
+      targets = {
+        my_target = {
+        target_id = aws_instance.nms_example.id
+        port = 443
+        
+        }
+      }
    }
   ]
+
 
   https_listeners = [
     {
       port               = 443
-      protocol           = "TLS"
+      protocol           = "HTTPS"
       certificate_arn    = aws_acm_certificate.nms.arn
-
     }
   ]
+
+  https_listener_rules = [{
+      actions = [
+        {
+          type               = "forward"
+          target_group_index = 1
+        }
+      ]
+
+      conditions = [{
+        path_patterns = ["/packages-repository/*"]
+      }]
+    }
+   ]
+  
 
   tags = {
     Environment = "NMS"
   }
 }
 
-module "agents-nlb" {
+module "agents_alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 8.0"
 
-  name = "agents-nlb"
+  name = "agents-alb"
 
-  load_balancer_type = "network"
+  load_balancer_type = "application"
 
   vpc_id  = module.vpc.vpc_id
 
-  subnet_mapping = [{
-        subnet_id = local.public_subnet_id
-        allocation_id = aws_eip.agent_eip.id
-  }]
+  subnets = module.vpc.public_subnets
 
   http_tcp_listeners = [{
       port               = 80,
-      protocol           = "TCP"
+      protocol           = "HTTP"
     }
   ]
 
   target_groups = [
    {
-      backend_protocol = "TCP"
+      backend_protocol = "HTTP"
       backend_port     = 80
       target_type      = "instance"
 
@@ -103,12 +144,3 @@ data "local_file" "my_public_ip" {
   filename   = local.public_ip_file
 }
 
-resource "aws_eip" "nms_eip" {
-  vpc = true
-}
-
-
-
-resource "aws_eip" "agent_eip" {
-  vpc   = true
-}
