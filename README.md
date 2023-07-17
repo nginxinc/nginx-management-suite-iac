@@ -2,7 +2,7 @@
 
 # NGINX Management Suite Infrastructure
 
-This repo contains instructions that can be used to generate images using the [NGINX Management Suite Ansible role](https://github.com/nginxinc/ansible-role-nginx-management-suite) and [NGINX Agent Ansible role](https://github.com/nginxinc/ansible-role-nginx). It also provides example infrastructure to deploy those images with Terraform using best practice security configuration.
+This repo contains instructions that can be used to generate images using the [NGINX Management Suite Ansible role](https://github.com/nginxinc/ansible-role-nginx-management-suite) and [NGINX Ansible role](https://github.com/nginxinc/ansible-role-nginx). It also provides example infrastructure to deploy those images with Terraform using best practice security configuration.
 
 - [Image generation using packer](packer/README.md)
 - [Infrastructure Deployments using terraform](terraform/README.md)
