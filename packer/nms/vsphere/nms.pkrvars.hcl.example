@@ -10,7 +10,7 @@ network                                = "my_network"
 
 #nms_api_connectivity_manager_version  = "1.7.0"
 #nms_app_delivery_manager_version      = "4.0.0"
-#nms_security_monitoring_version       = "1.4.0"
+#nms_security_monitoring_version       = "1.5.0"
 #vsphere_username                      = "my_username"
 #vsphere_password                      = "my_password"
 #vsphere_url                           = "my_vsphere_url"

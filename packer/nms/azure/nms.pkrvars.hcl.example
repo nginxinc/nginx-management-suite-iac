@@ -7,6 +7,6 @@ nginx_repo_key                        = "~/nginx-repo.key"
 
 #nms_api_connectivity_manager_version = "1.7.0"
 #nms_app_delivery_manager_version     = "4.0.0"
-#nms_security_monitoring_version      = "1.4.0"
+#nms_security_monitoring_version      = "1.5.0"
 #image_name                           = "my_image_name" # if not provided, defaults to nms-<YYYY-MM-DD>
 #resource_group_name                  = "my-resource_group_name"
