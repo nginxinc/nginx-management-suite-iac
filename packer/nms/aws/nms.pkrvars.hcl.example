@@ -5,10 +5,9 @@ build_region                             = "us-west-1"
 destination_regions                      = ["us-west-1"]
 nginx_repo_cert                          = "~/nginx-repo.crt"
 nginx_repo_key                           = "~/nginx-repo.key"
-nms_api_connectivity_manager_version     = "1.7.0"
-nms_app_delivery_manager_version         = "4.0.0"
-nms_security_monitoring_version          = "1.4.0"
 
-
+#nms_api_connectivity_manager_version    = "1.7.0"
+#nms_app_delivery_manager_version        = "4.0.0"
+#nms_security_monitoring_version         = "1.4.0"
 #ami_name                                = "my_ami_name" # if not provided, defaults to nms-ubuntu-20-04-<DD-MMM-YYYY>
 #subnet_id                               = "my_subnet_id" # if not provided, defaults to in default vpc

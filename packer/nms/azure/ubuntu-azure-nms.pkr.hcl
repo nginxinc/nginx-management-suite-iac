@@ -59,18 +59,18 @@ variable "nginx_repo_key" {
 
 variable "nms_api_connectivity_manager_version" {
   type    = string
-  default = "1.7.0"
+  default = ""
 }
 
 variable "nms_app_delivery_manager_version" {
   type    = string
-  default = "4.0.0"
+  default = ""
 }
 
 
 variable "nms_security_monitoring_version" {
   type    = string
-  default = "1.5.0"
+  default = ""
 }
 
 locals {
