@@ -73,6 +73,11 @@ variable "nms_security_monitoring_version" {
   default = ""
 }
 
+variable "ssh_username" {
+  type    = string
+  default = "ubuntu"
+}
+
 locals {
   timestamp = formatdate("YYYY-MM-DD", timestamp())
   image_name = var.image_name != null ? var.image_name : "nms-${local.timestamp}"
@@ -87,7 +92,7 @@ source "azure-arm" "ubuntu" {
   managed_image_resource_group_name = var.resource_group_name
   os_type                           = "Linux"
   ssh_clear_authorized_keys         = true
-  ssh_username                      = "ubuntu"
+  ssh_username                      = var.ssh_username
   vm_size                           = var.build_instance_type
   subscription_id                   = var.subscription_id
   client_id                         = var.client_id

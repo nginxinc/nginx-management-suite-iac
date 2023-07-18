@@ -4,10 +4,11 @@ nms_ami_id                      = "my_nms_ami_name"
 agent_ami_id                    = "my_agent_ami_name"
 aws_region                      = "us-west-1"
 license_file_path               = "./nginx-management-suite-license.txt"
-dataplane_cidr_blocks          = []
-mgmt_cidr_blocks               = []
+dataplane_cidr_blocks           = []
+mgmt_cidr_blocks                = []
 ssh_pub_key                     = "~/.ssh/id_rsa.pub"
 ssh_private_key                 = "~/.ssh/id_rsa"
+ssh_user                        = "ubuntu"
 
 #nms_instance_type              = "t3.micro"
 #agent_instance_type            = "t3.micro"

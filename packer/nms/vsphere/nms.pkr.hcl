@@ -81,6 +81,11 @@ variable "template_name" {
   default = null
 }
 
+variable "ssh_username" {
+  type    = string
+  default = "ubuntu"
+}
+
 locals {
   timestamp = lower(formatdate("YYYY-MM-DD", timestamp()))
   console_password = var.console_password != null ? var.console_password : "ubuntu"
@@ -110,7 +115,7 @@ source "vsphere-iso" "ubuntu" {
   ssh_handshake_attempts    = "200"
   ssh_password              = local.console_password
   ssh_timeout               = "30m"
-  ssh_username              = "ubuntu"
+  ssh_username              = var.ssh_username
   storage {
     disk_size             = 20480
     disk_thin_provisioned = true

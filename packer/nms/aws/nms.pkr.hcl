@@ -70,6 +70,11 @@ variable "nms_security_monitoring_version" {
   default = ""
 }
 
+variable "ssh_username" {
+  type    = string
+  default = "ubuntu"
+}
+
 locals {
   timestamp = formatdate("YYYY-MM-DD", timestamp())
   ami_name  = var.ami_name != null ? var.ami_name : "nms-${local.timestamp}"
@@ -100,7 +105,7 @@ source "amazon-ebs" "disk" {
   skip_region_validation      = true
   source_ami                  = data.amazon-ami.base_image.id
   ssh_clear_authorized_keys   = true
-  ssh_username                = "ubuntu"
+  ssh_username                = var.ssh_username
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
 }
@@ -113,7 +118,7 @@ build {
   }
 
   provisioner "shell" {
-    scripts = ["${path.root}/../../scripts/debian-img-prep-apt.sh"]
+    scripts = ["${path.root}/../../scripts/img-prep.sh"]
   }
 
   provisioner "shell-local" {

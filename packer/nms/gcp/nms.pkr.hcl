@@ -51,6 +51,11 @@ variable "project_id" {
   type    = string
 }
 
+variable "ssh_username" {
+  type    = string
+  default = "ubuntu"
+}
+
 locals {
   timestamp = lower(formatdate("YYYY-MM-DD", timestamp()))
   image_name = var.image_name != null ? var.image_name : "nms-${local.timestamp}"
@@ -64,7 +69,7 @@ source "googlecompute" "gcp_disk" {
   source_image              = var.base_image_name
   machine_type              = var.build_instance_type
   ssh_clear_authorized_keys = true
-  ssh_username              = "ubuntu"
+  ssh_username              = var.ssh_username
 }
 
 build {
