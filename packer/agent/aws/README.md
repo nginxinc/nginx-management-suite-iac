@@ -33,7 +33,7 @@ cp agent.pkrvars.hcl.example agent.pkrvars.hcl
 - Run packer build
 
 ```shell
-   packer build -var-file="agent.pkrvars.hcl" ubuntu-aws-agent.pkr.hcl
+   packer build -var-file="agent.pkrvars.hcl" agent.pkr.hcl
 ```
 
 ## Configuration

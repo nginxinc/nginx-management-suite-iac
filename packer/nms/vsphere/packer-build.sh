@@ -29,4 +29,4 @@ autoinstall:
     - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
 EOF
 
-packer build $@ ubuntu-vsphere-nms.pkr.hcl
+packer build $@ nms.pkr.hcl
