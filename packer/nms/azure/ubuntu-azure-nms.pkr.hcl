@@ -74,8 +74,8 @@ variable "nms_security_monitoring_version" {
 }
 
 locals {
-  timestamp = formatdate("DD-MMM-YY", timestamp())
-  image_name = var.image_name != null ? var.image_name : "nms-ubuntu-22-04-${local.timestamp}"
+  timestamp = formatdate("YYYY-MM-DD", timestamp())
+  image_name = var.image_name != null ? var.image_name : "nms-${local.timestamp}"
 }
 
 source "azure-arm" "ubuntu" {

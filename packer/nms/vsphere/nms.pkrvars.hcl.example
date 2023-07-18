@@ -14,4 +14,4 @@ network                                = "my_network"
 #vsphere_username                      = "my_username"
 #vsphere_password                      = "my_password"
 #vsphere_url                           = "my_vsphere_url"
-#template_name                         = "target_template_name" # if not provided, defaults to nms-ubuntu-20-04-<DD-MMM-YYYY>
+#template_name                         = "target_template_name" # if not provided, defaults to nms-<YYYY-MM-DD>

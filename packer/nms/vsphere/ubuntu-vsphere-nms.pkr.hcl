@@ -82,8 +82,9 @@ variable "template_name" {
 }
 
 locals {
+  timestamp = lower(formatdate("YYYY-MM-DD", timestamp()))
   console_password = var.console_password != null ? var.console_password : "ubuntu"
-  template_name = var.template_name != null ? var.template_name : "nms-ubuntu-22-04-${local.timestamp}"
+  template_name = var.template_name != null ? var.template_name : "nms-${local.timestamp}"
 }
 
 source "vsphere-iso" "ubuntu" {

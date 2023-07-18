@@ -52,8 +52,8 @@ variable "project_id" {
 }
 
 locals {
-  timestamp = lower(formatdate("DD-MMM-YY", timestamp()))
-  image_name = var.image_name != null ? var.image_name : "nms-ubuntu-22-04-${local.timestamp}"
+  timestamp = lower(formatdate("YYYY-MM-DD", timestamp()))
+  image_name = var.image_name != null ? var.image_name : "nms-${local.timestamp}"
 }
 
 source "googlecompute" "gcp_disk" {
