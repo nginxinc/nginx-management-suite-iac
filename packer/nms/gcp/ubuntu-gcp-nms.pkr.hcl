@@ -34,17 +34,17 @@ variable "nginx_repo_key" {
 
 variable "nms_api_connectivity_manager_version" {
   type    = string
-  default = "1.7.0"
+  default = ""
 }
 
 variable "nms_app_delivery_manager_version" {
   type    = string
-  default = "4.0.0"
+  default = ""
 }
 
 variable "nms_security_monitoring_version" {
   type    = string
-  default = "1.5.0"
+  default = ""
 }
 
 variable "project_id" {
@@ -52,8 +52,8 @@ variable "project_id" {
 }
 
 locals {
-  timestamp = lower(formatdate("DD-MMM-YY", timestamp()))
-  image_name = var.image_name != null ? var.image_name : "nms-ubuntu-22-04-${local.timestamp}"
+  timestamp = lower(formatdate("YYYY-MM-DD", timestamp()))
+  image_name = var.image_name != null ? var.image_name : "nms-${local.timestamp}"
 }
 
 source "googlecompute" "gcp_disk" {

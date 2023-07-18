@@ -59,23 +59,23 @@ variable "nginx_repo_key" {
 
 variable "nms_api_connectivity_manager_version" {
   type    = string
-  default = "1.7.0"
+  default = ""
 }
 
 variable "nms_app_delivery_manager_version" {
   type    = string
-  default = "4.0.0"
+  default = ""
 }
 
 
 variable "nms_security_monitoring_version" {
   type    = string
-  default = "1.5.0"
+  default = ""
 }
 
 locals {
-  timestamp = formatdate("DD-MMM-YY", timestamp())
-  image_name = var.image_name != null ? var.image_name : "nms-ubuntu-22-04-${local.timestamp}"
+  timestamp = formatdate("YYYY-MM-DD", timestamp())
+  image_name = var.image_name != null ? var.image_name : "nms-${local.timestamp}"
 }
 
 source "azure-arm" "ubuntu" {

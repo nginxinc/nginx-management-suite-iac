@@ -20,17 +20,17 @@ variable "nginx_repo_key" {
 
 variable "nms_api_connectivity_manager_version" {
   type    = string
-  default = "1.7.0"
+  default = ""
 }
 
 variable "nms_app_delivery_manager_version" {
   type    = string
-  default = "4.0.0"
+  default = ""
 }
 
 variable "nms_security_monitoring_version" {
   type    = string
-  default = "1.5.0"
+  default = ""
 }
 
 variable "cluster_name" {
@@ -82,8 +82,9 @@ variable "template_name" {
 }
 
 locals {
+  timestamp = lower(formatdate("YYYY-MM-DD", timestamp()))
   console_password = var.console_password != null ? var.console_password : "ubuntu"
-  template_name = var.template_name != null ? var.template_name : "nms-ubuntu-22-04-${local.timestamp}"
+  template_name = var.template_name != null ? var.template_name : "nms-${local.timestamp}"
 }
 
 source "vsphere-iso" "ubuntu" {

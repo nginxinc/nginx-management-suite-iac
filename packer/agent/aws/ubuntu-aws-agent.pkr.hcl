@@ -56,7 +56,8 @@ variable "subnet_id" {
 }
 
 locals {
-  ami_name = var.ami_name != null ? var.ami_name : "nginx-agent-ubuntu-20-04"
+  timestamp = formatdate("YYYY-MM-DD", timestamp())
+  ami_name  = var.ami_name != null ? var.ami_name : "nginx-agent-${local.timestamp}"
 }
 
 data "amazon-ami" "base_image" {
