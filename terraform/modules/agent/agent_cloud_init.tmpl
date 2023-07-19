@@ -1,11 +1,12 @@
 #cloud-config
 
-system_info:
-  default_user:
-    name: ${default_user}
-
-ssh_authorized_keys:
-  - ${public_key}
+users:
+  - name: ${default_user}
+    ssh-authorized-keys:
+      - ${public_key}
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
 
 runcmd:
   - curl -k "https://${nms_host_ip}/install/nginx-agent" > install.sh && sudo sh install.sh -g ${instance_group_name} && sudo systemctl start nginx-agent

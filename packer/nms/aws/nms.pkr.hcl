@@ -114,10 +114,6 @@ build {
   sources = ["source.amazon-ebs.disk"]
 
   provisioner "shell" {
-    inline = ["cloud-init status --wait"]
-  }
-
-  provisioner "shell" {
     scripts = ["${path.root}/../../scripts/img-prep.sh"]
   }
 
@@ -127,7 +123,7 @@ build {
 
   provisioner "ansible" {
     ansible_env_vars = ["ANSIBLE_SSH_ARGS=-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
-    extra_arguments  = ["-e ansible_ssh_pass=ubuntu"]
+    extra_arguments  = ["-e ansible_ssh_pass=${var.ssh_username}"]
     groups           = ["nms"]
     playbook_file    = "${path.root}/../../ansible/play-nms.yml"
   }

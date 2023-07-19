@@ -49,4 +49,4 @@ Follow the README in the relevant directory to create images/machines.
 - [NGINX Management Suite Control Host GCP](nms/gcp/README.md)
 - [NGINX Management Suite Control Host Azure](nms/azure/README.md)
 - [NGINX Management Suite Control Host vSphere](nms/vsphere/README.md)
-- [NGINX Agent AWS](agent/aws/README.md)
+- [NGINX AWS](nginx/aws/README.md)

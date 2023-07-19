@@ -7,5 +7,5 @@ nginx_repo_cert = "~/nginx-repo.crt"
 nginx_repo_key = "~/nginx-repo.key"
 
 
-#ami_name = "my_ami_name" # if not provided, defaults to nginx-agent-<YYYY-MM-DD>
+#ami_name = "my_ami_name" # if not provided, defaults to nginx-<YYYY-MM-DD>
 #subnet_id = "my_subnet_id" # if not provided, defaults to in default vpc
