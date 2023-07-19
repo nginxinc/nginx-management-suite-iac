@@ -9,6 +9,5 @@
     - nginxinc.nginx_core
 
   roles:
-    - nginx
     - ansible-role-nginx-management-suite
 
