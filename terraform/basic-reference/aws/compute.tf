@@ -57,9 +57,9 @@ resource "aws_instance" "nms_example" {
   vpc_security_group_ids               = [aws_security_group.nms_secgroup.id]
   instance_initiated_shutdown_behavior = "terminate"
   subnet_id                            = local.controlplane_subnet_id
-  user_data = module.nms_common.nms_cloud_init.rendered
-  user_data_replace_on_change = true
-  iam_instance_profile                  = aws_iam_instance_profile.nms_ssm.name
+  user_data                            = module.nms_common.nms_cloud_init.rendered
+  user_data_replace_on_change          = true
+  iam_instance_profile                 = aws_iam_instance_profile.nms_ssm.name
   tags = {
     Name = "nms_example"
   }
@@ -72,7 +72,7 @@ resource "aws_instance" "bastion_example" {
   instance_initiated_shutdown_behavior = "terminate"
   subnet_id                            = local.public_subnet_id
   associate_public_ip_address          = true
-  key_name                              = aws_key_pair.bastion_key_pair.key_name 
+  key_name                             = aws_key_pair.bastion_key_pair.key_name 
   tags = {
     Name = "bastion_host"
   }
@@ -83,14 +83,15 @@ resource "aws_instance" "agent_example" {
     null_resource.apply_nms_license
   ]
   count                                = var.agent_count
-  ami                                  = var.agent_ami_id
-  instance_type                        = var.agent_instance_type
+  ami                                  = var.nginx_ami_id
+  instance_type                        = var.nginx_instance_type
   vpc_security_group_ids               = [aws_security_group.agent_secgroup.id]
   instance_initiated_shutdown_behavior = "terminate"
   subnet_id                            = local.dataplane_subnet_id
-  tags = {
+  user_data_replace_on_change          = true
+  user_data                            = module.agent_common.agent_cloud_init.rendered
+  tags                                 = {
     Name = "agent_example"
   }
-  user_data = module.agent_common.agent_cloud_init.rendered
 }
 

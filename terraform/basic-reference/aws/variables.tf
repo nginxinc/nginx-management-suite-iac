@@ -29,12 +29,6 @@ variable "ssh_pub_key" {
   default     = "~/.ssh/id_rsa.pub"
 }
 
-variable "ssh_private_key" {
-  description = "Path to ssh key for access to host."
-  type        = string
-  default     = "~/.ssh/id_rsa"
-}
-
 variable "license_file_path" {
   description = "Path to the NGINX Management Suite license file."
   type        = string
@@ -63,7 +57,7 @@ variable "bastion_instance_type" {
 }
 
 
-variable "agent_instance_type" {
+variable "nginx_instance_type" {
   type    = string
   default = "t3.micro"
 }
@@ -74,8 +68,8 @@ variable "nms_ami_id" {
   type        = string
 }
 
-variable "agent_ami_id" {
-  description = "NGINX Agent AMI being deployed."
+variable "nginx_ami_id" {
+  description = "NGINX AMI being deployed."
   type        = string
 }
 

@@ -15,11 +15,11 @@ packer {
 }
 
 variable "base_ami_name" {
-  type = string
+  type    = string
 }
 
 variable "base_ami_owner_acct" {
-  type = string
+  type    = string
 }
 
 variable "build_region" {
@@ -29,7 +29,7 @@ variable "build_region" {
 
 variable "build_instance_type" {
   type    = string
-  default = "t2.micro"
+  default = "t3.micro"
 }
 
 variable "destination_regions" {
@@ -37,7 +37,7 @@ variable "destination_regions" {
   default = ["us-west-1"]
 }
 
-variable "ami_name" {
+variable "ami_name"{
   type    = string
   default = null
 }
@@ -51,28 +51,13 @@ variable "nginx_repo_key" {
 }
 
 variable "subnet_id" {
-  type    = string
+  type = string
   default = null
-}
-
-variable "nms_api_connectivity_manager_version" {
-  type    = string
-  default = ""
-}
-
-variable "nms_app_delivery_manager_version" {
-  type    = string
-  default = ""
-}
-
-variable "nms_security_monitoring_version" {
-  type    = string
-  default = ""
 }
 
 locals {
   timestamp = formatdate("YYYY-MM-DD", timestamp())
-  ami_name  = var.ami_name != null ? var.ami_name : "nms-${local.timestamp}"
+  ami_name  = var.ami_name != null ? var.ami_name : "nginx-${local.timestamp}"
 }
 
 data "amazon-ami" "base_image" {
@@ -92,7 +77,6 @@ source "amazon-ebs" "disk" {
     device_name           = "/dev/sda1"
     volume_size           = 20
   }
-  communicator                = "ssh"
   ami_name                    = local.ami_name
   ami_regions                 = var.destination_regions
   instance_type               = var.build_instance_type
@@ -117,14 +101,14 @@ build {
   }
 
   provisioner "shell-local" {
-    inline = ["${path.root}/../../scripts/write_nms_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key} ${var.nms_api_connectivity_manager_version} ${var.nms_app_delivery_manager_version} ${var.nms_security_monitoring_version}"]
+    inline = ["../../scripts/write_agent_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key}"]
   }
 
   provisioner "ansible" {
     ansible_env_vars = ["ANSIBLE_SSH_ARGS=-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
     extra_arguments  = ["-e ansible_ssh_pass=ubuntu"]
-    groups           = ["nms"]
-    playbook_file    = "${path.root}/../../ansible/play-nms.yml"
+    groups           = ["agent"]
+    playbook_file    = "../../ansible/play-agent.yml"
   }
 
   provisioner "shell" {

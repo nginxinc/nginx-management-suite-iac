@@ -45,7 +45,7 @@ cp nms.pkrvars.hcl.example nms.pkrvars.hcl
 - Run packer build
 
 ```shell
-   packer build -var-file="nms.pkrvars.hcl" ubuntu-azure-nms.pkr.hcl
+   packer build -var-file="nms.pkrvars.hcl" nms.pkr.hcl
 ```
 
 ## Configuration

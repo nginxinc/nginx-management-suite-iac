@@ -58,11 +58,10 @@ module "vpc" {
 module "nms_common" {
   source            = "../../../modules/nms"
   admin_user        = var.admin_user
-  admin_password      = var.admin_password
+  admin_password    = var.admin_password
   host_default_user = var.ssh_user
   ssh_pub_key       = pathexpand(var.ssh_pub_key)
 }
-
 
 resource "aws_instance" "nms_example" {
   ami                                  = var.ami_id
@@ -71,10 +70,11 @@ resource "aws_instance" "nms_example" {
   associate_public_ip_address          = "true"
   instance_initiated_shutdown_behavior = "terminate"
   subnet_id                            = local.subnet_id
+  user_data_replace_on_change          = true
+  user_data                            = module.nms_common.nms_cloud_init.rendered
   tags = {
     Name = "nms_example"
   }
-  user_data = module.nms_common.nms_cloud_init.rendered
 }
 
 resource "aws_security_group" "nms-secgroup" {

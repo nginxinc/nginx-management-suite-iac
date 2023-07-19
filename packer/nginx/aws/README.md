@@ -1,6 +1,6 @@
-# AWS Agent Image Generation
+# AWS NGINX Image Generation
 
-This directory contains templates and scripts to create a Ubuntu agent image to be deployable to AWS.
+This directory contains templates and scripts to create a Ubuntu NGINX image to be deployable to AWS.
 The image is just a fresh install of NGINX with an njs module installed. The agent should be installed from the controller instance after it is deployed.
 
 ## Requirements
@@ -21,7 +21,7 @@ AWS_SECURITY_TOKEN
 - Set packer build parameters in a `pkrvars.hcl` file
 
 ```shell
-cp agent.pkrvars.hcl.example agent.pkrvars.hcl
+cp nginx.pkrvars.hcl.example nginx.pkrvars.hcl
 ```
 
 - Run packer init
@@ -33,14 +33,14 @@ cp agent.pkrvars.hcl.example agent.pkrvars.hcl
 - Run packer build
 
 ```shell
-   packer build -var-file="agent.pkrvars.hcl" ubuntu-aws-agent.pkr.hcl
+   packer build -var-file="nginx.pkrvars.hcl" nginx.pkr.hcl
 ```
 
 ## Configuration
 
 | Parameter           | Description                                                                                 | Default                    | Required |
 | ------------------- | ------------------------------------------------------------------------------------------- | -------------------------- | -------- |
-| ami_name            | _The name of the final AMI image_                                                           | `nginx-agent-ubuntu-20-04` | No       |
+| ami_name            | _The name of the final AMI image_                                                           | `nginx-<YYYY-MM-DD>`       | No       |
 | base_ami_name       | _The name of the base AMI image_                                                            | -                          | Yes      |
 | base_ami_owner_acct | _The owner of the base AMI image_                                                           | -                          | Yes      |
 | build_instance_type | _The instance type to use for building the image_                                           | `t3.micro`                 | No       |
