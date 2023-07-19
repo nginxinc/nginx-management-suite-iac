@@ -21,7 +21,7 @@ output "nms_host_ip" {
 }
 
 output nms_ssh_command {
-  value = "ssh -J ${var.ssh_user}@${aws_instance.bastion_example.public_ip} ${var.ssh_user}@${aws_instance.nms_example.private_ip}"
+  value = "ssh -J ubuntu@${aws_instance.bastion_example.public_ip} ${var.ssh_user}@${aws_instance.nms_example.private_ip}"
 }
 
 output "dataplane_agent_info" {
@@ -29,7 +29,7 @@ output "dataplane_agent_info" {
   value = {
     for index, agent in aws_instance.agent_example : "dataplane-agent-${index + 1}" => {
       ip     = agent.private_ip
-      ssh    = "ssh -J ${var.ssh_user}@${aws_instance.bastion_example.public_ip} ${var.ssh_user}@${agent.private_ip}"
+      ssh    = "ssh -J ubuntu@${aws_instance.bastion_example.public_ip} ${var.ssh_user}@${agent.private_ip}"
     }
   }
 }
