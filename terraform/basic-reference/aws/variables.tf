@@ -19,7 +19,7 @@ variable "admin_password" {
 
 variable "ssh_user" {
   type        = string
-  default     = "nms"
+  default     = "ubuntu"
   description = "user account to log in."
 }
 
