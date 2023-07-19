@@ -3,6 +3,7 @@ ami_id               = "my_ami_name"
 aws_region           = "us-west-1"
 ssh_pub_key          = "~/.ssh/id_rsa.pub"
 incoming_cidr_blocks = ["x.x.x.x/32"]
+instance_type        = "t3.micro"
 
 #ssh_user            = "ubuntu"
 #subnet_id           = "my_subnet_id"
