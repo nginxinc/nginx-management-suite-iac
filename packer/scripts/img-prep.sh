@@ -7,10 +7,14 @@
 
 source /etc/os-release
 
-# - clear installer cloud-init config
-sudo rm -f /etc/cloud/cloud.cfg.d/99-installer.cfg
+if [ "${ID}" = "ubuntu" ]; then
+    cloud-init status --wait
+fi
 
 if [ "${ID_LIKE}" = "debian" ]; then
+    # - clear installer cloud-init config
+    sudo rm -f /etc/cloud/cloud.cfg.d/99-installer.cfg
+
     # - apt-daily can cause untimely dpkg lock issues during deployments
     sudo systemctl disable --now apt-daily.timer
     sudo systemctl disable --now apt-daily-upgrade.timer
@@ -43,11 +47,5 @@ if [ "${ID_LIKE}" = "debian" ]; then
     sudo needrestart -r a
 else
     sudo yum -y update
-    sudo yum -y install \
-        conntrack \
-        ebtables \
-        jq \
-        socat \
-        wget
     sudo yum clean all
 fi
