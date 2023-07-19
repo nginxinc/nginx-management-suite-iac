@@ -46,6 +46,10 @@ if [ "${ID_LIKE}" = "debian" ]; then
 
     sudo needrestart -r a
 else
+    # Disable SELinux until nms ansible role supports SELinux
+    if [ "$(getenforce)" = "Enforcing" ]; then
+        sudo sed -i 's/^SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
+    fi
     sudo yum -y update
     sudo yum clean all
 fi
