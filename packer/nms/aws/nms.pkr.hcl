@@ -129,7 +129,7 @@ build {
   }
 
   provisioner "shell" {
-    scripts = ["${path.root}/../../scripts/required-setup-all.sh"]
+    scripts = ["${path.root}/../../scripts/required-setup-all.sh", "${path.root}/../../scripts/aws-add-ssm.sh"]
   }
 
   post-processor "manifest" {
