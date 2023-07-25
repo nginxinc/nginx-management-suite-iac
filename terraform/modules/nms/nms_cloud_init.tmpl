@@ -15,43 +15,29 @@ write_files:
 
 bootcmd:
   - |
-    echo ${disks} > /var/log/device_list.log
     for d in $(echo ${disks}); do
-      echo "Parsing $d" >> /var/log/device_list.log
       mount=$(echo $d |cut -d ":" -f 1)
       device=$(echo $d |cut -d ":" -f 2)
-      echo "  Mount: $mount" >> /var/log/device_list.log
-      echo "  Device: $device" >> /var/log/device_list.log
       ready="false"
       retry=12
       count=0
       while [ "$ready" = "false" ]; do
-        echo "Loop: $count" >> /var/log/device_list.log
         if [ -b "$device" ]; then
           ready="true"
-          echo "$device is ready" >> /var/log/device_list.log
         else
-          echo "Device $device is not ready" >> /var/log/device_list.log
           if [ $count -lt $retry ]; then
-            echo "Sleeping as $device is not ready" >> /var/log/device_list.log
             sleep 10
             ((count++))
           else
-            echo "Break, too many retries" >> /var/log/device_list.log
             exit 1
           fi
         fi
       done
-      if [[ "$device" =~ "^/dev/nvme" ]]; then
-        device+="n1"
-      fi
       output=$(blkid --probe $device)
       if [ -z "$output" ]; then 
-        echo "Creating filesystem for $device" >> /var/log/device_list.log
         mkfs.ext4 $device;
       fi
       if ! grep -q "$device" /etc/fstab; then
-        echo "Adding $device:$mount to /etc/fstab" >> /var/log/device_list.log
         echo "$device $mount ext4 defaults 0 0" >> /etc/fstab
       fi
       mount -a
