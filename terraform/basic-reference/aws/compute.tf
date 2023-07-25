@@ -27,10 +27,10 @@
 
 module "nms_common" {
   source            = "../../modules/nms"
-  admin_user        = var.admin_user
   admin_password    = var.admin_password
   host_default_user = var.ssh_user
   ssh_pub_key       = pathexpand(var.ssh_pub_key)
+  disks             = local.device_list
 }
 
 module "agent_common" {
@@ -94,4 +94,3 @@ resource "aws_instance" "agent_example" {
     Name = "agent_example"
   }
 }
-

@@ -1,16 +1,32 @@
-admin_user                      = "admin"
-nms_ami_id                      = "my_nms_ami_name"
-nginx_ami_id                    = "my_nginx_ami_name"
-aws_region                      = "us-west-1"
-license_file_path               = "./nginx-management-suite-license.txt"
-dataplane_cidr_blocks           = []
-mgmt_cidr_blocks                = []
-ssh_pub_key                     = "~/.ssh/id_rsa.pub"
-ssh_user                        = "ubuntu"
+nms_ami_id                 = "my_nms_ami_name"
+nginx_ami_id               = "my_nginx_ami_name"
+aws_region                 = "us-west-1"
+license_file_path          = "./nginx-management-suite-license.txt"
+dataplane_cidr_blocks      = []
+mgmt_cidr_blocks           = []
+ssh_pub_key                = "~/.ssh/id_rsa.pub"
+ssh_user                   = "ubuntu"
+disk_config                = {
+    "dqlite": {
+      "size": 20,
+      "block_device": "/dev/xvdh" # This is the device name that gets used when attaching the storage to the NMS instance
+    }
+    "secrets": {
+      "size": 1,
+      "block_device": "/dev/xvdi"
+    }
+    "streaming": {
+      "size": 1,
+      "block_device": "/dev/xvdj"
+    },
+    "ssl": {
+      "size": 1,
+      "block_device": "/dev/xvdk"
+    }
+}
 
-#nms_instance_type              = "t3.micro"
-#nginx_instance_type            = "t3.micro"
-#agent_count                    = 2
+#nms_instance_type         = "t2.medium"
+#nginx_instance_type       = "t3.micro"
+#agent_count               = 2
 
-#agent_instance_group_name      = "sports-group"
-
+#agent_instance_group_name = "sports-group"

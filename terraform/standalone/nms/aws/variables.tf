@@ -36,7 +36,7 @@ variable "incoming_cidr_blocks" {
 
 variable "instance_type" {
   type    = string
-  default = "t3.micro"
+  default = "t2.medium"
 }
 
 variable "ami_id" {
@@ -54,4 +54,27 @@ variable "subnet_id" {
   description = "ID of subnet to use for this instance. If unset, then a new vpc & subnet will be created."
   type        = string
   default     = null
+}
+
+variable "disk_config" {
+  type        = map
+  description = ""
+  default     = {
+    "dqlite": {
+      "size": 20,
+      "block_device": "/dev/xvdh"
+    }
+    "secrets": {
+      "size": 1,
+      "block_device": "/dev/xvdi"
+    }
+    "streaming": {
+      "size": 1,
+      "block_device": "/dev/xvdj"
+    },
+    "ssl": {
+      "size": 1,
+      "block_device": "/dev/xvdk"
+    }
+  }
 }

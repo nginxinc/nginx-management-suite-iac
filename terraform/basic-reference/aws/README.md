@@ -45,19 +45,21 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 
 ## Configuration
 
-| Parameter                 | Description                                                                                                                                                                                                                                            | Default             | Required |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | -------- |
-| admin_password            | _The password for the created `admin_user`_                                                                                                                                                                                                            | -                   | Yes      |
-| admin_user                | _Name of the admin user_                                                                                                                                                                                                                               | `admin`             | No       |
-| nms_ami_id                | _AMI Id of the NGINX Management Suite image to use_                                                                                                                                                                                                    | -                   | Yes      |
-| nginx_ami_id              | _AMI Id of the NGINX image to use_                                                                                                                                                                                                               | -                   | Yes      |
-| agent_instance_group_name | _Agent Instance group name_                                                                                                                                                                                                                            | -                   | Yes      |
-| agent_count               | _The number of agents to deploy_                                                                                                                                                                                                                       | -                   | No       |
-| nms_instance_type         | _AWS Instance type for NGINX Management Suite_                                                                                                                                                                                                         | `t3.medium`         | No       |
-| nginx_instance_type       | _AWS Instance type for the NGINX instances Instance_                                                                                                                                                                                                             | `t3.micro`          | No       |
-| aws_region                | _Region to deploy instance_                                                                                                                                                                                                                            | `us-west-1`         | No       |
-| license_file_path         | _The path to the NGINX API Connectivity Manger license file_                                                                                                                                                                                           | -                   | Yes      |
-| ssh_user                  | _User account name allowed access via ssh._                                                                                                                                                                                                            | `ubuntu`            | No       |
-| ssh_pub_key               | _Path to the ssh pub key that will be used for sshing into the host_                                                                                                                                                                                   | `~/.ssh/id_rsa.pub` | No       |
-| mgmt_cidr_blocks          | _List of CIDR blocks to allow access to NGINX Management Suite UI._                                                                                                                                                                                    | -                   | No       |
-| dataplane_cidr_blocks     | _List of CIDR blocks to allow access to the dataplane instances._                                                                                                                                                                                      | -                   | No       |
+| Parameter                 | Description                                                          | Default             | Required |
+| ------------------------- | ---------------------------------------------------------------------| ------------------- | -------- |
+| admin_password            | _The password for the admin user_                                    | -                   | Yes      |
+| nms_ami_id                | _AMI Id of the NGINX Management Suite image to use_                  | -                   | Yes      |
+| nginx_ami_id              | _AMI Id of the NGINX image to use_                                   | -                   | Yes      |
+| agent_instance_group_name | _Agent Instance group name_                                          | -                   | Yes      |
+| agent_count               | _The number of agents to deploy_                                     | -                   | No       |
+| nms_instance_type         | _AWS Instance type for NGINX Management Suite_                       | `t2.medium`         | No       |
+| nginx_instance_type       | _AWS Instance type for the NGINX instances Instance_                 | `t3.micro`          | No       |
+| aws_region                | _Region to deploy instance_                                          | `us-west-1`         | No       |
+| license_file_path         | _The path to the NGINX API Connectivity Manger license file_         | -                   | Yes      |
+| ssh_user                  | _User account name allowed access via ssh._                          | `ubuntu`            | No       |
+| ssh_pub_key               | _Path to the ssh pub key that will be used for sshing into the host_ | `~/.ssh/id_rsa.pub` | No       |
+| mgmt_cidr_blocks          | _List of CIDR blocks to allow access to NGINX Management Suite UI._  | -                   | No       |
+| dataplane_cidr_blocks     | _List of CIDR blocks to allow access to the dataplane instances._    | -                   | No       |
+| disk_config               | _Map of size and device paths for attached storage_                  | See example file    | Yes      |
+
+Note: [See AWS documentation regarding aws_instance types and block device names for ebs attached storage](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html)

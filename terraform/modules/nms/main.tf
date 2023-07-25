@@ -1,9 +1,9 @@
 resource "null_resource" "make_htpasswd_file" {
   depends_on = [
-    var.admin_user, var.admin_password
+    var.admin_password
   ]
   provisioner "local-exec" {
-    command = "htpasswd -c -b ${path.cwd}/.nms_htpasswd ${var.admin_user} '${var.admin_password}'"
+    command = "htpasswd -c -b ${path.cwd}/.nms_htpasswd 'admin' '${var.admin_password}'"
     when    = create
   }
 }
@@ -38,6 +38,7 @@ data "template_cloudinit_config" "nms_cloud_init" {
       default_user   = var.host_default_user
       public_key     = data.local_file.ssh_pub_file.content
       htpasswd_file  = data.local_file.htpasswd_file.content
+      disks          = var.disks
     })
   }
 }

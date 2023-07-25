@@ -5,12 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-variable "admin_user" {
-  description = "The name of the admin user"
-  type        = string
-  default     = "admin"
-}
-
 variable "admin_password" {
   description = "The password associated with the admin user"
   type        = string
@@ -48,7 +42,7 @@ variable "mgmt_cidr_blocks" {
 
 variable "nms_instance_type" {
   type    = string
-  default = "t3.medium"
+  default = "t2.medium"
 }
 
 variable "bastion_instance_type" {
@@ -88,4 +82,27 @@ variable "agent_count" {
   type        = number
   default     = 1
   description = "The amount of agents you would like to deploy"
+}
+
+variable "disk_config" {
+  type        = map
+  description = "Map of size and device paths for attached storage"
+  default     = {
+    "dqlite": {
+      "size": 20,
+      "block_device": "/dev/xvdh"
+    }
+    "secrets": {
+      "size": 1,
+      "block_device": "/dev/xvdi"
+    }
+    "streaming": {
+      "size": 1,
+      "block_device": "/dev/xvdj"
+    },
+    "ssl": {
+      "size": 1,
+      "block_device": "/dev/xvdk"
+    }
+  }
 }

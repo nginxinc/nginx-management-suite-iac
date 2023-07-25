@@ -11,6 +11,7 @@ module "nms_common" {
   admin_password    = var.admin_password
   host_default_user = var.ssh_user
   ssh_pub_key       = pathexpand(var.ssh_pub_key)
+  disks             = ""
 }
 
 resource "google_compute_instance" "nms_example" {

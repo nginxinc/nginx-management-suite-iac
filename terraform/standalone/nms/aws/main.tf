@@ -37,6 +37,33 @@ data "aws_subnet" "subnet" {
 locals {
   vpc_id               = var.subnet_id != null ? data.aws_subnet.subnet[0].vpc_id : module.vpc[0].vpc_id
   subnet_id            = var.subnet_id != null ? var.subnet_id : module.vpc[0].public_subnets[0]
+  disks                = [
+    {
+      "name": "dqlite",
+      "device": var.disk_config.dqlite.block_device,
+      "size": var.disk_config.dqlite.size,
+      "mount": "/var/lib/nms/dqlite"
+    },
+    {
+      "name": "secrets",
+      "device": var.disk_config.secrets.block_device,
+      "size": var.disk_config.secrets.size,
+      "mount": "/var/lib/nms/secrets"
+    },
+    {
+      "name": "streaming",
+      "device": var.disk_config.streaming.block_device,
+      "size": var.disk_config.streaming.size,
+      "mount": "/var/lib/nms/streaming"
+    },
+    {
+      "name": "ssl",
+      "device": var.disk_config.ssl.block_device,
+      "size": var.disk_config.ssl.size,
+      "mount": "/etc/nms/certs"
+    }
+  ]
+  device_list                     = join(" ", [for s in local.disks : "${s.mount}:${s.device}"])
 }
 
 module "vpc" {
@@ -61,6 +88,7 @@ module "nms_common" {
   admin_password    = var.admin_password
   host_default_user = var.ssh_user
   ssh_pub_key       = pathexpand(var.ssh_pub_key)
+  disks             = local.device_list
 }
 
 resource "aws_instance" "nms_example" {
@@ -109,4 +137,18 @@ resource "aws_security_group" "nms-secgroup" {
   timeouts {
     create = "2m"
   }
+}
+
+resource "aws_ebs_volume" "disks" {
+  count             = length(local.disks)
+  availability_zone = random_shuffle.random_az.result[0]
+  size              = local.disks[count.index].size
+}
+
+resource "aws_volume_attachment" "disks" {
+  count                          = length(local.disks)
+  device_name                    = local.disks[count.index].device
+  volume_id                      = aws_ebs_volume.disks[count.index].id
+  instance_id                    = aws_instance.nms_example.id
+  stop_instance_before_detaching = true
 }
