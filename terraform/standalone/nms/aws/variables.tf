@@ -60,9 +60,21 @@ variable "disk_sizes" {
   type        = map
   description = ""
   default     = {
-    "dqlite": 20,
-    "secrets": 1,
-    "streaming": 1,
-    "ssl": 1
+    "dqlite": {
+      "size": 20,
+      "block_device": "/dev/xvdh"
+    }
+    "secrets": {
+      "size": 1,
+      "block_device": "/dev/xvdi"
+    }
+    "streaming": {
+      "size": 1,
+      "block_device": "/dev/xvdj"
+    },
+    "ssl": {
+      "size": 1,
+      "block_device": "/dev/xvdk"
+    }
   }
 }
