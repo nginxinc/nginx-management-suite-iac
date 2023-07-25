@@ -1,4 +1,3 @@
-admin_user                      = "admin"
 nms_ami_id                      = "my_nms_ami_name"
 nginx_ami_id                    = "my_nginx_ami_name"
 aws_region                      = "us-west-1"

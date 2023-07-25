@@ -49,7 +49,7 @@ resource "null_resource" "apply_nms_license" {
   ]
 
   provisioner "local-exec" {
-    command = "bash ../scripts/license_apply.sh https://${module.nms_alb.lb_dns_name} ${var.license_file_path} ${var.admin_user} ${var.admin_password}"
+    command = "bash ../scripts/license_apply.sh https://${module.nms_alb.lb_dns_name} ${var.license_file_path} admin ${var.admin_password}"
   }
  }
  
