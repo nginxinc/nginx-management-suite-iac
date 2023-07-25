@@ -83,3 +83,14 @@ variable "agent_count" {
   default     = 1
   description = "The amount of agents you would like to deploy"
 }
+
+variable "disk_sizes" {
+  type        = map
+  description = ""
+  default     = {
+    "dqlite": 20,
+    "secrets": 1,
+    "streaming": 1,
+    "ssl": 1
+  }
+}

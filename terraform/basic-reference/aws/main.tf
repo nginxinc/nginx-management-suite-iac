@@ -17,25 +17,25 @@ locals {
     {
       "name": "dqlite",
       "device": "/dev/xvdh",
-      "size": 20,
+      "size": var.disk_sizes.dqlite,
       "mount": "/var/lib/nms/dqlite"
     },
     {
       "name": "secrets",
       "device": "/dev/xvdi",
-      "size": 1,
+      "size": var.disk_sizes.secrets,
       "mount": "/var/lib/nms/secrets"
     },
     {
       "name": "streaming",
       "device": "/dev/xvdj",
-      "size": 1,
+      "size": var.disk_sizes.streaming,
       "mount": "/var/lib/nms/streaming"
     },
     {
       "name": "ssl",
       "device": "/dev/xvdk",
-      "size": 1,
+      "size": var.disk_sizes.ssl,
       "mount": "/etc/nms/certs"
     }
   ]

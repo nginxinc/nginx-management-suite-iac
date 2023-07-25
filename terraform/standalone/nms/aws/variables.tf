@@ -55,3 +55,14 @@ variable "subnet_id" {
   type        = string
   default     = null
 }
+
+variable "disk_sizes" {
+  type        = map
+  description = ""
+  default     = {
+    "dqlite": 20,
+    "secrets": 1,
+    "streaming": 1,
+    "ssl": 1
+  }
+}
