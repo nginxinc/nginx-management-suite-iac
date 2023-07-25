@@ -36,7 +36,7 @@ variable "incoming_cidr_blocks" {
 
 variable "instance_type" {
   type    = string
-  default = "t3.micro"
+  default = "t2.medium"
 }
 
 variable "ami_id" {

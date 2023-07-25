@@ -8,7 +8,7 @@ mgmt_cidr_blocks                = []
 ssh_pub_key                     = "~/.ssh/id_rsa.pub"
 ssh_user                        = "ubuntu"
 
-#nms_instance_type              = "t3.micro"
+#nms_instance_type              = "t2.medium"
 #nginx_instance_type            = "t3.micro"
 #agent_count                    = 2
 

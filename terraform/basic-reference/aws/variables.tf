@@ -48,7 +48,7 @@ variable "mgmt_cidr_blocks" {
 
 variable "nms_instance_type" {
   type    = string
-  default = "t3.medium"
+  default = "t2.medium"
 }
 
 variable "bastion_instance_type" {

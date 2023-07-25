@@ -9,14 +9,38 @@ locals {
   vpc_id                          = module.vpc.vpc_id
   controlplane_subnet_cidr_blocks = "10.0.101.0/24"
   dataplane_subnet_cidr_blocks    = "10.0.102.0/24"
-  public_subnet_cidr_blocks        = ["10.0.103.0/24", "10.0.104.0/24"]
+  public_subnet_cidr_blocks       = ["10.0.103.0/24", "10.0.104.0/24"]
   public_subnet_id                = module.vpc.public_subnets[0]
   controlplane_subnet_id          = module.vpc.private_subnets[0]
   dataplane_subnet_id             = module.vpc.private_subnets[1]
+  disks                           = [
+    {
+      "name": "dqlite",
+      "device": "/dev/xvdh",
+      "size": 20,
+      "mount": "/var/lib/nms/dqlite"
+    },
+    {
+      "name": "secrets",
+      "device": "/dev/xvdi",
+      "size": 1,
+      "mount": "/var/lib/nms/secrets"
+    },
+    {
+      "name": "streaming",
+      "device": "/dev/xvdj",
+      "size": 1,
+      "mount": "/var/lib/nms/streaming"
+    },
+    {
+      "name": "ssl",
+      "device": "/dev/xvdk",
+      "size": 1,
+      "mount": "/etc/nms/certs"
+    }
+  ]
+  device_list                     = join(" ", [for s in local.disks : "${s.mount}:${s.device}"])
 }
-
-
-
 
 resource "null_resource" "apply_nms_license" {
   depends_on = [
