@@ -56,7 +56,7 @@ variable "subnet_id" {
   default     = null
 }
 
-variable "disk_sizes" {
+variable "disk_config" {
   type        = map
   description = ""
   default     = {

@@ -4,6 +4,24 @@ aws_region           = "us-west-1"
 ssh_pub_key          = "~/.ssh/id_rsa.pub"
 incoming_cidr_blocks = ["x.x.x.x/32"]
 instance_type        = "t2.medium"
+disk_config          = {
+    "dqlite": {
+      "size": 20,
+      "block_device": "/dev/xvdh" # This is the device name that gets used when attaching the storage to the NMS instance
+    }
+    "secrets": {
+      "size": 1,
+      "block_device": "/dev/xvdi"
+    }
+    "streaming": {
+      "size": 1,
+      "block_device": "/dev/xvdj"
+    },
+    "ssl": {
+      "size": 1,
+      "block_device": "/dev/xvdk"
+    }
+}
 
 #ssh_user            = "ubuntu"
 #subnet_id           = "my_subnet_id"

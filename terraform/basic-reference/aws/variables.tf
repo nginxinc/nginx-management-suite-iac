@@ -84,7 +84,7 @@ variable "agent_count" {
   description = "The amount of agents you would like to deploy"
 }
 
-variable "disk_sizes" {
+variable "disk_config" {
   type        = map
   description = "Map of size and device paths for attached storage"
   default     = {

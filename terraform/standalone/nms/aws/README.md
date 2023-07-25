@@ -58,4 +58,6 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 | ssh_pub_key          | _Path to the ssh pub key that will be used for sshing into the host_                        | `~/.ssh/id_rsa.pub` | No       |
 | subnet_id            | _ID of subnet to use for this instance. If unset, then a new vpc & subnet will be created._ | -                   | No       |
 | incoming_cidr_blocks | _List of custom CIDR blocks to allow access to NGINX Management Suite UI._                  | -                   | No       |
-| disk_sizes           | _Map of size and device paths for attached storage_                                         | See example file    | Yes      |
+| disk_config          | _Map of size and device paths for attached storage_                                         | See example file    | Yes      |
+
+Note: [See AWS documentation regarding aws_instance types and block device names for ebs attached storage](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html)

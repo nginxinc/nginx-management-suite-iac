@@ -40,26 +40,26 @@ locals {
   disks                = [
     {
       "name": "dqlite",
-      "device": var.disk_sizes.dqlite.block_device,
-      "size": var.disk_sizes.dqlite.size,
+      "device": var.disk_config.dqlite.block_device,
+      "size": var.disk_config.dqlite.size,
       "mount": "/var/lib/nms/dqlite"
     },
     {
       "name": "secrets",
-      "device": var.disk_sizes.secrets.block_device,
-      "size": var.disk_sizes.secrets.size,
+      "device": var.disk_config.secrets.block_device,
+      "size": var.disk_config.secrets.size,
       "mount": "/var/lib/nms/secrets"
     },
     {
       "name": "streaming",
-      "device": var.disk_sizes.streaming.block_device,
-      "size": var.disk_sizes.streaming.size,
+      "device": var.disk_config.streaming.block_device,
+      "size": var.disk_config.streaming.size,
       "mount": "/var/lib/nms/streaming"
     },
     {
       "name": "ssl",
-      "device": var.disk_sizes.ssl.block_device,
-      "size": var.disk_sizes.ssl.size,
+      "device": var.disk_config.ssl.block_device,
+      "size": var.disk_config.ssl.size,
       "mount": "/etc/nms/certs"
     }
   ]
