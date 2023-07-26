@@ -39,10 +39,6 @@ module "agent_common" {
   nms_host_ip         = module.nms_alb.lb_dns_name
   instance_group_name = var.agent_instance_group_name
   ssh_pub_key         = pathexpand(var.ssh_pub_key)
-
-  depends_on = [
-    null_resource.apply_nms_license
-  ]
 }
 
 resource "aws_key_pair" "bastion_key_pair" {
