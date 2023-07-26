@@ -44,12 +44,15 @@ locals {
 
 resource "null_resource" "apply_nms_license" {
   depends_on = [
-    module.nms_alb,
-    aws_instance.nms_example
+    module.nms_alb
   ]
 
+  triggers = {
+    nms = aws_instance.nms_example.id
+  }
+
   provisioner "local-exec" {
-    command = "bash ../scripts/license_apply.sh https://${module.nms_alb.lb_dns_name} ${var.license_file_path} admin ${var.admin_password}"
+    command = "bash ../scripts/license_apply.sh https://${module.nms_alb.lb_dns_name} ${var.license_file_path} 'admin' ${var.admin_password}"
   }
  }
  
