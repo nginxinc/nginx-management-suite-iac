@@ -32,21 +32,6 @@ variable "nginx_repo_key" {
   type = string
 }
 
-variable "nms_api_connectivity_manager_version" {
-  type    = string
-  default = ""
-}
-
-variable "nms_app_delivery_manager_version" {
-  type    = string
-  default = ""
-}
-
-variable "nms_security_monitoring_version" {
-  type    = string
-  default = ""
-}
-
 variable "project_id" {
   type    = string
 }
@@ -58,7 +43,7 @@ variable "ssh_username" {
 
 locals {
   timestamp = lower(formatdate("YYYY-MM-DD", timestamp()))
-  image_name = var.image_name != null ? var.image_name : "nms-${local.timestamp}"
+  image_name = var.image_name != null ? var.image_name : "nginx-${local.timestamp}"
 }
 
 source "googlecompute" "gcp_disk" {
@@ -84,14 +69,14 @@ build {
   }
 
   provisioner "shell-local" {
-    inline = ["${path.root}/../../scripts/write_nms_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key} ${var.nms_api_connectivity_manager_version} ${var.nms_app_delivery_manager_version} ${var.nms_security_monitoring_version}"]
+    inline = ["${path.root}/../../scripts/write_agent_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key}"]
   }
 
   provisioner "ansible" {
     ansible_env_vars = ["ANSIBLE_SSH_ARGS=-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
     extra_arguments  = ["-e ansible_ssh_pass=${var.ssh_username}"]
-    groups           = ["nms"]
-    playbook_file    = "${path.root}/../../ansible/play-nms.yml"
+    groups           = ["agent"]
+    playbook_file    = "${path.root}/../../ansible/play-agent.yml"
   }
 
   provisioner "shell" {
