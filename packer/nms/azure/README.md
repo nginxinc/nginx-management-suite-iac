@@ -62,4 +62,4 @@ cp nms.pkrvars.hcl.example nms.pkrvars.hcl
 | nms_security_monitoring_version      | _The version to use for installing NMS Security Module_          | `*`                              | No       |
 | nginx_repo_cert                      | _Path to cert required to access the yum/deb repo for NMS_       | -                                | Yes      |
 | nginx_repo_key                       | _Path to key required to access the yum/deb repo for NMS_        | -                                | Yes      |
-| resource_group_name                  | _The resource group where the build and final image is located_  | -                                | Yes      |
+| resource_group_name                  | _The resource group where the build and final image is located_  | `my-resource-group`              | Yes      |

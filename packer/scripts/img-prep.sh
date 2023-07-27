@@ -29,6 +29,7 @@ if [ "${ID_LIKE}" = "debian" ]; then
     sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get upgrade -y
     sudo DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install \
         conntrack \
+        needrestart \
         curl \
         ebtables \
         iproute2 \

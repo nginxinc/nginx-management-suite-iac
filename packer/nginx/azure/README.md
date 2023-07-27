@@ -56,7 +56,7 @@ cp nginx.pkrvars.hcl.example nginx.pkrvars.hcl
 | base_image_publisher                 | _The owner of the base compute image_                            | -                                | Yes      |
 | base_image_sku                       | _The sku of the base compute image_                              | -                                | Yes      |
 | build_instance_type                  | _The instance type to use for building the image_                | `Standard_B1s`                   | No       |
-| image_name                           | _The name of the final compute image_                            | `nginx-<YYYY-MM-DD>`               | No       |
+| image_name                           | _The name of the final compute image_                            | `nginx-<YYYY-MM-DD>`             | No       |
 | nginx_repo_cert                      | _Path to cert required to access the yum/deb repo for NMS_       | -                                | Yes      |
 | nginx_repo_key                       | _Path to key required to access the yum/deb repo for NMS_        | -                                | Yes      |
-| resource_group_name                  | _The resource group where the build and final image is located_  | -                                | Yes      |
+| resource_group_name                  | _The resource group where the build and final image is located_  | `my-resource-group`              | Yes      |
