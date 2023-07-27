@@ -35,9 +35,9 @@ module "nms_alb" {
       }
 
       targets = {
-        my_target = {
-        target_id = aws_instance.nms_example.id
-        port = 443
+        nms_target = {
+          target_id = aws_instance.nms_example.id
+          port = 443
         }
       }
    },
@@ -56,10 +56,9 @@ module "nms_alb" {
       }
 
       targets = {
-        my_target = {
-        target_id = aws_instance.nms_example.id
-        port = 443
-        
+        nms_target = {
+          target_id = aws_instance.nms_example.id
+          port = 443
         }
       }
    }
