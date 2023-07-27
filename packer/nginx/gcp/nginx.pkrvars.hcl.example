@@ -1,8 +1,8 @@
-base_image_name                      = "ubuntu-2204-jammy-v20230114"
-build_zone                           = "europe-west4-a"
-build_instance_type                  = "e2-micro"
-nginx_repo_cert                      = "path_to_nginx_repo_cert"
-nginx_repo_key                       = "path_to_nginx_repo_key"
-project_id                           = "myprojectid"
+base_image_name     = "ubuntu-2204-jammy-v20230114"
+build_zone          = "europe-west4-a"
+build_instance_type = "e2-micro"
+nginx_repo_cert     = "path_to_nginx_repo_cert"
+nginx_repo_key      = "path_to_nginx_repo_key"
+project_id          = "myprojectid"
 
-#image_name                           = "target_image_name" # if not provided, defaults to nginx-<YYYY-MM-DD>
+#image_name         = "target_image_name" # if not provided, defaults to nginx-<YYYY-MM-DD>

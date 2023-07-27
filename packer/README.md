@@ -7,7 +7,10 @@ This repo contains the templates and scripts that can be used to generate a NGIN
 - Linux build environment, e.g. ubuntu-22.04
 - An NGINX Management Suite repo cert and key. This can be downloaded from [my.f5.com](my.f5.com).
 - [ansible >= 6.7.0](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
-- Install sshpass (Debian based platforms only)
+- Install the [Python Paramiko](https://pypi.org/project/paramiko/) library for the [python interpreter](https://docs.ansible.com/ansible-core/devel/reference_appendices/interpreter_discovery.html) ansible will use.  
+```
+   pip install paramiko
+```
 - [packer >= 1.8](https://developer.hashicorp.com/packer/downloads)
 - Install the required ansible collections
 

@@ -35,7 +35,7 @@ variable "base_image_publisher" {
 
 variable "resource_group_name" {
   type    = string
-  default = "West Central US"
+  default = "my-resource-group"
 }
 
 variable "build_instance_type" {
@@ -118,7 +118,7 @@ build {
 
   provisioner "ansible" {
     ansible_env_vars = ["ANSIBLE_SSH_ARGS=-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
-    extra_arguments  = ["-e ansible_ssh_pass=${var.ssh_username}"]
+    extra_arguments  = ["--scp-extra-args", "'-O'"]
     groups           = ["nms"]
     playbook_file    = "${path.root}/../../ansible/play-nms.yml"
   }

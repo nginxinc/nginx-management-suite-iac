@@ -1,13 +1,13 @@
-base_ami_name                            = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
-base_ami_owner_acct                      = "099720109477"
-build_instance_type                      = "t3.micro"
-build_region                             = "us-west-1"
-destination_regions                      = ["us-west-1"]
-nginx_repo_cert                          = "~/nginx-repo.crt"
-nginx_repo_key                           = "~/nginx-repo.key"
+base_ami_name                         = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
+base_ami_owner_acct                   = "099720109477"
+build_instance_type                   = "t3.micro"
+build_region                          = "us-west-1"
+destination_regions                   = ["us-west-1"]
+nginx_repo_cert                       = "path_to_nginx_repo_cert"
+nginx_repo_key                        = "path_to_nginx_repo_key"
 
-#nms_api_connectivity_manager_version    = "1.7.0"
-#nms_app_delivery_manager_version        = "4.0.0"
-#nms_security_monitoring_version         = "1.5.0"
-#ami_name                                = "my_ami_name" # if not provided, defaults to nms-<YYYY-MM-DD>
-#subnet_id                               = "my_subnet_id" # if not provided, defaults to in default vpc
+#nms_api_connectivity_manager_version = "1.7.0"
+#nms_app_delivery_manager_version     = "4.0.0"
+#nms_security_monitoring_version      = "1.5.0"
+#ami_name                             = "my_ami_name" # if not provided, defaults to nms-<YYYY-MM-DD>
+#subnet_id                            = "my_subnet_id" # if not provided, defaults to in default vpc
