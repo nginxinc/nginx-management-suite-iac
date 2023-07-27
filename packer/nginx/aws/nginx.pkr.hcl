@@ -50,6 +50,11 @@ variable "nginx_repo_key" {
   type = string
 }
 
+variable "ssh_username" {
+  type    = string
+  default = "ubuntu"
+}
+
 variable "subnet_id" {
   type = string
   default = null
@@ -84,7 +89,7 @@ source "amazon-ebs" "disk" {
   skip_region_validation      = true
   source_ami                  = data.amazon-ami.base_image.id
   ssh_clear_authorized_keys   = true
-  ssh_username                = "ubuntu"
+  ssh_username                = var.ssh_username
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
 }

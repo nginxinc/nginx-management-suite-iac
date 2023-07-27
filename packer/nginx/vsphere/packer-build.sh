@@ -6,6 +6,7 @@
 # LICENSE file in the root directory of this source tree.
 
 
+export CONSOLE_USERNAME=${CONSOLE_USERNAME:-ubuntu}
 export CONSOLE_PASSWORD=${CONSOLE_PASSWORD:-complexPassword1*}
 salt=$(head -1 /dev/random | md5sum | awk '{print $1}' | cut -c 1-16)
 saltedPassword=$(printf ${CONSOLE_PASSWORD} | openssl passwd -1 -salt ${salt} -stdin)
@@ -16,7 +17,7 @@ autoinstall:
   version: 1
   identity:
     hostname: localhost
-    username: ubuntu
+    username: ${CONSOLE_USERNAME}
     password: ${saltedPassword}
   ssh:
     allow-pw: yes
@@ -26,7 +27,7 @@ autoinstall:
       name: direct
   late-commands:
     - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
-    - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+    - echo "${CONSOLE_USERNAME} ALL=(ALL) NOPASSWD:ALL" > /target/etc/sudoers.d/${CONSOLE_USERNAME}
 EOF
 
 packer build $@ nginx.pkr.hcl
