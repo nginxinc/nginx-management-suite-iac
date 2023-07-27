@@ -17,7 +17,13 @@ export VSPHERE_PASSWORD="my-password"
 export VSPHERE_USER="my-username"
 ```
 
-If you would like the overwrite the console password for the ubuntu user in the VM Template, set the following environment variable.
+If you would like the overwrite the console username for the default user in the VM Template, set the following environment variable.
+
+```shell
+export CONSOLE_USERNAME="my-user"
+```
+
+If you would like the overwrite the console password for the default user in the VM Template, set the following environment variable.
 
 ```shell
 export CONSOLE_PASSWORD="my-password"
