@@ -50,7 +50,6 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 | Parameter            | Description                                                                 | Default             | Required |
 | -------------------- | --------------------------------------------------------------------------- | ------------------- | -------- |
 | admin_password       | _The password for the created `admin_user`_                                 | -                   | Yes      |
-| admin_user           | _Name of the admin user_                                                    | `admin`             | No       |
 | image_name           | _Image being deployed_                                                      | -                   | Yes      |
 | incoming_cidr_blocks | _List of custom CIDR blocks to allow access to NGINX Management Suite UI. _ | -                   | No       |
 | instance_type        | _GCP compute instance type to use._                                         | `e2-micro`          | No       |

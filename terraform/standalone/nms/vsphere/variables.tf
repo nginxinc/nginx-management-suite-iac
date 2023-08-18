@@ -11,12 +11,6 @@ variable ssh_pub_key {
     description = "ssh public key for access"
 }
 
-variable admin_user {
-  description = "The name of the admin user"
-  type        = string
-  default     = "admin"
-}
-
 variable admin_password {
   description = "The password associated with the admin user"
   type        = string

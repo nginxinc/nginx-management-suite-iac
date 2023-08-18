@@ -5,12 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-variable "admin_user" {
-  description = "The name of the admin user"
-  type        = string
-  default     = "admin"
-}
-
 variable "admin_password" {
   description = "The password associated with the admin user"
   type        = string
@@ -75,6 +69,10 @@ variable "disk_config" {
     "ssl": {
       "size": 1,
       "block_device": "/dev/xvdk"
+    },
+    "clickhouse": {
+      "size": 20,
+      "block_device": "/dev/xvdl"
     }
   }
 }

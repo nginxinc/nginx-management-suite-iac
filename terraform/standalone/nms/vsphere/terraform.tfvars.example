@@ -1,4 +1,3 @@
-admin_user           = "admin"
 cluster_name         = "cluster-name"
 datacenter           = "datacenter-name"
 datastore            = "datastore-name"

@@ -1,4 +1,3 @@
-admin_user           = "admin"
 image_name           = "myimagename"
 incoming_cidr_blocks = ["x.x.x.x/32"]
 instance_type        = "e2-micro"

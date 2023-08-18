@@ -46,7 +46,6 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 | Parameter        | Description                                                          | Default             | Required |
 | ---------------- | -------------------------------------------------------------------- | ------------------- | -------- |
 | admin_password   | _The password for the created `admin_user`_                          | -                   | Yes      |
-| admin_user       | _Name of the admin user_                                             | `admin`             | No       |
 | cluster_name     | _The vSphere cluster name_                                           | -                   | Yes      |
 | datacenter       | _The vSphere datacenter name_                                        | -                   | Yes      |
 | datastore        | _The vSphere datastore name_                                         | -                   | Yes      |

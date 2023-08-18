@@ -1,4 +1,3 @@
-admin_user           = "admin"
 ami_id               = "my_ami_name"
 aws_region           = "us-west-1"
 ssh_pub_key          = "~/.ssh/id_rsa.pub"
@@ -20,6 +19,10 @@ disk_config          = {
     "ssl": {
       "size": 1,
       "block_device": "/dev/xvdk"
+    },
+    "clickhouse": {
+      "size": 20,
+      "block_device": "/dev/xvdl"
     }
 }
 
