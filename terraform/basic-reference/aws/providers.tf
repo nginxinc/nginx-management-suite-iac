@@ -18,4 +18,12 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
+  default_tags {
+    tags = {
+      Deployment = "NGINX Management Suite Basic Reference Architecture"
+      Terraform  = "true"
+    }
+  }
 }
+
+data "aws_caller_identity" "current" {}

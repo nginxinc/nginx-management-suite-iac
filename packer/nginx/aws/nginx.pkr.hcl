@@ -87,6 +87,12 @@ source "amazon-ebs" "disk" {
   ssh_username                = "ubuntu"
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
+  tags                        = {
+    Base_AMI_ID = "{{ .SourceAMI }}"
+    Base_AMI_Name = "{{ .SourceAMIName }}"
+    Base_AMI_Owner = "{{ .SourceAMIOwner }}"
+    Extra = "{{ .SourceAMITags.TagName }}"
+  }
 }
 
 build {

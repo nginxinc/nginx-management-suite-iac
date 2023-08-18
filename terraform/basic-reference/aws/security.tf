@@ -33,7 +33,8 @@ resource "aws_security_group" "nms_alb_secgroup" {
   name   = "nms-alb-secgroup"
   vpc_id = local.vpc_id
   tags = {
-    Name = "nms-alb-secgroup"
+    Name  = "nms-alb-secgroup"
+    Owner = data.aws_caller_identity.current.user_id
   }
 
   ingress {
@@ -59,7 +60,8 @@ resource "aws_security_group" "agent_alb_secgroup" {
   name   = "agent-alb-secgroup"
   vpc_id = local.vpc_id
   tags = {
-    Name = "agent-alb-secgroup"
+    Name  = "agent-alb-secgroup"
+    Owner = data.aws_caller_identity.current.user_id
   }
 
   ingress {
@@ -92,7 +94,8 @@ resource "aws_security_group" "nms_secgroup" {
   name   = "nms-secgroup"
   vpc_id = local.vpc_id
   tags = {
-    Name = "nms-secgroup"
+    Name  = "nms-secgroup"
+    Owner = data.aws_caller_identity.current.user_id
   }
 
   ingress {
@@ -125,7 +128,8 @@ resource "aws_security_group" "bastion_secgroup" {
   name   = "bastion-secgroup"
   vpc_id = local.vpc_id
   tags = {
-    Name = "bastion-secgroup"
+    Name  = "bastion-secgroup"
+    Owner = data.aws_caller_identity.current.user_id
   }
 
   ingress {
@@ -151,7 +155,8 @@ resource "aws_security_group" "agent_secgroup" {
   name   = "agent-secgroup"
   vpc_id = local.vpc_id
   tags = {
-    Name = "agent-secgroup"
+    Name  = "agent-secgroup"
+    Owner = data.aws_caller_identity.current.user_id
   }
 
   ingress {

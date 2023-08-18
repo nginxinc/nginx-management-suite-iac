@@ -18,7 +18,15 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
+  default_tags {
+    tags = {
+      Deployment = "NGINX Management Suite Standalone"
+      Terraform  = "true"
+    }
+  }
 }
+
+data "aws_caller_identity" "current" {}
 
 data "aws_availability_zones" "available_zones" {
   state         = "available"
@@ -92,9 +100,8 @@ module "vpc" {
   azs            = [random_shuffle.random_az.result[0]]
   public_subnets = ["10.0.101.0/24"]
 
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
+  tags           = {
+    Owner = data.aws_caller_identity.current.user_id
   }
 }
 
@@ -116,7 +123,8 @@ resource "aws_instance" "nms_example" {
   user_data_replace_on_change          = true
   user_data                            = module.nms_common.nms_cloud_init.rendered
   tags = {
-    Name = "nms_example"
+    Name  = "nms_example"
+    Owner = data.aws_caller_identity.current.user_id
   }
 }
 
@@ -125,6 +133,7 @@ resource "aws_security_group" "nms-secgroup" {
   vpc_id = local.vpc_id
   tags = {
     Name = "nms-secgroup"
+    Owner = data.aws_caller_identity.current.user_id
   }
 
   ingress {
@@ -158,6 +167,9 @@ resource "aws_ebs_volume" "disks" {
   count             = length(local.disks)
   availability_zone = random_shuffle.random_az.result[0]
   size              = local.disks[count.index].size
+  tags              = {
+    Owner = data.aws_caller_identity.current.user_id
+  }
 }
 
 resource "aws_volume_attachment" "disks" {

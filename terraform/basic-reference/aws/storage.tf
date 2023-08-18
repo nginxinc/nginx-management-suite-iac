@@ -9,6 +9,9 @@ resource "aws_ebs_volume" "disks" {
   count             = length(local.disks)
   availability_zone = random_shuffle.random_az.result[0]
   size              = local.disks[count.index].size
+  tags              = {
+    Owner = data.aws_caller_identity.current.user_id
+  }
 }
 
 resource "aws_volume_attachment" "disks" {

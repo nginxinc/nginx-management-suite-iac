@@ -89,7 +89,8 @@ module "nms_alb" {
   
 
   tags = {
-    Environment = "NMS"
+    Environment = "Control Plane"
+    Owner       = data.aws_caller_identity.current.user_id
   }
 }
 
@@ -130,6 +131,7 @@ module "agents_alb" {
   ]
 
   tags = {
-    Environment = "Agents"
+    Environment = "Data Plane"
+    Owner       = data.aws_caller_identity.current.user_id
   }
 }

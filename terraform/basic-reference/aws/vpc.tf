@@ -17,8 +17,7 @@ module "vpc" {
   private_subnets = [local.controlplane_subnet_cidr_blocks, local.dataplane_subnet_cidr_blocks]
   enable_nat_gateway = true
   tags = {
-    Terraform   = "true"
-    Environment = "dev"
+    Owner       = data.aws_caller_identity.current.user_id
   }
 }
 
