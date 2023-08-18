@@ -18,6 +18,8 @@ bootcmd:
     for d in $(echo ${disks}); do
       mount=$(echo $d |cut -d ":" -f 1)
       device=$(echo $d |cut -d ":" -f 2)
+      owner=$(echo $d |cut -d ":" -f 3)
+      group=$(echo $d |cut -d ":" -f 4)
       ready="false"
       retry=12
       count=0
@@ -40,7 +42,11 @@ bootcmd:
       if ! grep -q "$device" /etc/fstab; then
         echo "$device $mount ext4 defaults 0 0" >> /etc/fstab
       fi
+      if [ ! -d "$mount" ]; then
+        mkdir -p "$mount"
+      fi
       mount -a
+      chown "$owner":"$group" "$mount"
     done
     if [ ! -f /etc/nms/certs/ca.key ]; then
       bash /etc/nms/scripts/certs.sh

@@ -103,6 +103,10 @@ variable "disk_config" {
     "ssl": {
       "size": 1,
       "block_device": "/dev/xvdk"
+    },
+    "clickhouse": {
+      "size": 20,
+      "block_device": "/dev/xvdl"
     }
   }
 }

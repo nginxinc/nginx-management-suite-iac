@@ -1,4 +1,3 @@
-admin_user           = "admin"
 resource_group_name  = "my_resource_group"
 incoming_cidr_blocks = ["x.x.x.x/32"]
 

@@ -18,28 +18,44 @@ locals {
       "name": "dqlite",
       "device": var.disk_config.dqlite.block_device,
       "size": var.disk_config.dqlite.size,
-      "mount": "/var/lib/nms/dqlite"
+      "mount": "/var/lib/nms/dqlite",
+      "owner": "nms",
+      "group": "nms"
     },
     {
       "name": "secrets",
       "device": var.disk_config.secrets.block_device,
       "size": var.disk_config.secrets.size,
-      "mount": "/var/lib/nms/secrets"
+      "mount": "/var/lib/nms/secrets",
+      "owner": "nms",
+      "group": "nms"
     },
     {
       "name": "streaming",
       "device": var.disk_config.streaming.block_device,
       "size": var.disk_config.streaming.size,
-      "mount": "/var/lib/nms/streaming"
+      "mount": "/var/lib/nms/streaming",
+      "owner": "nms",
+      "group": "nms"
     },
     {
       "name": "ssl",
       "device": var.disk_config.ssl.block_device,
       "size": var.disk_config.ssl.size,
-      "mount": "/etc/nms/certs"
+      "mount": "/etc/nms/certs",
+      "owner": "root",
+      "group": "root"
+    },
+    {
+      "name": "clickhouse",
+      "device": var.disk_config.clickhouse.block_device,
+      "size": var.disk_config.clickhouse.size,
+      "mount": "/var/lib/clickhouse",
+      "owner": "clickhouse",
+      "group": "clickhouse"
     }
   ]
-  device_list                     = join(" ", [for s in local.disks : "${s.mount}:${s.device}"])
+  device_list                     = join(" ", [for s in local.disks : "${s.mount}:${s.device}:${s.owner}:${s.group}"])
 }
 
 resource "null_resource" "apply_nms_license" {
