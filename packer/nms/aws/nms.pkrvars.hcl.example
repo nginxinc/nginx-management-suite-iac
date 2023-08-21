@@ -11,3 +11,4 @@ nginx_repo_key                           = "~/nginx-repo.key"
 #nms_security_monitoring_version         = "1.5.0"
 #ami_name                                = "my_ami_name" # if not provided, defaults to nms-<YYYY-MM-DD>
 #subnet_id                               = "my_subnet_id" # if not provided, defaults to in default vpc
+#tags                                    = {} # map of tags to apply to resulting AWS AMI image

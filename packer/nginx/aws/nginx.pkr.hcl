@@ -55,6 +55,11 @@ variable "subnet_id" {
   default = null
 }
 
+variable "tags" {
+  type    = map
+  default = {}
+}
+
 locals {
   timestamp = formatdate("YYYY-MM-DD", timestamp())
   ami_name  = var.ami_name != null ? var.ami_name : "nginx-${local.timestamp}"
@@ -87,6 +92,7 @@ source "amazon-ebs" "disk" {
   ssh_username                = "ubuntu"
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
+  tags                        = var.tags
 }
 
 build {

@@ -56,6 +56,11 @@ variable "ssh_username" {
   default = "ubuntu"
 }
 
+variable "labels" {
+  type    = map
+  default = {}
+}
+
 locals {
   timestamp = lower(formatdate("YYYY-MM-DD", timestamp()))
   image_name = var.image_name != null ? var.image_name : "nms-${local.timestamp}"
@@ -66,6 +71,7 @@ source "googlecompute" "gcp_disk" {
   zone                      = var.build_zone
   image_name                = local.image_name
   image_family              = "nginx-management-suite"
+  image_labels              = var.labels
   source_image              = var.base_image_name
   machine_type              = var.build_instance_type
   ssh_clear_authorized_keys = true
