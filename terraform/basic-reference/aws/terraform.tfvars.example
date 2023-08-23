@@ -34,3 +34,4 @@ disk_config                = {
 #agent_count               = 2
 
 #agent_instance_group_name = "sports-group"
+#tags                      = {} # map of tags to apply to resulting AWS resources

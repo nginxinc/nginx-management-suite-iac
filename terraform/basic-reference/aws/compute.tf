@@ -44,6 +44,7 @@ module "agent_common" {
 resource "aws_key_pair" "bastion_key_pair" {
   key_name   = "bastion-key-pair"
   public_key = file(pathexpand(var.ssh_pub_key))
+  tags       = var.tags
 }
 
 
@@ -56,9 +57,9 @@ resource "aws_instance" "nms_example" {
   user_data                            = module.nms_common.nms_cloud_init.rendered
   user_data_replace_on_change          = true
   iam_instance_profile                 = aws_iam_instance_profile.nms_ssm.name
-  tags = {
+  tags                                 = merge({
     Name = "nms_example"
-  }
+  }, var.tags)
 }
 
 resource "aws_instance" "bastion_example" {
@@ -69,9 +70,9 @@ resource "aws_instance" "bastion_example" {
   subnet_id                            = local.public_subnet_id
   associate_public_ip_address          = true
   key_name                             = aws_key_pair.bastion_key_pair.key_name 
-  tags = {
+  tags                                 = merge({
     Name = "bastion_host"
-  }
+  }, var.tags)
 }
 
 resource "aws_instance" "agent_example" {
@@ -86,7 +87,7 @@ resource "aws_instance" "agent_example" {
   subnet_id                            = local.dataplane_subnet_id
   user_data_replace_on_change          = true
   user_data                            = module.agent_common.agent_cloud_init.rendered
-  tags                                 = {
+  tags                                 = merge({
     Name = "agent_example"
-  }
+  }, var.tags)
 }

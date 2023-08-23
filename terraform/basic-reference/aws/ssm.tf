@@ -26,6 +26,7 @@ resource "aws_iam_role_policy_attachment" "nms_ssm" {
 resource "aws_iam_instance_profile" "nms_ssm" {
   name = "nms_ssm"
   role = aws_iam_role.nms_ec2_assume_role.name
+  tags = var.tags
 }
 
 resource "aws_ssm_document" "restart_adm" {

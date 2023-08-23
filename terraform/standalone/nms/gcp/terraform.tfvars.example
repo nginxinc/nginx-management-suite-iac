@@ -4,3 +4,4 @@ instance_type        = "e2-micro"
 project_id           = "myprojectid"
 ssh_pub_key          = "~/.ssh/id_rsa.pub"
 ssh_user             = "ubuntu"
+#labels              = {} # map of labels to apply to resulting GCP resources

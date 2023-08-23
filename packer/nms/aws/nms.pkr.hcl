@@ -76,7 +76,7 @@ variable "ssh_username" {
 }
 
 variable "tags" {
-  type    = map
+  type    = map(string)
   default = {}
 }
 

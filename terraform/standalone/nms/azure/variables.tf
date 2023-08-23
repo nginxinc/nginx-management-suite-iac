@@ -42,3 +42,9 @@ variable "image_name" {
   description = "Image being deployed"
   type        = string
 }
+
+variable "tags" {
+  type        = map
+  default     = {}
+  description = "Map of tags to apply to resulting Azure resources"
+}

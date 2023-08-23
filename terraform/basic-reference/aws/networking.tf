@@ -88,9 +88,9 @@ module "nms_alb" {
    ]
   
 
-  tags = {
+  tags = merge({
     Environment = "NMS"
-  }
+  }, var.tags)
 }
 
 module "agents_alb" {
@@ -129,7 +129,7 @@ module "agents_alb" {
    }
   ]
 
-  tags = {
+  tags = merge({
     Environment = "Agents"
-  }
+  }, var.tags)
 }

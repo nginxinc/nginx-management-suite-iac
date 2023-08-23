@@ -5,6 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+packer {
+  required_plugins {
+    googlecompute = {
+      source  = "github.com/hashicorp/googlecompute"
+      version = ">= 1"
+    }
+    ansible = {
+      source  = "github.com/hashicorp/ansible"
+      version = ">= 1"
+    }
+  }
+}
+
 variable "base_image_name" {
   type    = string
 }
@@ -57,7 +70,7 @@ variable "ssh_username" {
 }
 
 variable "labels" {
-  type    = map
+  type    = map(string)
   default = {}
 }
 
@@ -86,7 +99,7 @@ build {
   }
 
   provisioner "shell" {
-    scripts = ["${path.root}/../../scripts/debian-img-prep-apt.sh"]
+    scripts = ["${path.root}/../../scripts/img-prep.sh"]
   }
 
   provisioner "shell-local" {

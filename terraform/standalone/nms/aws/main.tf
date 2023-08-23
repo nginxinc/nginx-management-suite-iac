@@ -83,19 +83,18 @@ locals {
 }
 
 module "vpc" {
-  count  = var.subnet_id != null ? 0 : 1
-  source = "terraform-aws-modules/vpc/aws"
+  source         = "terraform-aws-modules/vpc/aws"
 
-  name = "nms_vpc"
-  cidr = "10.0.0.0/16"
-
+  count          = var.subnet_id != null ? 0 : 1
+  name           = "nms_vpc"
+  cidr           = "10.0.0.0/16"
   azs            = [random_shuffle.random_az.result[0]]
   public_subnets = ["10.0.101.0/24"]
 
-  tags = {
+  tags           = merge({
     Terraform   = "true"
     Environment = "dev"
-  }
+  }, var.tags)
 }
 
 module "nms_common" {
@@ -115,17 +114,17 @@ resource "aws_instance" "nms_example" {
   subnet_id                            = local.subnet_id
   user_data_replace_on_change          = true
   user_data                            = module.nms_common.nms_cloud_init.rendered
-  tags = {
+  tags                                 = merge({
     Name = "nms_example"
-  }
+  }, var.tags)
 }
 
 resource "aws_security_group" "nms-secgroup" {
   name   = "nms-secgroup"
   vpc_id = local.vpc_id
-  tags = {
+  tags   = merge({
     Name = "nms-secgroup"
-  }
+  }, var.tags)
 
   ingress {
     from_port   = 22
@@ -140,7 +139,6 @@ resource "aws_security_group" "nms-secgroup" {
     protocol    = "tcp"
     cidr_blocks = var.incoming_cidr_blocks
   }
-
 
   egress {
     from_port   = 0
@@ -158,6 +156,7 @@ resource "aws_ebs_volume" "disks" {
   count             = length(local.disks)
   availability_zone = random_shuffle.random_az.result[0]
   size              = local.disks[count.index].size
+  tags              = var.tags
 }
 
 resource "aws_volume_attachment" "disks" {

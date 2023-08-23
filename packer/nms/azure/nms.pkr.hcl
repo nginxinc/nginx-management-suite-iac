@@ -79,7 +79,7 @@ variable "ssh_username" {
 }
 
 variable "tags" {
-  type    = map
+  type    = map(string)
   default = {}
 }
 
@@ -115,7 +115,7 @@ build {
   }
 
   provisioner "shell" {
-    scripts = ["${path.root}/../../scripts/debian-img-prep-apt.sh"]
+    scripts = ["${path.root}/../../scripts/img-prep.sh"]
   }
 
   provisioner "shell-local" {

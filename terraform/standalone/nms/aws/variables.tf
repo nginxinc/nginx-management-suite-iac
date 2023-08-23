@@ -76,3 +76,9 @@ variable "disk_config" {
     }
   }
 }
+
+variable "tags" {
+  type        = map
+  default     = {}
+  description = "Map of tags to apply to resulting AWS resources"
+}

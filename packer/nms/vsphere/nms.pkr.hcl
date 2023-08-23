@@ -129,7 +129,7 @@ build {
   sources = ["source.vsphere-iso.ubuntu"]
 
   provisioner "shell" {
-    scripts = ["${path.root}/../../scripts/debian-img-prep-apt.sh"]
+    scripts = ["${path.root}/../../scripts/img-prep.sh"]
   }
 
   provisioner "shell-local" {

@@ -42,3 +42,9 @@ variable "image_name" {
   description = "Image being deployed"
   type        = string
 }
+
+variable "labels" {
+  type        = map
+  default     = {}
+  description = "Map of labels to apply to resulting GCP resources"
+}

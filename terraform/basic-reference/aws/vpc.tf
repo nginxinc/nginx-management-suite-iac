@@ -7,19 +7,18 @@
 
 
 module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
+  source             = "terraform-aws-modules/vpc/aws"
 
-  name = "nms_vpc"
-  cidr = "10.0.0.0/16"
-
-  azs             = [random_shuffle.random_az.result[0], random_shuffle.random_az.result[1]]
-  public_subnets  = local.public_subnet_cidr_blocks
-  private_subnets = [local.controlplane_subnet_cidr_blocks, local.dataplane_subnet_cidr_blocks]
+  name               = "nms_vpc"
+  cidr               = "10.0.0.0/16"
+  azs                = [random_shuffle.random_az.result[0], random_shuffle.random_az.result[1]]
+  public_subnets     = local.public_subnet_cidr_blocks
+  private_subnets    = [local.controlplane_subnet_cidr_blocks, local.dataplane_subnet_cidr_blocks]
   enable_nat_gateway = true
-  tags = {
+  tags               = merge({
     Terraform   = "true"
     Environment = "dev"
-  }
+  }, var.tags)
 }
 
 

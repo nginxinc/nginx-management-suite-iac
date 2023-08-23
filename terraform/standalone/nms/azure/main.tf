@@ -28,6 +28,7 @@ resource "azurerm_virtual_network" "example_vnet" {
   address_space       = ["10.0.0.0/16"]
   location            = data.azurerm_resource_group.example_group.location
   resource_group_name = data.azurerm_resource_group.example_group.name
+  tags                = var.tags
 }
 
 resource "azurerm_subnet" "example_subnet" {
@@ -42,6 +43,7 @@ resource "azurerm_public_ip" "example" {
   location            = data.azurerm_resource_group.example_group.location
   resource_group_name = data.azurerm_resource_group.example_group.name
   allocation_method   = "Static"
+  tags                = var.tags
 }
 
 resource "azurerm_network_interface" "eth0" {
@@ -55,12 +57,14 @@ resource "azurerm_network_interface" "eth0" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id = azurerm_public_ip.example.id
   }
+  tags                = var.tags
 }
 
 resource "azurerm_network_security_group" "example_sec_group" {
   name                = "example-sec-group"
   location            = data.azurerm_resource_group.example_group.location
   resource_group_name = data.azurerm_resource_group.example_group.name
+  tags                = var.tags
 }
 
 resource "azurerm_subnet_network_security_group_association" "example_subnet" {
@@ -75,25 +79,26 @@ resource "azurerm_network_security_rule" "example_security_group_rule" {
   access                      = "Allow"
   protocol                    = "Tcp"
   source_port_range           = "*"
-  destination_port_ranges      = ["22", "443"]
+  destination_port_ranges     = ["22", "443"]
   source_address_prefixes     = var.incoming_cidr_blocks
   destination_address_prefix  = "VirtualNetwork"
-  resource_group_name = data.azurerm_resource_group.example_group.name
+  resource_group_name         = data.azurerm_resource_group.example_group.name
   network_security_group_name = azurerm_network_security_group.example_sec_group.name
 }
 
 resource "azurerm_linux_virtual_machine" "example" {
-  name                = "api-connectivity-manager-machine"
-  location            = data.azurerm_resource_group.example_group.location
-  resource_group_name = data.azurerm_resource_group.example_group.name
-  size                = var.instance_type
-  admin_username      = var.ssh_user
+  name                  = "api-connectivity-manager-machine"
+  location              = data.azurerm_resource_group.example_group.location
+  resource_group_name   = data.azurerm_resource_group.example_group.name
+  size                  = var.instance_type
+  admin_username        = var.ssh_user
   network_interface_ids = [
       azurerm_network_interface.eth0.id
   ]
-  source_image_id = data.azurerm_image.example_image.id
+  source_image_id       = data.azurerm_image.example_image.id
 
-  user_data = base64encode(templatefile("${path.root}/../templates/startup.sh.tmpl", { base64 = module.nms_common.htpasswd_data.content_base64 }))
+  user_data             = base64encode(templatefile("${path.root}/../templates/startup.sh.tmpl", { base64 = module.nms_common.htpasswd_data.content_base64 }))
+  tags                  = var.tags
 
   admin_ssh_key {
     username   = var.ssh_user
