@@ -56,7 +56,7 @@ variable "subnet_id" {
 }
 
 variable "tags" {
-  type    = map
+  type    = map(string)
   default = {}
 }
 
