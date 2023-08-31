@@ -5,6 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+packer {
+  required_plugins {
+    azure = {
+      source  = "github.com/hashicorp/azure"
+      version = "~> 1"
+    }
+    ansible = {
+      source  = "github.com/hashicorp/ansible"
+      version = "~> 1"
+    }
+  }
+}
+
 variable "subscription_id" {
   type    = string
   default = "${env("ARM_SUBSCRIPTION_ID")}"
@@ -118,8 +131,9 @@ build {
 
   provisioner "ansible" {
     ansible_env_vars = ["ANSIBLE_SSH_ARGS=-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
-    extra_arguments  = ["--scp-extra-args", "'-O'"]
+    extra_arguments  = ["--scp-extra-args", "'-O'", "-e ansible_ssh_user=${var.ssh_username}"]
     groups           = ["nms"]
+    use_proxy        = false
     playbook_file    = "${path.root}/../../ansible/play-nms.yml"
   }
 
