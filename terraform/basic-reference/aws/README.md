@@ -61,5 +61,6 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 | mgmt_cidr_blocks          | _List of CIDR blocks to allow access to NGINX Management Suite UI._  | -                   | No       |
 | dataplane_cidr_blocks     | _List of CIDR blocks to allow access to the dataplane instances._    | -                   | No       |
 | disk_config               | _Map of size and device paths for attached storage_                  | See example file    | Yes      |
+| tags                      | _Map of tags to apply to resulting AWS resources_                    | `{}`                | No       |
 
 Note: [See AWS documentation regarding aws_instance types and block device names for ebs attached storage](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html)

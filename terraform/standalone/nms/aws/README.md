@@ -58,5 +58,6 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 | subnet_id            | _ID of subnet to use for this instance. If unset, then a new vpc & subnet will be created._ | -                   | No       |
 | incoming_cidr_blocks | _List of custom CIDR blocks to allow access to NGINX Management Suite UI._                  | -                   | No       |
 | disk_config          | _Map of size and device paths for attached storage_                                         | See example file    | Yes      |
+| tags                 | _Map of tags to apply to resulting AWS resources_                                           | `{}`                | No       |
 
 Note: [See AWS documentation regarding aws_instance types and block device names for ebs attached storage](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html)

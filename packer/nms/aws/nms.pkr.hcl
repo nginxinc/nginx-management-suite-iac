@@ -75,6 +75,11 @@ variable "ssh_username" {
   default = "ubuntu"
 }
 
+variable "tags" {
+  type    = map(string)
+  default = {}
+}
+
 locals {
   timestamp = formatdate("YYYY-MM-DD", timestamp())
   ami_name  = var.ami_name != null ? var.ami_name : "nms-${local.timestamp}"
@@ -108,6 +113,7 @@ source "amazon-ebs" "disk" {
   ssh_username                = var.ssh_username
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
+  tags                        = var.tags
 }
 
 build {

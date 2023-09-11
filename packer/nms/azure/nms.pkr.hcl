@@ -78,6 +78,11 @@ variable "ssh_username" {
   default = "ubuntu"
 }
 
+variable "tags" {
+  type    = map(string)
+  default = {}
+}
+
 locals {
   timestamp = formatdate("YYYY-MM-DD", timestamp())
   image_name = var.image_name != null ? var.image_name : "nms-${local.timestamp}"
@@ -97,6 +102,7 @@ source "azure-arm" "ubuntu" {
   subscription_id                   = var.subscription_id
   client_id                         = var.client_id
   client_secret                     = var.client_secret
+  azure_tags                        = var.tags
 }
 
 
@@ -109,7 +115,7 @@ build {
   }
 
   provisioner "shell" {
-    scripts = ["${path.root}/../../scripts/debian-img-prep-apt.sh"]
+    scripts = ["${path.root}/../../scripts/img-prep.sh"]
   }
 
   provisioner "shell-local" {

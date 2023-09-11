@@ -53,3 +53,4 @@ cp nms.pkrvars.hcl.example nms.pkrvars.hcl
 | nginx_repo_cert                      | _Path to cert required to access the yum/deb repo for NMS_                                  | -                                | Yes      |
 | nginx_repo_key                       | _Path to key required to access the yum/deb repo for NMS_                                   | -                                | Yes      |
 | subnet_id                            | _ID of subnet for the image to be built in, will attempt to use the default VPC if not set_ | -                                | No       |
+| tags                                 | _Map of tags to apply to resulting AWS AMI image_                                           | `{}`                             | No       |

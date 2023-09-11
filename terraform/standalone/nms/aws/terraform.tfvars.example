@@ -28,3 +28,4 @@ disk_config          = {
 
 #ssh_user            = "ubuntu"
 #subnet_id           = "my_subnet_id"
+#tags                = {} # map of tags to apply to resulting AWS resources

@@ -56,3 +56,4 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 | project_id           | _The GCP project ID to use._                                                | -                   | Yes      |
 | ssh_pub_key          | _Path to the ssh pub key that will be used for sshing into the host_        | `~/.ssh/id_rsa.pub` | No       |
 | ssh_user             | _User account name allowed access via ssh._                                 | `ubuntu`            | No       |
+| labels               | _Map of labels to apply to resulting GCP resources_                         | `{}`                | No       |

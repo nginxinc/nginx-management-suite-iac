@@ -70,3 +70,4 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 | resource_group_name  | _The Azure resource group ID to use._                                      | -                   | Yes      |
 | ssh_pub_key          | _Path to the ssh pub key that will be used for sshing into the host_       | `~/.ssh/id_rsa.pub` | No       |
 | ssh_user             | _User account name allowed access via ssh._                                | `ubuntu`            | No       |
+| tags                 | _Map of tags to apply to resulting Azure resources_                        | `{}`                | No       |

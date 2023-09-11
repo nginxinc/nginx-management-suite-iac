@@ -4,3 +4,4 @@ incoming_cidr_blocks = ["x.x.x.x/32"]
 #image_name           = "myimagename"
 #ssh_pub_key          = "~/.ssh/id_rsa.pub"
 #ssh_user             = "ubuntu"
+#tags                 = {} # map of tags to apply to resulting Azure resources

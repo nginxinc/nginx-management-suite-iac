@@ -27,14 +27,15 @@ resource "tls_self_signed_cert" "nms" {
 resource "aws_acm_certificate" "nms" {
   private_key      = tls_private_key.nms.private_key_pem
   certificate_body = tls_self_signed_cert.nms.cert_pem
+  tags             = var.tags
 }
 
 resource "aws_security_group" "nms_alb_secgroup" {
   name   = "nms-alb-secgroup"
   vpc_id = local.vpc_id
-  tags = {
+  tags = merge({
     Name = "nms-alb-secgroup"
-  }
+  }, var.tags)
 
   ingress {
     from_port   = 443
@@ -58,9 +59,9 @@ resource "aws_security_group" "nms_alb_secgroup" {
 resource "aws_security_group" "agent_alb_secgroup" {
   name   = "agent-alb-secgroup"
   vpc_id = local.vpc_id
-  tags = {
+  tags = merge({
     Name = "agent-alb-secgroup"
-  }
+  }, var.tags)
 
   ingress {
     from_port   = 443
@@ -91,9 +92,9 @@ resource "aws_security_group" "agent_alb_secgroup" {
 resource "aws_security_group" "nms_secgroup" {
   name   = "nms-secgroup"
   vpc_id = local.vpc_id
-  tags = {
+  tags = merge({
     Name = "nms-secgroup"
-  }
+  }, var.tags)
 
   ingress {
     from_port   = 22
@@ -124,9 +125,9 @@ resource "aws_security_group" "nms_secgroup" {
 resource "aws_security_group" "bastion_secgroup" {
   name   = "bastion-secgroup"
   vpc_id = local.vpc_id
-  tags = {
+  tags = merge({
     Name = "bastion-secgroup"
-  }
+  }, var.tags)
 
   ingress {
     from_port   = 22
@@ -150,9 +151,9 @@ resource "aws_security_group" "bastion_secgroup" {
 resource "aws_security_group" "agent_secgroup" {
   name   = "agent-secgroup"
   vpc_id = local.vpc_id
-  tags = {
+  tags = merge({
     Name = "agent-secgroup"
-  }
+  }, var.tags)
 
   ingress {
     from_port   = 22

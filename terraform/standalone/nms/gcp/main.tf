@@ -14,9 +14,9 @@ module "nms_common" {
 }
 
 resource "google_compute_instance" "nms_example" {
-  name         = "nms-example"
-  machine_type = var.instance_type
-  project      = var.project_id
+  name                      = "nms-example"
+  machine_type              = var.instance_type
+  project                   = var.project_id
 
   boot_disk {
     initialize_params {
@@ -30,17 +30,18 @@ resource "google_compute_instance" "nms_example" {
     }
   }
   metadata = {
-    ssh-keys = "${var.ssh_user}:${file(pathexpand(var.ssh_pub_key))}"
+    ssh-keys       = "${var.ssh_user}:${file(pathexpand(var.ssh_pub_key))}"
     startup-script = templatefile("${path.root}/../templates/startup.sh.tmpl", { base64 = module.nms_common.htpasswd_data.content_base64 })
   }
   allow_stopping_for_update = true
 
-  tags = ["nginx"]
+  tags                      = ["nginx"]
+  labels                    = var.labels
 }
 
 resource "google_compute_firewall" "https_access" {
-  name    = "nginx-firewall"
-  network = "default"
+  name          = "nginx-firewall"
+  network       = "default"
 
   allow {
     protocol = "tcp"
@@ -48,5 +49,5 @@ resource "google_compute_firewall" "https_access" {
   }
 
   source_ranges = var.incoming_cidr_blocks
-  target_tags = ["nginx"]
+  target_tags   = ["nginx"]
 }
