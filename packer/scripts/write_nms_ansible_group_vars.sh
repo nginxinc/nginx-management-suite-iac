@@ -10,7 +10,6 @@ set -exo pipefail
 CERT_PATH=${1}
 KEY_PATH=${2}
 ACM_VERSION=${3}
-ADM_VERSION=${4}
 SM_VERSION=${5}
 
 
@@ -26,8 +25,6 @@ nms_setup: install
 nms_modules:
   - name: acm
     version: "${ACM_VERSION}*"
-  - name: adm
-    version: "${ADM_VERSION}*"
   - name: sm
     version: "${SM_VERSION}*"
 EOL
