@@ -41,11 +41,12 @@ if [ "${ID_LIKE}" = "debian" ]; then
         rsync
     sudo apt-get clean
 
+    sudo needrestart -r a
+
     if [ -f /var/run/reboot-required ]; then
         sudo reboot
     fi
 
-    sudo needrestart -r a
 else
     # Disable SELinux until nms ansible role supports SELinux
     if [ "$(getenforce)" = "Enforcing" ]; then
