@@ -56,7 +56,6 @@ To overwrite a saved template use the `-force` flag.
 | iso_path                             | _Path to the desired ISO to use eg. ISO/ubuntu-22.04-live-server-amd64.iso_ | -                                | Yes      |
 | network                              | _The name of the vSphere network to place the template in_                  | -                                | Yes      |
 | nms_api_connectivity_manager_version | _The version to use for installing NMS NGINX Management Suite_              | `*`                              | No       |
-| nms_app_delivery_manager_version     | _The version to use for installing NMS App Delivery Manager_                | `*`                              | No       |
 | nms_security_monitoring_version      | _The version to use for installing NMS Security Module_                     | `*`                              | No       |
 | nginx_repo_cert                      | _Path to cert required to access the yum/deb repo for NMS_                  | -                                | Yes      |
 | nginx_repo_key                       | _Path to key required to access the yum/deb repo for NMS_                   | -                                | Yes      |
