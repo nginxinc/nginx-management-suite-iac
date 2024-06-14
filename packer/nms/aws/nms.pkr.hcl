@@ -55,7 +55,7 @@ variable "subnet_id" {
   default = null
 }
 
-variable "nginx_installation_manager_version" {
+variable "nginx_instance_manager_version" {
   type    = string
   default = ""
 }
@@ -124,7 +124,7 @@ build {
   }
 
   provisioner "shell-local" {
-    inline = ["${path.root}/../../scripts/write_nms_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key} ${var.nginx_installation_manager_version} ${var.nms_api_connectivity_manager_version} ${var.nms_security_monitoring_version}"]
+    inline = ["${path.root}/../../scripts/write_nms_ansible_group_vars.sh ${var.nginx_repo_cert} ${var.nginx_repo_key} ${var.nginx_instance_manager_version} ${var.nms_api_connectivity_manager_version} ${var.nms_security_monitoring_version}"]
   }
 
   provisioner "ansible" {
