@@ -6,6 +6,7 @@ destination_regions                      = ["us-west-1"]
 nginx_repo_cert                          = "~/nginx-repo.crt"
 nginx_repo_key                           = "~/nginx-repo.key"
 
+#nginx_instance_manager_version          = "2.16.0"
 #nms_api_connectivity_manager_version    = "1.7.0"
 #nms_security_monitoring_version         = "1.5.0"
 #ami_name                                = "my_ami_name" # if not provided, defaults to nms-<YYYY-MM-DD>

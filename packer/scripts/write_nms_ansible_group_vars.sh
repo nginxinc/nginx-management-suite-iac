@@ -9,8 +9,9 @@ set -exo pipefail
 
 CERT_PATH=${1}
 KEY_PATH=${2}
-ACM_VERSION=${3}
-SM_VERSION=${4}
+NIM_VERSION=${3}
+ACM_VERSION=${4}
+SM_VERSION=${5}
 
 
 mkdir -p ../../ansible/group_vars
@@ -22,6 +23,7 @@ nginx_license:
 nms_service_state: stopped
 nginx_start: false
 nms_setup: install
+nms_version: "${NIM_VERSION}*"
 nms_modules:
   - name: acm
     version: "${ACM_VERSION}*"
