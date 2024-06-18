@@ -34,6 +34,12 @@ variable "dataplane_cidr_blocks" {
   default     = []
 }
 
+variable "prefix" {
+  description = "Prefix for the resources creation"
+  type        = string
+  default     = ""
+}
+
 variable "mgmt_cidr_blocks" {
   description = "List of cidr blocks used for remote management of instances."
   type        = list(string)

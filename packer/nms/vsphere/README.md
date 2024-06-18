@@ -29,6 +29,12 @@ export CONSOLE_PASSWORD="my-password"
 sudo apt-get install mkisofs
 ```
 
+- Install ansible plugin for vsphere(https://developer.hashicorp.com/packer/integrations/hashicorp/vsphere)
+
+```shell
+packer plugins install github.com/hashicorp/vsphere
+```
+
 - Set packer build parameters in a `pkrvars.hcl` file
 
 ```shell

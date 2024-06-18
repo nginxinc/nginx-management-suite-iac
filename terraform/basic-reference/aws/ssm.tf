@@ -1,5 +1,5 @@
 resource "aws_iam_role" "nms_ec2_assume_role" {
-  name = "nms_ec2_assume_role"
+  name = "${var.prefix}-nms_ec2_assume_role"
 
   assume_role_policy = <<EOF
 {
@@ -24,7 +24,7 @@ resource "aws_iam_role_policy_attachment" "nms_ssm" {
 }
 
 resource "aws_iam_instance_profile" "nms_ssm" {
-  name = "nms_ssm"
+  name = "${var.prefix}-nms_ssm"
   role = aws_iam_role.nms_ec2_assume_role.name
   tags = var.tags
 }

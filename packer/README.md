@@ -9,10 +9,16 @@ This repo contains the templates and scripts that can be used to generate a NGIN
 - [ansible >= 6.7.0](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 - Install sshpass (Debian based platforms only)
 - [packer >= 1.8](https://developer.hashicorp.com/packer/downloads)
-- Install the required ansible collections
+- Install the required ansible collections from the packer directory.
 
 ```
    ansible-galaxy install -r ./ansible/requirements.yml
+```
+
+- Install ansible plugin for packer(https://developer.hashicorp.com/packer/integrations/hashicorp/ansible)
+
+```
+   packer plugins install github.com/hashicorp/ansible
 ```
 
 ## How to Use

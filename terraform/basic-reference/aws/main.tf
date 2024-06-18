@@ -13,6 +13,7 @@ locals {
   public_subnet_id                = module.vpc.public_subnets[0]
   controlplane_subnet_id          = module.vpc.private_subnets[0]
   dataplane_subnet_id             = module.vpc.private_subnets[1]
+  timestamp                       = formatdate("YYYY-MM-DD", timestamp())
   disks                           = [
     {
       "name": "dqlite",
