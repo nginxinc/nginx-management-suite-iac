@@ -16,7 +16,6 @@
       when: ansible_os_family == "Debian"
       loop:
         - gpg
-
     - name: Include the nginx role
       include_role:
         name: nginxinc.nginx
