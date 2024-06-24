@@ -10,7 +10,7 @@ module "nms_alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 8.0"
 
-  name = "nms-alb"
+  name = "${var.prefix}-nms-alb"
 
   load_balancer_type = "application"
 
@@ -97,7 +97,7 @@ module "agents_alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 8.0"
 
-  name = "agents-alb"
+  name = "${var.prefix}-agents-alb"
 
   load_balancer_type = "application"
 

@@ -41,6 +41,11 @@ cp nms.pkrvars.hcl.example nms.pkrvars.hcl
 ```
 
 - Customise your packer hcl files to suit your environment.
+- Install ansible plugin for azure(https://developer.hashicorp.com/packer/integrations/hashicorp/azure)
+
+```shell
+packer plugins install github.com/hashicorp/azure
+```
 
 - Run packer build
 

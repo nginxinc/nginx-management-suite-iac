@@ -42,7 +42,7 @@ module "agent_common" {
 }
 
 resource "aws_key_pair" "bastion_key_pair" {
-  key_name   = "bastion-key-pair"
+  key_name   = "${var.prefix}-bastion-key-pair"
   public_key = file(pathexpand(var.ssh_pub_key))
   tags       = var.tags
 }

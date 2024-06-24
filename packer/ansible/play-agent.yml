@@ -18,4 +18,4 @@
         - gpg
     - name: Include the nginx role
       include_role:
-        name: nginx
+        name: nginxinc.nginx

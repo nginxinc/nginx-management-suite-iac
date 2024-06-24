@@ -29,6 +29,7 @@ disk_config                = {
     }
 }
 
+#prefix                    = "Deployment"
 #nms_instance_type         = "t2.medium"
 #nginx_instance_type       = "t3.micro"
 #agent_count               = 2
