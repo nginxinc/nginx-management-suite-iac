@@ -4,6 +4,7 @@ build_instance_type                  = "e2-micro"
 nginx_repo_cert                      = "path_to_nginx_repo_cert"
 nginx_repo_key                       = "path_to_nginx_repo_key"
 project_id                           = "myprojectid"
+network_name                         = "vpc_network_name"
 
 #nginx_instance_manager_version       = "2.16.0"
 #nms_api_connectivity_manager_version = "1.7.0"

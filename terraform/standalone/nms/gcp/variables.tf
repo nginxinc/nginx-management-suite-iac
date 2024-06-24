@@ -43,6 +43,11 @@ variable "image_name" {
   type        = string
 }
 
+variable "network_name" {
+  description = "VPC network to be used"
+  type        = string
+}
+
 variable "labels" {
   type        = map
   default     = {}

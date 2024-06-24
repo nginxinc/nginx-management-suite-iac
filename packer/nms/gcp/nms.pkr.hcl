@@ -69,6 +69,11 @@ variable "ssh_username" {
   default = "ubuntu"
 }
 
+variable "network_name" {
+  type    = string
+  default = ""
+}
+
 variable "labels" {
   type    = map(string)
   default = {}
@@ -89,6 +94,7 @@ source "googlecompute" "gcp_disk" {
   machine_type              = var.build_instance_type
   ssh_clear_authorized_keys = true
   ssh_username              = var.ssh_username
+  network                   = var.network_name
 }
 
 build {
@@ -100,6 +106,7 @@ build {
 
   provisioner "shell" {
     scripts = ["${path.root}/../../scripts/img-prep.sh"]
+    expect_disconnect = true
   }
 
   provisioner "shell-local" {
