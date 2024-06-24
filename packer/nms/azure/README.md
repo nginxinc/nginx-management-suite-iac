@@ -44,7 +44,7 @@ cp nms.pkrvars.hcl.example nms.pkrvars.hcl
 - Install ansible plugin for azure(https://developer.hashicorp.com/packer/integrations/hashicorp/azure)
 
 ```shell
-packer plugins install github.com/hashicorp/azure
+   packer plugins install github.com/hashicorp/azure
 ```
 
 - Run packer build
