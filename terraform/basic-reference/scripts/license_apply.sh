@@ -13,10 +13,10 @@ MAX_RETRIES=30
 
 LICENSE_STATUS=null
 while [[ "${LICENSE_STATUS}" == "null" ]] && [[ "${RETRIES}" -lt "${MAX_RETRIES}" ]]; do
-    sleep 20
     echo "Checking license status via platform /api/platform/v1/license/status api"
     LICENSE_STATUS=$(curl -ks -u "${PLATFORM_CREDENTIALS}" "${PLATFORM_URL}/api/platform/v1/license/status" | jq -r '.licenseStatus')
     RETRIES=$((RETRIES+1))
+    sleep 20
 done
 
 if [[ "${RETRIES}" -eq "${MAX_RETRIES}" ]]; then
