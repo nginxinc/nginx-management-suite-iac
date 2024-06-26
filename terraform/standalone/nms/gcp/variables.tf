@@ -45,6 +45,7 @@ variable "image_name" {
 
 variable "network_name" {
   description = "VPC network to be used"
+  default     = "default"
   type        = string
 }
 
