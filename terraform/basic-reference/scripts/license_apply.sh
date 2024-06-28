@@ -13,16 +13,9 @@ MAX_RETRIES=30
 
 LICENSE_STATUS=null
 while [[ "${LICENSE_STATUS}" == "null" ]] && [[ "${RETRIES}" -lt "${MAX_RETRIES}" ]]; do
-    echo "Checking license status via platform /api/platform/v1/license api"
-    LICENSE_STATUS=$(curl -ks -u "${PLATFORM_CREDENTIALS}" "${PLATFORM_URL}/api/platform/v1/license" || echo "curl_error")
-    if [ "${LICENSE_STATUS}" != "curl_error" ]; then
-        LICENSE_STATUS=$(echo "${LICENSE_STATUS}" | jq -r .currentStatus.state.currentInstance.status)
-    else
-        echo "curl error occurred, retrying..."
-        LICENSE_STATUS="null"
-        RETRIES=$((RETRIES+1))
-    fi
-    echo "LICENSE_STATUS=${LICENSE_STATUS}"
+    echo "Checking license status via platform /api/platform/v1/license/status api"
+    LICENSE_STATUS=$(curl -ks -u "${PLATFORM_CREDENTIALS}" "${PLATFORM_URL}/api/platform/v1/license/status" | jq -r '.licenseStatus')
+    RETRIES=$((RETRIES+1))
     sleep 20
 done
 
