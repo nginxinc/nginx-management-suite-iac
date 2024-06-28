@@ -1,4 +1,5 @@
 image_name           = "myimagename"
+network_name         = "default"
 incoming_cidr_blocks = ["x.x.x.x/32"]
 instance_type        = "e2-micro"
 project_id           = "myprojectid"

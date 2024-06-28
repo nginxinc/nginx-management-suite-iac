@@ -32,7 +32,7 @@ cp nms.pkrvars.hcl.example nms.pkrvars.hcl
 ## Configuration
 
 | Parameter                            | Description                                                      | Default                       | Required |
-| ------------------------------------ | ---------------------------------------------------------------- | ----------------------------- | -------- |
+|--------------------------------------|------------------------------------------------------------------| ----------------------------- | -------- |
 | base_image_name                      | _The name of the base AMI image_                                 | `ubuntu-2204-jammy-v20230114` | No       |
 | build_zone                           | _The GCP zone to build the image in_                             | `europe-west4-a`              | No       |
 | build_instance_type                  | _The instance type to use for building the image_                | `e2-micro`                    | No       |
@@ -42,4 +42,5 @@ cp nms.pkrvars.hcl.example nms.pkrvars.hcl
 | nginx_repo_cert                      | _Path to cert required to access the yum/deb repo for NMS_       | -                             | Yes      |
 | nginx_repo_key                       | _Path to key required to access the yum/deb repo for NMS_        | -                             | Yes      |
 | project_id                           | _GCP project id to use_                                          | -                             | Yes      |
+| network_name                         | _GCP VPC network name with access to port 22/443_                | -                             | Yes      |
 | labels                               | _Map of labels to apply to resulting GCP image_                  | `{}`                          | No       |

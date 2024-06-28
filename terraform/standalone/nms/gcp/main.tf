@@ -25,7 +25,7 @@ resource "google_compute_instance" "nms_example" {
   }
 
   network_interface {
-    network = "default"
+    network = var.network_name
     access_config {
     }
   }
@@ -41,7 +41,7 @@ resource "google_compute_instance" "nms_example" {
 
 resource "google_compute_firewall" "https_access" {
   name          = "nginx-firewall"
-  network       = "default"
+  network       = var.network_name
 
   allow {
     protocol = "tcp"
