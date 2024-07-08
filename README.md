@@ -1,8 +1,8 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-# NGINX Management Suite Infrastructure
+# NGINX Instance Manager Infrastructure
 
-This repo contains instructions that can be used to generate images using the [NGINX Management Suite Ansible role](https://github.com/nginxinc/ansible-role-nginx-management-suite) and [NGINX Ansible role](https://github.com/nginxinc/ansible-role-nginx). It also provides example infrastructure to deploy those images with Terraform using best practice security configuration.
+This repo contains instructions that can be used to generate images using the [NGINX Instance Manager Ansible role](https://github.com/nginxinc/ansible-role-nginx-management-suite) and [NGINX Ansible role](https://github.com/nginxinc/ansible-role-nginx). It also provides example infrastructure to deploy those images with Terraform using best practice security configuration.
 
 - [Image generation using packer](packer/README.md)
 - [Infrastructure Deployments using terraform](terraform/README.md)
