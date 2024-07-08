@@ -1,6 +1,6 @@
-# NGINX Management Suite Control Host Template Generation for vSphere
+# NGINX Instance Manager Control Host Template Generation for vSphere
 
-This directory contains templates and scripts to create an NGINX Management Suite Ubuntu template to be deployable to VSphere
+This directory contains templates and scripts to create an NGINX Instance Manager Ubuntu template to be deployable to VSphere
 
 ## Requirements
 
@@ -61,7 +61,7 @@ To overwrite a saved template use the `-force` flag.
 | template_name                        | _The name of the final vSphere template_                                    | `nms-<YYYY-MM-DD>`               | No       |
 | iso_path                             | _Path to the desired ISO to use eg. ISO/ubuntu-22.04-live-server-amd64.iso_ | -                                | Yes      |
 | network                              | _The name of the vSphere network to place the template in_                  | -                                | Yes      |
-| nms_api_connectivity_manager_version | _The version to use for installing NMS NGINX Management Suite_              | `*`                              | No       |
+| nms_api_connectivity_manager_version | _The version to use for installing NMS NGINX Instance Manager_              | `*`                              | No       |
 | nms_security_monitoring_version      | _The version to use for installing NMS Security Module_                     | `*`                              | No       |
 | nginx_repo_cert                      | _Path to cert required to access the yum/deb repo for NMS_                  | -                                | Yes      |
 | nginx_repo_key                       | _Path to key required to access the yum/deb repo for NMS_                   | -                                | Yes      |
