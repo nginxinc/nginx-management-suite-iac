@@ -1,6 +1,6 @@
-# AWS NGINX Management Suite Image Deployment
+# AWS NGINX Instance Manager Image Deployment
 
-This directory contains templates and scripts to deploy an NGINX Management Suite Ubuntu image to AWS
+This directory contains templates and scripts to deploy an NGINX Instance Manager Ubuntu image to AWS
 
 ## Requirements
 
@@ -56,7 +56,7 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 | ssh_user             | _User account name allowed access via ssh._                                                 | `ubuntu`            | No       |
 | ssh_pub_key          | _Path to the ssh pub key that will be used for sshing into the host_                        | `~/.ssh/id_rsa.pub` | No       |
 | subnet_id            | _ID of subnet to use for this instance. If unset, then a new vpc & subnet will be created._ | -                   | No       |
-| incoming_cidr_blocks | _List of custom CIDR blocks to allow access to NGINX Management Suite UI._                  | -                   | No       |
+| incoming_cidr_blocks | _List of custom CIDR blocks to allow access to NGINX Instance Manager UI._                  | -                   | No       |
 | disk_config          | _Map of size and device paths for attached storage_                                         | See example file    | Yes      |
 | tags                 | _Map of tags to apply to resulting AWS resources_                                           | `{}`                | No       |
 
