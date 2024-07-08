@@ -1,6 +1,6 @@
-# NGINX Management Suite Control Host Image Generation for Azure
+# NGINX Instance Manager Control Host Image Generation for Azure
 
-This directory contains templates and scripts to create an NGINX Management Suite Ubuntu image to be deployable to Azure
+This directory contains templates and scripts to create an NGINX Instance Manager Ubuntu image to be deployable to Azure
 
 ## Requirements
 
