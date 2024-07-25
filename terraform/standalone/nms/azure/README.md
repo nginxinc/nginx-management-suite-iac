@@ -1,6 +1,6 @@
-# Azure NGINX Management Suite Image Deployment
+# Azure NGINX Instance Manager Image Deployment
 
-This directory contains templates and scripts to deploy an NGINX Management Suite Ubuntu image to Azure
+This directory contains templates and scripts to deploy an NGINX Instance Manager Ubuntu image to Azure
 
 ## Requirements
 
@@ -65,7 +65,7 @@ export TF_VAR_admin_password=xxxxxxxxxxxxxxx
 | -------------------- | -------------------------------------------------------------------------- | ------------------- | -------- |
 | admin_password       | _The password for the created `admin_user`_                                | -                   | Yes      |
 | image_name           | _Image being deployed_                                                     | -                   | Yes      |
-| incoming_cidr_blocks | _List of custom CIDR blocks to allow access to NGINX Management Suite UI._ | -                   | No       |
+| incoming_cidr_blocks | _List of custom CIDR blocks to allow access to NGINX Instance Manager UI._ | -                   | No       |
 | instance_type        | _Azure compute instance type to use._                                      | `Standard_B2s`      | No       |
 | resource_group_name  | _The Azure resource group ID to use._                                      | -                   | Yes      |
 | ssh_pub_key          | _Path to the ssh pub key that will be used for sshing into the host_       | `~/.ssh/id_rsa.pub` | No       |

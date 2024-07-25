@@ -1,12 +1,12 @@
-# NGINX Management Suite Image Deployment
+# NGINX Instance Manager Image Deployment
 
-This repo contains the templates and scripts that can be used to deploy an NGINX Management Suite image.
+This repo contains the templates and scripts that can be used to deploy an NGINX Instance Manager image.
 
 ## Requirements
 
 - Linux build environment, e.g. ubuntu-22.04
 - You must have generated the appropriate cloud images/machines using our [packer guide](../packer/README.md).
-- An NGINX Management Suite license. This can be downloaded from [my.f5.com](my.f5.com).
+- An NGINX Instance Manager license. This can be downloaded from [my.f5.com](my.f5.com).
 - [Terraform >= 1.2](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - curl >= 7.68
 - jq >= 1.6

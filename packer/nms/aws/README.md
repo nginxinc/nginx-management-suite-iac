@@ -1,6 +1,6 @@
-# NGINX Management Suite Control Host Image Generation for AWS
+# NGINX Instance Manager Control Host Image Generation for AWS
 
-This directory contains templates and scripts to create an NGINX Management Suite Ubuntu image to be deployable to AWS
+This directory contains templates and scripts to create an NGINX Instance Manager Ubuntu image to be deployable to AWS
 
 ## Requirements
 

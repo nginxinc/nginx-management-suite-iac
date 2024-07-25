@@ -1,6 +1,6 @@
-# NGINX Management Suite Control Host Image Generation for GCP
+# NGINX Instance Manager Control Host Image Generation for GCP
 
-This directory contains templates and scripts to create an NGINX Management Suite Ubuntu image to be deployable to GCP
+This directory contains templates and scripts to create an NGINX Instance Manager Ubuntu image to be deployable to GCP
 
 ## Requirements
 

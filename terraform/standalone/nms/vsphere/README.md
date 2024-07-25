@@ -1,6 +1,6 @@
-# vSphere NGINX Management Suite Machine Template Deployment
+# vSphere NGINX Instance Manager Machine Template Deployment
 
-This directory contains templates and scripts to deploy an NGINX Management Suite Ubuntu Virtual Machine to vSphere.
+This directory contains templates and scripts to deploy an NGINX Instance Manager Ubuntu Virtual Machine to vSphere.
 
 ## Requirements
 
