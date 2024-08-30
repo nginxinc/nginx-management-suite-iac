@@ -24,8 +24,8 @@ autoinstall:
   storage:
     layout:
       name: direct
+  updates: security
   late-commands:
-    - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
     - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
 EOF
 

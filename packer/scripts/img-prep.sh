@@ -13,8 +13,6 @@ if [ "${ID}" = "ubuntu" ]; then
 fi
 
 if [ "${ID_LIKE}" = "debian" ]; then
-    # - clear installer cloud-init config
-    sudo rm -f /etc/cloud/cloud.cfg.d/99-installer.cfg
 
     # - apt-daily can cause untimely dpkg lock issues during deployments
     sudo systemctl disable --now apt-daily.timer
@@ -48,7 +46,18 @@ if [ "${ID_LIKE}" = "debian" ]; then
         socat \
         wget \
         rsync
+
+    export DEBIAN_FRONTEND=noninteractive
+
+    # - setup cloud-init
+    sudo apt-get -y install cloud-init
+    sudo rm -f /etc/cloud/cloud.cfg.d/99*
+    sudo tee /etc/cloud/cloud.cfg.d/99-DataSource.cfg <<'EOF'
+datasource_list: ['VMware', 'Ec2', 'Azure', 'GCE']
+EOF
     sudo apt-get clean
+    sudo cloud-init clean --logs --seed
+    echo "uninitialized" | sudo tee /etc/machine-id
 
     sudo needrestart -r a
 
