@@ -24,10 +24,12 @@ AWS_SECURITY_TOKEN
 cp nginx.pkrvars.hcl.example nginx.pkrvars.hcl
 ```
 
-- Run packer init
+- Customise your packer hcl files to suit your environment.
+- Install ansible plugin for [AWS](https://developer.hashicorp.com/packer/integrations/hashicorp/amazon) & [Ansible](https://developer.hashicorp.com/packer/integrations/hashicorp/ansible)
 
 ```shell
-   packer init .
+   packer plugins install github.com/hashicorp/amazon
+   packer plugins install github.com/hashicorp/ansible
 ```
 
 - Run packer build
