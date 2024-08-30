@@ -8,8 +8,12 @@
 packer {
   required_plugins {
     amazon = {
-      version = "~> 1.2.6"
       source  = "github.com/hashicorp/amazon"
+      version = "~> 1"
+    }
+    ansible = {
+      source  = "github.com/hashicorp/ansible"
+      version = ">= 1.1"
     }
   }
 }
@@ -104,6 +108,8 @@ build {
 
   provisioner "shell" {
     scripts = ["${path.root}/../../scripts/img-prep.sh"]
+    expect_disconnect = true
+    pause_after = "30s"
   }
 
   provisioner "shell-local" {

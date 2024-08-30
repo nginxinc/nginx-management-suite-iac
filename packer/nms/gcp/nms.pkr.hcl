@@ -9,11 +9,11 @@ packer {
   required_plugins {
     googlecompute = {
       source  = "github.com/hashicorp/googlecompute"
-      version = ">= 1"
+      version = "~> 1"
     }
     ansible = {
       source  = "github.com/hashicorp/ansible"
-      version = ">= 1"
+      version = ">= 1.1"
     }
   }
 }
@@ -107,6 +107,7 @@ build {
   provisioner "shell" {
     scripts = ["${path.root}/../../scripts/img-prep.sh"]
     expect_disconnect = true
+    pause_after = "30s"
   }
 
   provisioner "shell-local" {
@@ -114,7 +115,7 @@ build {
   }
 
   provisioner "ansible" {
-    ansible_env_vars = ["ANSIBLE_SSH_ARGS=-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
+    ansible_env_vars = ["ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
     extra_arguments  = ["-e ansible_ssh_pass=ubuntu"]
     groups           = ["nms"]
     playbook_file    = "${path.root}/../../ansible/play-nms.yml"

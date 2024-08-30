@@ -23,6 +23,14 @@ gcloud auth application-default login
 cp nms.pkrvars.hcl.example nms.pkrvars.hcl
 ```
 
+- Customise your packer hcl files to suit your environment.
+- Install ansible plugin for [GCP](https://developer.hashicorp.com/packer/integrations/hashicorp/googlecompute) & [Ansible](https://developer.hashicorp.com/packer/integrations/hashicorp/ansible)
+
+```shell
+   packer plugins install github.com/hashicorp/googlecompute
+   packer plugins install github.com/hashicorp/ansible
+```
+
 - Run packer build
 
 ```shell

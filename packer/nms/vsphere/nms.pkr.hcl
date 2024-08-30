@@ -5,6 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+packer {
+  required_plugins {
+    vsphere = {
+      source  = "github.com/hashicorp/vsphere"
+      version = "~> 1"
+    }
+    ansible = {
+      source  = "github.com/hashicorp/ansible"
+      version = ">= 1.1"
+    }
+  }
+}
+
 variable "boot_command" {
   type    = string
   default = "c<wait>linux /casper/vmlinuz --- autoinstall<enter><wait>initrd /casper/initrd <enter><wait>boot<enter>"
@@ -130,6 +143,8 @@ build {
 
   provisioner "shell" {
     scripts = ["${path.root}/../../scripts/img-prep.sh"]
+    expect_disconnect = true
+    pause_after = "30s"
   }
 
   provisioner "shell-local" {
@@ -137,7 +152,7 @@ build {
   }
 
   provisioner "ansible" {
-    ansible_env_vars = ["ANSIBLE_SSH_ARGS=-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
+    ansible_env_vars = ["ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_CONFIG=../../ansible/ansible.cfg"]
     extra_arguments  = ["-e ansible_ssh_pass=${local.console_password}"]
     groups           = ["nms"]
     playbook_file    = "${path.root}/../../ansible/play-nms.yml"
