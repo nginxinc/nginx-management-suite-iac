@@ -5,6 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+packer {
+  required_plugins {
+    vsphere = {
+      source  = "github.com/hashicorp/vsphere"
+      version = "~> 1"
+    }
+    ansible = {
+      source  = "github.com/hashicorp/ansible"
+      version = ">= 1.1"
+    }
+  }
+}
+
 variable "boot_command" {
   type    = string
   default = "c<wait>linux /casper/vmlinuz --- autoinstall<enter><wait>initrd /casper/initrd <enter><wait>boot<enter>"

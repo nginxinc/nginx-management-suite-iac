@@ -5,6 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+packer {
+  required_plugins {
+    azure = {
+      source  = "github.com/hashicorp/azure"
+      version = "~> 1"
+    }
+    ansible = {
+      source  = "github.com/hashicorp/ansible"
+      version = ">= 1.1"
+    }
+  }
+}
+
 variable "subscription_id" {
   type    = string
   default = "${env("ARM_SUBSCRIPTION_ID")}"
