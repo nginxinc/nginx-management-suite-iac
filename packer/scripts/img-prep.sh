@@ -8,10 +8,6 @@ set -exo pipefail
 
 source /etc/os-release
 
-if [ "${ID}" = "ubuntu" ]; then
-    cloud-init status --wait
-fi
-
 if [ "${ID_LIKE}" = "debian" ]; then
 
     # - apt-daily can cause untimely dpkg lock issues during deployments
