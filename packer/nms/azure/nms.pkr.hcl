@@ -127,6 +127,8 @@ build {
 
   provisioner "shell" {
     scripts = ["${path.root}/../../scripts/img-prep.sh"]
+    expect_disconnect = true
+    pause_after = "30s"
   }
 
   provisioner "shell-local" {
